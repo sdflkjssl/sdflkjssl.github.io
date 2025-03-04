@@ -1,7 +1,7 @@
 ---
 title: "Structure and Intensity Unbiased Translation for 2D Medical Image Segmentation"
 collection: publications
-category: journals
+category: manuscripts
 permalink: /publication/sua
 excerpt: ''
 date: 2024-07-29
