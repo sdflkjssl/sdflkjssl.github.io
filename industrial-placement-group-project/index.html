@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Industrial Placement and Group Project process maps for Imperial College London.">
+  <meta property="og:title" content="Industrial Placement &amp; Group Project Process Map">
+  <meta property="og:description" content="Browse the complete process and every detailed module from one navigation panel.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sdflkjssl.github.io/industrial-placement-group-project/">
+  <title>Industrial Placement &amp; Group Project Process Map</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Process map navigation">
+      <header class="brand">
+        <span class="brand-mark" aria-hidden="true">EE</span>
+        <span class="brand-copy">
+          <strong>Process Map</strong>
+          <span>Industrial Placement &amp; Group Project</span>
+        </span>
+      </header>
+
+      <label class="search">
+        <span class="search-label">Find a module</span>
+        <span class="search-field">
+          <span aria-hidden="true">⌕</span>
+          <input id="module-search" type="search" autocomplete="off" placeholder="Search modules" aria-controls="diagram-navigation">
+          <kbd>⌘K</kbd>
+        </span>
+      </label>
+
+      <nav class="diagram-navigation" id="diagram-navigation" aria-label="Diagrams">
+        <p class="navigation-status">Loading process maps…</p>
+      </nav>
+
+      <footer class="sidebar-footer">
+        <span>Imperial College London</span>
+        <span>Electrical & Electronic Engineering</span>
+      </footer>
+    </aside>
+
+    <button class="sidebar-scrim" id="sidebar-scrim" type="button" aria-label="Close navigation" aria-hidden="true" inert tabindex="-1"></button>
+
+    <main class="workspace">
+      <header class="toolbar">
+        <button class="menu-button" id="menu-button" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">Menu</button>
+        <div class="diagram-heading">
+          <span id="diagram-group">Overview</span>
+          <h1 id="diagram-title">Complete Process Map</h1>
+        </div>
+        <div class="toolbar-actions">
+          <button class="toolbar-button" id="view-mode" type="button" aria-pressed="true">Fit width</button>
+          <a class="toolbar-link" id="open-svg" href="diagrams/overview.svg" target="_blank" rel="noopener">Open SVG</a>
+        </div>
+      </header>
+
+      <section class="diagram-stage" id="diagram-stage" data-mode="fit" aria-labelledby="diagram-title">
+        <div class="loading-indicator" id="loading-indicator" role="status">Loading diagram…</div>
+        <img class="diagram" id="diagram" src="diagrams/overview.svg" alt="Complete process map" aria-details="diagram-description">
+      </section>
+
+      <section class="visually-hidden" id="diagram-description" aria-labelledby="diagram-description-title">
+        <h2 id="diagram-description-title">Complete Process Map text outline</h2>
+        <ol id="diagram-outline"></ol>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
