@@ -206,7 +206,8 @@ a {
 .navigation-button:focus-visible,
 .toolbar-button:focus-visible,
 .toolbar-link:focus-visible,
-.menu-button:focus-visible {
+.menu-button:focus-visible,
+.diagram-heading h1:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 2px;
 }
@@ -320,16 +321,30 @@ a {
   box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
 }
 
+.diagram-container.is-loading .diagram {
+  visibility: hidden;
+}
+
+.diagram .module-link {
+  cursor: pointer;
+}
+
+.diagram .module-link:hover rect,
+.diagram .module-link:focus rect {
+  fill: var(--accent-soft);
+}
+
+.diagram .module-link:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
 .diagram-stage[data-mode="fit"] .diagram {
   max-width: 100%;
 }
 
 .diagram-stage[data-mode="actual"] .diagram {
   max-width: none;
-}
-
-.diagram.is-loading {
-  visibility: hidden;
 }
 
 .loading-indicator {

@@ -50,7 +50,7 @@
         <button class="menu-button" id="menu-button" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">Menu</button>
         <div class="diagram-heading">
           <span id="diagram-group">Overview</span>
-          <h1 id="diagram-title">Complete Process Map</h1>
+          <h1 id="diagram-title" tabindex="-1">Complete Process Map</h1>
         </div>
         <div class="toolbar-actions">
           <button class="toolbar-button" id="view-mode" type="button" aria-pressed="true">Fit width</button>
@@ -60,7 +60,9 @@
 
       <section class="diagram-stage" id="diagram-stage" data-mode="fit" aria-labelledby="diagram-title">
         <div class="loading-indicator" id="loading-indicator" role="status">Loading diagram…</div>
-        <img class="diagram" id="diagram" src="diagrams/overview.svg" alt="Complete process map" aria-details="diagram-description">
+        <div class="diagram-container" id="diagram-container">
+          <img class="diagram" src="diagrams/overview.svg" alt="Complete process map" aria-details="diagram-description">
+        </div>
       </section>
 
       <section class="visually-hidden" id="diagram-description" aria-labelledby="diagram-description-title">

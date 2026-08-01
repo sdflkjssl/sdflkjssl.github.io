@@ -1,6 +1,6 @@
 const navigation = document.querySelector("#diagram-navigation");
 const search = document.querySelector("#module-search");
-const diagram = document.querySelector("#diagram");
+const diagramContainer = document.querySelector("#diagram-container");
 const diagramStage = document.querySelector("#diagram-stage");
 const diagramTitle = document.querySelector("#diagram-title");
 const diagramGroup = document.querySelector("#diagram-group");
@@ -14,10 +14,142 @@ const workspace = document.querySelector(".workspace");
 const descriptionTitle = document.querySelector("#diagram-description-title");
 const diagramOutline = document.querySelector("#diagram-outline");
 const mobileNavigation = window.matchMedia("(max-width: 900px)");
+const coarsePointer = window.matchMedia("(any-pointer: coarse)");
 
 let diagrams = [];
 let currentDiagram = null;
 let menuHeldFocus = false;
+let diagramRenderVersion = 0;
+let focusHeadingAfterRender = false;
+let preferredViewMode = null;
+
+function setViewMode(mode) {
+  diagramStage.dataset.mode = mode;
+  viewMode.setAttribute("aria-pressed", String(mode === "fit"));
+}
+
+function applyViewMode(item) {
+  const automaticMode = item.id === "overview" && coarsePointer.matches ? "actual" : "fit";
+  setViewMode(preferredViewMode ?? automaticMode);
+}
+
+function normaliseDiagramLabel(value) {
+  return value.replace(/\s+/g, " ").trim();
+}
+
+function connectOverviewModules(svg) {
+  const moduleItems = diagrams.filter((item) => item.group !== "Overview");
+  const textNodes = [...svg.querySelectorAll("text")];
+  const claimedTextNodes = new Set();
+
+  for (const item of moduleItems) {
+    const textNode = textNodes.find((candidate) => (
+      !claimedTextNodes.has(candidate)
+      && normaliseDiagramLabel(candidate.textContent) === item.title
+    ));
+    const shape = textNode?.previousElementSibling;
+
+    if (!textNode || shape?.localName !== "rect") {
+      throw new Error(`Overview node could not be linked: ${item.title}`);
+    }
+
+    const link = document.createElementNS(svg.namespaceURI, "a");
+    link.classList.add("module-link");
+    link.setAttribute("href", `#${item.id}`);
+    link.setAttribute("aria-label", `Open ${item.title} process diagram`);
+    link.setAttribute("tabindex", "0");
+    link.dataset.diagramId = item.id;
+    link.addEventListener("click", () => {
+      focusHeadingAfterRender = true;
+    });
+    shape.parentNode.insertBefore(link, shape);
+    link.append(shape, textNode);
+    claimedTextNodes.add(textNode);
+  }
+
+  if (claimedTextNodes.size !== moduleItems.length) {
+    throw new Error("Not every overview module received a link");
+  }
+}
+
+async function createOverviewDiagram(item) {
+  const response = await fetch(item.src);
+  if (!response.ok) {
+    throw new Error(`Diagram request failed with ${response.status}`);
+  }
+
+  const source = await response.text();
+  const parsed = new DOMParser().parseFromString(source, "image/svg+xml");
+  if (parsed.querySelector("parsererror") || parsed.documentElement.localName !== "svg") {
+    throw new Error("Overview diagram is not valid SVG");
+  }
+
+  const svg = document.importNode(parsed.documentElement, true);
+  svg.querySelectorAll("script, foreignObject").forEach((element) => element.remove());
+  svg.removeAttribute("style");
+  svg.classList.add("diagram");
+  svg.setAttribute("role", "group");
+  svg.setAttribute("aria-label", "Complete process map. Select any module to open its detailed process diagram.");
+  svg.setAttribute("aria-details", "diagram-description");
+  connectOverviewModules(svg);
+  return svg;
+}
+
+function createDetailDiagram(item) {
+  const image = document.createElement("img");
+  image.className = "diagram";
+  image.src = item.src;
+  image.alt = `${item.title} process diagram`;
+  image.setAttribute("aria-details", "diagram-description");
+  return image;
+}
+
+async function renderDiagram(item) {
+  const renderVersion = ++diagramRenderVersion;
+  diagramContainer.classList.add("is-loading");
+  loadingIndicator.hidden = false;
+  loadingIndicator.textContent = "Loading diagram…";
+
+  try {
+    const element = item.id === "overview"
+      ? await createOverviewDiagram(item)
+      : createDetailDiagram(item);
+
+    if (element instanceof HTMLImageElement) {
+      if (element.complete && !element.naturalWidth) {
+        throw new Error("Diagram image could not be loaded");
+      }
+      if (!element.complete) {
+        await new Promise((resolve, reject) => {
+          element.addEventListener("load", resolve, { once: true });
+          element.addEventListener("error", reject, { once: true });
+        });
+      }
+    }
+
+    if (renderVersion !== diagramRenderVersion) {
+      return;
+    }
+
+    diagramContainer.replaceChildren(element);
+    diagramContainer.classList.remove("is-loading");
+    loadingIndicator.hidden = true;
+    if (focusHeadingAfterRender) {
+      diagramTitle.focus();
+      focusHeadingAfterRender = false;
+    }
+  } catch (error) {
+    if (renderVersion !== diagramRenderVersion) {
+      return;
+    }
+    diagramContainer.classList.add("is-loading");
+    loadingIndicator.hidden = false;
+    loadingIndicator.textContent = "This diagram could not be loaded.";
+    currentDiagram = null;
+    focusHeadingAfterRender = false;
+    console.error(error);
+  }
+}
 
 function synchroniseNavigationState() {
   const navigationOpen = mobileNavigation.matches && document.body.classList.contains("navigation-open");
@@ -114,11 +246,8 @@ function selectDiagram(item) {
   }
 
   currentDiagram = item;
-  diagram.classList.add("is-loading");
-  loadingIndicator.hidden = false;
-  loadingIndicator.textContent = "Loading diagram…";
-  diagram.src = item.src;
-  diagram.alt = `${item.title} process diagram`;
+  applyViewMode(item);
+  void renderDiagram(item);
   diagramTitle.textContent = item.title;
   diagramGroup.textContent = item.group;
   descriptionTitle.textContent = `${item.title} text outline`;
@@ -215,17 +344,6 @@ function trapNavigationFocus(event) {
   }
 }
 
-diagram.addEventListener("load", () => {
-  diagram.classList.remove("is-loading");
-  loadingIndicator.hidden = true;
-});
-
-diagram.addEventListener("error", () => {
-  diagram.classList.add("is-loading");
-  loadingIndicator.hidden = false;
-  loadingIndicator.textContent = "This diagram could not be loaded.";
-});
-
 search.addEventListener("input", filterNavigation);
 search.addEventListener("keydown", (event) => {
   if (event.key === "ArrowDown") {
@@ -254,9 +372,9 @@ search.addEventListener("keydown", trapNavigationFocus);
 
 viewMode.addEventListener("click", () => {
   const fit = diagramStage.dataset.mode !== "fit";
-  diagramStage.dataset.mode = fit ? "fit" : "actual";
-  viewMode.setAttribute("aria-pressed", String(fit));
-  localStorage.setItem("process-map-view", diagramStage.dataset.mode);
+  preferredViewMode = fit ? "fit" : "actual";
+  setViewMode(preferredViewMode);
+  localStorage.setItem("process-map-view", preferredViewMode);
 });
 
 menuButton.addEventListener("click", () => {
@@ -320,10 +438,7 @@ async function initialise() {
     renderNavigation(diagrams);
 
     const savedMode = localStorage.getItem("process-map-view");
-    if (savedMode === "actual") {
-      diagramStage.dataset.mode = "actual";
-      viewMode.setAttribute("aria-pressed", "false");
-    }
+    preferredViewMode = savedMode === "fit" || savedMode === "actual" ? savedMode : null;
     selectFromHash();
   } catch (error) {
     navigation.innerHTML = '<p class="navigation-status">The process map index could not be loaded.</p>';
