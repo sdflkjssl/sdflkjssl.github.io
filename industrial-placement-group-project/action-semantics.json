@@ -1,0 +1,114 @@
+{
+  "primitives": [
+    {
+      "id": "link",
+      "label": "Open or navigate",
+      "symbol": "↗",
+      "plantumlIcon": "link-intact"
+    },
+    {
+      "id": "button",
+      "label": "Button or command",
+      "symbol": "◎",
+      "plantumlIcon": "target"
+    },
+    {
+      "id": "selection",
+      "label": "Select an option",
+      "symbol": "≡",
+      "plantumlIcon": "list"
+    },
+    {
+      "id": "text-input",
+      "label": "Enter or edit text",
+      "symbol": "✎",
+      "plantumlIcon": "pencil"
+    },
+    {
+      "id": "date-selection",
+      "label": "Select a date",
+      "symbol": "□",
+      "plantumlIcon": "calendar"
+    },
+    {
+      "id": "checkbox",
+      "label": "Toggle a choice",
+      "symbol": "✓",
+      "plantumlIcon": "check"
+    },
+    {
+      "id": "file-upload",
+      "label": "Upload or replace a file",
+      "symbol": "↑",
+      "plantumlIcon": "data-transfer-upload"
+    },
+    {
+      "id": "file-download",
+      "label": "Download a file",
+      "symbol": "↓",
+      "plantumlIcon": "data-transfer-download"
+    },
+    {
+      "id": "drag",
+      "label": "Drag to reorder",
+      "symbol": "↕",
+      "plantumlIcon": "move"
+    },
+    {
+      "id": "read",
+      "label": "Read displayed information",
+      "symbol": "◉",
+      "plantumlIcon": "eye"
+    },
+    {
+      "id": "system",
+      "label": "App operation",
+      "symbol": "⚙",
+      "plantumlIcon": "cog"
+    },
+    {
+      "id": "notification",
+      "label": "Notification",
+      "symbol": "✉",
+      "plantumlIcon": "envelope-closed"
+    }
+  ],
+  "effects": [
+    {
+      "id": "browse",
+      "label": "Browse",
+      "colour": "GhostWhite"
+    },
+    {
+      "id": "edit",
+      "label": "Edit",
+      "colour": "AliceBlue"
+    },
+    {
+      "id": "commit",
+      "label": "Commit a change",
+      "colour": "PaleTurquoise"
+    },
+    {
+      "id": "automation",
+      "label": "Automatic processing",
+      "colour": "HoneyDew"
+    },
+    {
+      "id": "notification",
+      "label": "Notification",
+      "colour": "Lavender"
+    },
+    {
+      "id": "decision",
+      "label": "Decision",
+      "colour": "LemonChiffon",
+      "borderColour": "DarkGoldenRod"
+    },
+    {
+      "id": "destructive",
+      "label": "Destructive or rejecting action",
+      "colour": "MistyRose"
+    }
+  ]
+}

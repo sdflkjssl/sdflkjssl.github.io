@@ -13,6 +13,9 @@ const sidebar = document.querySelector("#sidebar");
 const workspace = document.querySelector(".workspace");
 const descriptionTitle = document.querySelector("#diagram-description-title");
 const diagramOutline = document.querySelector("#diagram-outline");
+const diagramLegend = document.querySelector("#diagram-legend");
+const primitiveLegend = document.querySelector("#primitive-legend");
+const effectLegend = document.querySelector("#effect-legend");
 const mobileNavigation = window.matchMedia("(max-width: 900px)");
 const coarsePointer = window.matchMedia("(any-pointer: coarse)");
 
@@ -22,6 +25,66 @@ let menuHeldFocus = false;
 let diagramRenderVersion = 0;
 let focusHeadingAfterRender = false;
 let preferredViewMode = null;
+let actionSemantics = null;
+
+function renderLegend(semantics, usage) {
+  if (!Array.isArray(semantics.primitives) || !Array.isArray(semantics.effects)) {
+    throw new Error("Action semantics must define primitives and effects");
+  }
+  if (!usage || !Array.isArray(usage.primitives) || !Array.isArray(usage.effects)) {
+    throw new Error("Diagram must declare its used action semantics");
+  }
+
+  const usedPrimitives = new Set(usage.primitives);
+  const usedEffects = new Set(usage.effects);
+  diagramLegend.hidden = !usedPrimitives.size && !usedEffects.size;
+
+  primitiveLegend.replaceChildren();
+  for (const primitive of semantics.primitives) {
+    if (!primitive.id || !primitive.label || !primitive.symbol) {
+      throw new Error("Interaction primitive is incomplete");
+    }
+    if (!usedPrimitives.has(primitive.id)) {
+      continue;
+    }
+    const item = document.createElement("li");
+    item.className = "legend-item";
+    const symbol = document.createElement("span");
+    symbol.className = "legend-symbol";
+    symbol.setAttribute("aria-hidden", "true");
+    symbol.textContent = primitive.symbol;
+    const label = document.createElement("span");
+    label.textContent = primitive.label;
+    item.append(symbol, label);
+    primitiveLegend.append(item);
+  }
+  if (primitiveLegend.children.length !== usedPrimitives.size) {
+    throw new Error("Diagram uses an unknown interaction primitive");
+  }
+
+  effectLegend.replaceChildren();
+  for (const effect of semantics.effects) {
+    if (!effect.id || !effect.label || !effect.colour) {
+      throw new Error("Business effect is incomplete");
+    }
+    if (!usedEffects.has(effect.id)) {
+      continue;
+    }
+    const item = document.createElement("li");
+    item.className = "legend-item";
+    const swatch = document.createElement("span");
+    swatch.className = "legend-swatch";
+    swatch.style.backgroundColor = effect.colour;
+    swatch.setAttribute("aria-hidden", "true");
+    const label = document.createElement("span");
+    label.textContent = effect.label;
+    item.append(swatch, label);
+    effectLegend.append(item);
+  }
+  if (effectLegend.children.length !== usedEffects.size) {
+    throw new Error("Diagram uses an unknown business effect");
+  }
+}
 
 function setViewMode(mode) {
   diagramStage.dataset.mode = mode;
@@ -29,7 +92,9 @@ function setViewMode(mode) {
 }
 
 function applyViewMode(item) {
-  const automaticMode = item.id === "overview" && coarsePointer.matches ? "actual" : "fit";
+  const automaticMode = item.id === "overview"
+    ? (coarsePointer.matches ? "actual" : "fit")
+    : "actual";
   setViewMode(preferredViewMode ?? automaticMode);
 }
 
@@ -135,7 +200,7 @@ async function renderDiagram(item) {
     diagramContainer.classList.remove("is-loading");
     loadingIndicator.hidden = true;
     if (focusHeadingAfterRender) {
-      diagramTitle.focus();
+      diagramTitle.focus({ preventScroll: true });
       focusHeadingAfterRender = false;
     }
   } catch (error) {
@@ -247,6 +312,7 @@ function selectDiagram(item) {
 
   currentDiagram = item;
   applyViewMode(item);
+  renderLegend(actionSemantics, item.semantics);
   void renderDiagram(item);
   diagramTitle.textContent = item.title;
   diagramGroup.textContent = item.group;
@@ -374,7 +440,7 @@ viewMode.addEventListener("click", () => {
   const fit = diagramStage.dataset.mode !== "fit";
   preferredViewMode = fit ? "fit" : "actual";
   setViewMode(preferredViewMode);
-  localStorage.setItem("process-map-view", preferredViewMode);
+  localStorage.setItem("process-map-view-semantic", preferredViewMode);
 });
 
 menuButton.addEventListener("click", () => {
@@ -430,14 +496,21 @@ mobileNavigation.addEventListener("change", () => {
 
 async function initialise() {
   try {
-    const response = await fetch("manifest.json");
-    if (!response.ok) {
-      throw new Error(`Manifest request failed with ${response.status}`);
+    const [manifestResponse, semanticsResponse] = await Promise.all([
+      fetch("manifest.json"),
+      fetch("action-semantics.json"),
+    ]);
+    if (!manifestResponse.ok) {
+      throw new Error(`Manifest request failed with ${manifestResponse.status}`);
     }
-    diagrams = await response.json();
+    if (!semanticsResponse.ok) {
+      throw new Error(`Action semantics request failed with ${semanticsResponse.status}`);
+    }
+    diagrams = await manifestResponse.json();
+    actionSemantics = await semanticsResponse.json();
     renderNavigation(diagrams);
 
-    const savedMode = localStorage.getItem("process-map-view");
+    const savedMode = localStorage.getItem("process-map-view-semantic");
     preferredViewMode = savedMode === "fit" || savedMode === "actual" ? savedMode : null;
     selectFromHash();
   } catch (error) {

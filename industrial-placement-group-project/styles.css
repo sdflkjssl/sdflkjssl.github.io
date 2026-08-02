@@ -223,8 +223,12 @@ a {
 }
 
 .workspace {
-  min-height: 100vh;
+  display: grid;
+  height: 100vh;
+  min-height: 0;
+  grid-template-rows: auto auto minmax(0, 1fr);
   margin-left: var(--sidebar-width);
+  overflow: hidden;
 }
 
 .toolbar {
@@ -299,13 +303,95 @@ a {
   background: var(--accent-soft);
 }
 
+.diagram-legend {
+  display: grid;
+  gap: 0.7rem;
+  border-bottom: 1px solid var(--line);
+  padding: 0.8rem 1.25rem;
+  background: var(--surface);
+}
+
+.diagram-legend[hidden] {
+  display: none;
+}
+
+.legend-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+}
+
+.legend-heading h2,
+.legend-heading p,
+.legend-group strong {
+  margin: 0;
+  font-size: 0.72rem;
+}
+
+.legend-heading h2,
+.legend-group strong {
+  color: var(--ink);
+}
+
+.legend-heading p {
+  color: var(--muted);
+}
+
+.legend-group {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  align-items: start;
+  gap: 0.65rem;
+}
+
+.legend-group strong {
+  padding-top: 0.25rem;
+}
+
+.legend-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #475569;
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
+.legend-symbol,
+.legend-swatch {
+  display: inline-grid;
+  width: 1.25rem;
+  height: 1.25rem;
+  place-items: center;
+  flex: 0 0 auto;
+  border: 1px solid #94a3b8;
+  border-radius: 0.35rem;
+  color: var(--ink);
+  background: var(--panel);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.legend-swatch {
+  border-radius: 999px;
+}
+
 .menu-button {
   display: none;
 }
 
 .diagram-stage {
   position: relative;
-  min-height: calc(100vh - var(--toolbar-height));
+  min-height: 0;
   overflow: auto;
   padding: 1.5rem;
 }
@@ -424,6 +510,20 @@ a {
 
   .diagram-stage {
     padding: 0.75rem;
+  }
+
+  .diagram-legend {
+    padding-inline: 0.85rem;
+  }
+
+  .legend-heading {
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .legend-group {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
   }
 }
 

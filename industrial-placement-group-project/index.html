@@ -10,8 +10,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sdflkjssl.github.io/industrial-placement-group-project/">
   <title>Industrial Placement &amp; Group Project Process Map</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?semantic">
+  <script src="app.js?semantic" defer></script>
 </head>
 <body>
   <div class="app-shell">
@@ -57,6 +57,21 @@
           <a class="toolbar-link" id="open-svg" href="diagrams/overview.svg" target="_blank" rel="noopener">Open SVG</a>
         </div>
       </header>
+
+      <section class="diagram-legend" id="diagram-legend" aria-labelledby="diagram-legend-title" hidden>
+        <div class="legend-heading">
+          <h2 id="diagram-legend-title">How to read each step</h2>
+          <p>Icon shows the interface operation. Colour shows the business effect.</p>
+        </div>
+        <div class="legend-group">
+          <strong>Interaction</strong>
+          <ul class="legend-list" id="primitive-legend"></ul>
+        </div>
+        <div class="legend-group">
+          <strong>Effect</strong>
+          <ul class="legend-list" id="effect-legend"></ul>
+        </div>
+      </section>
 
       <section class="diagram-stage" id="diagram-stage" data-mode="fit" aria-labelledby="diagram-title">
         <div class="loading-indicator" id="loading-indicator" role="status">Loading diagram…</div>
