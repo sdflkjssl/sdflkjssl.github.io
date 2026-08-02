@@ -497,8 +497,8 @@ mobileNavigation.addEventListener("change", () => {
 async function initialise() {
   try {
     const [manifestResponse, semanticsResponse] = await Promise.all([
-      fetch("manifest.json"),
-      fetch("action-semantics.json"),
+      fetch("manifest.json", { cache: "no-store" }),
+      fetch("action-semantics.json", { cache: "no-store" }),
     ]);
     if (!manifestResponse.ok) {
       throw new Error(`Manifest request failed with ${manifestResponse.status}`);

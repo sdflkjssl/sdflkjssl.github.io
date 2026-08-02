@@ -12,11 +12,10 @@
       "Industrial Placement: Next parallel path.",
       "Industrial Placement: Action — Supervisor Import.",
       "Industrial Placement: Parallel paths join.",
-      "Industrial Placement: Action — Opportunity Intake.",
       "Industrial Placement: Action — Advert Creation.",
       "Industrial Placement: Action — Advert Maintenance.",
       "Industrial Placement: Action — Advert Publication.",
-      "Industrial Placement: Action — Placement Discovery and Employer Application.",
+      "Industrial Placement: Action — Placement Discovery.",
       "Industrial Placement: Action — Placement Record Submission.",
       "Industrial Placement: Loop condition — Is placement approval complete. Continue branch — No.",
       "Industrial Placement: Action — Approval Review.",
@@ -25,7 +24,7 @@
       "Industrial Placement: Repeated operations begin.",
       "Industrial Placement: Action — Correction Resubmission.",
       "Industrial Placement: Action — Correction Validation.",
-      "Industrial Placement: Repeat condition — Are requested corrections complete. Continue branch — No) not (Yes.",
+      "Industrial Placement: Repeat condition — Are requested corrections complete. Continue branch — No. Exit branch — Yes.",
       "Industrial Placement: Alternative branch — No.",
       "Industrial Placement: Action — Approval Decision and Chain Progression.",
       "Industrial Placement: Loop exit — Yes.",
@@ -36,7 +35,7 @@
       "Industrial Placement: Action — Placement Marks Export.",
       "Industrial Placement: Alternative branch — Rejected.",
       "Industrial Placement: End.",
-      "Industrial Placement: Alternative branch — Group Project.",
+      "Alternative branch — Group Project.",
       "Group Project: Parallel paths begin.",
       "Group Project: Action — Student Import.",
       "Group Project: Next parallel path.",
@@ -53,7 +52,7 @@
       "Group Project: Repeated operations begin.",
       "Group Project: Action — Preference Editing.",
       "Group Project: Action — Preference Validation and Confirmation.",
-      "Group Project: Repeat condition — Are preferences valid. Continue branch — No) not (Yes.",
+      "Group Project: Repeat condition — Are preferences valid. Continue branch — No. Exit branch — Yes.",
       "Group Project: Action — Automatic Matching.",
       "Group Project: Loop condition — Is draft matching confirmed. Continue branch — No.",
       "Group Project: Action — Draft Matching Review.",
@@ -69,7 +68,7 @@
       "Group Project: Action — Poster Submission.",
       "Group Project: Action — Poster Assessment.",
       "Group Project: Action — Group Project Marks Export.",
-      "Group Project: End."
+      "End."
     ],
     "semantics": {
       "primitives": [],
@@ -83,8 +82,8 @@
     "src": "diagrams/industrial-placement/student-import.svg",
     "outline": [
       "IP Team: Start.",
-      "IP Team: Action — Open placement year setup. Interaction — link. Effect — browse.",
-      "IP Team: Action — Open cohort data imports. Interaction — link. Effect — browse.",
+      "IP Team: Action — Open page “Placement year setup”. Interaction — page. Effect — browse.",
+      "IP Team: Action — Open page “Cohort data imports”. Interaction — page. Effect — browse.",
       "IP Team: Action — Upload student spreadsheet. Interaction — file upload. Effect — edit.",
       "App: Action — Validate student rows. Interaction — system. Effect — automation.",
       "App: Loop condition — Are student rows valid. Continue branch — No.",
@@ -98,7 +97,7 @@
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "file-upload",
         "system",
         "button"
@@ -118,8 +117,8 @@
     "src": "diagrams/industrial-placement/supervisor-import.svg",
     "outline": [
       "IP Team: Start.",
-      "IP Team: Action — Open placement year setup. Interaction — link. Effect — browse.",
-      "IP Team: Action — Open cohort data imports. Interaction — link. Effect — browse.",
+      "IP Team: Action — Open page “Placement year setup”. Interaction — page. Effect — browse.",
+      "IP Team: Action — Open page “Cohort data imports”. Interaction — page. Effect — browse.",
       "IP Team: Action — Upload supervisor spreadsheet. Interaction — file upload. Effect — edit.",
       "App: Action — Validate supervisor rows. Interaction — system. Effect — automation.",
       "App: Loop condition — Are supervisor rows valid. Continue branch — No.",
@@ -133,7 +132,7 @@
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "file-upload",
         "system",
         "button"
@@ -147,47 +146,13 @@
     }
   },
   {
-    "id": "industrial-placement--opportunity-intake",
-    "group": "Industrial Placement",
-    "title": "Opportunity Intake",
-    "src": "diagrams/industrial-placement/opportunity-intake.svg",
-    "outline": [
-      "IP Team: Start.",
-      "IP Team: Action — Open placement inbox. Interaction — link. Effect — browse.",
-      "IP Team: Action — Open emailed Job Specification Form. Interaction — link. Effect — browse.",
-      "IP Team: Loop condition — Is the job specification suitable. Continue branch — No.",
-      "IP Team: Action — Enter requested job specification changes. Interaction — text input. Effect — edit.",
-      "IP Team: Action — Click Send change request. Interaction — button. Effect — commit.",
-      "App: Action — Email change request to external placement provider. Interaction — notification. Effect — notification.",
-      "IP Team: Action — Open revised job specification email. Interaction — link. Effect — browse.",
-      "IP Team: Action — Download revised Job Specification Form. Interaction — file download. Effect — browse.",
-      "IP Team: Loop exit — Yes.",
-      "IP Team: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "link",
-        "text-input",
-        "button",
-        "notification",
-        "file-download"
-      ],
-      "effects": [
-        "browse",
-        "edit",
-        "commit",
-        "notification"
-      ]
-    }
-  },
-  {
     "id": "industrial-placement--advert-creation",
     "group": "Industrial Placement",
     "title": "Advert Creation",
     "src": "diagrams/industrial-placement/advert-creation.svg",
     "outline": [
       "IP Team: Start.",
-      "IP Team: Action — Open placement adverts. Interaction — link. Effect — browse.",
+      "IP Team: Action — Open page “Placement adverts”. Interaction — page. Effect — browse.",
       "IP Team: Action — Select placement advert action. Interaction — selection. Effect — edit.",
       "IP Team: Action — Click New placement advert. Interaction — button. Effect — edit.",
       "IP Team: Action — Enter company details. Interaction — text input. Effect — edit.",
@@ -199,7 +164,7 @@
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "selection",
         "button",
         "text-input",
@@ -221,20 +186,20 @@
     "src": "diagrams/industrial-placement/advert-maintenance.svg",
     "outline": [
       "IP Team: Start.",
-      "IP Team: Action — Open placement adverts. Interaction — link. Effect — browse.",
+      "IP Team: Action — Open page “Placement adverts”. Interaction — page. Effect — browse.",
       "IP Team: Repeated operations begin.",
       "IP Team: Action — Search placement adverts. Interaction — text input. Effect — browse.",
       "IP Team: Action — Filter placement adverts. Interaction — selection. Effect — browse.",
       "IP Team: Action — Select placement advert action. Interaction — selection. Effect — edit.",
       "IP Team: Decision — Selected advert action.",
       "IP Team: Option — Edit advert.",
-      "IP Team: Action — Open placement advert. Interaction — link. Effect — browse.",
+      "IP Team: Action — Open page “Placement advert”. Interaction — page. Effect — browse.",
       "IP Team: Action — Click Edit placement advert. Interaction — button. Effect — edit.",
       "IP Team: Action — Edit company details. Interaction — text input. Effect — edit.",
       "IP Team: Action — Edit placement role details. Interaction — text input. Effect — edit.",
       "IP Team: Action — Click Save advert changes. Interaction — button. Effect — commit.",
       "IP Team: Option — Delete advert.",
-      "IP Team: Action — Open draft placement advert. Interaction — link. Effect — browse.",
+      "IP Team: Action — Open page “Draft placement advert”. Interaction — page. Effect — browse.",
       "IP Team: Action — Click Delete draft advert. Interaction — button. Effect — destructive.",
       "IP Team: Action — Click Confirm advert deletion. Interaction — button. Effect — destructive.",
       "IP Team: Option — Finish.",
@@ -244,13 +209,13 @@
       "App: Option — Delete advert.",
       "App: Action — Delete draft placement advert. Interaction — system. Effect — destructive.",
       "App: Option — Finish.",
-      "IP Team: Repeat condition — Is the selected advert action Finish. Continue branch — No) not (Yes.",
+      "IP Team: Repeat condition — Is the selected advert action Finish. Continue branch — No. Exit branch — Yes.",
       "IP Team: Action — Click Finish managing adverts. Interaction — button. Effect — commit.",
       "IP Team: End."
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "text-input",
         "selection",
         "button",
@@ -272,17 +237,17 @@
     "src": "diagrams/industrial-placement/advert-publication.svg",
     "outline": [
       "IP Team: Start.",
-      "IP Team: Action — Open placement adverts. Interaction — link. Effect — browse.",
+      "IP Team: Action — Open page “Placement adverts”. Interaction — page. Effect — browse.",
       "IP Team: Action — Search placement adverts. Interaction — text input. Effect — browse.",
       "IP Team: Action — Filter placement adverts. Interaction — selection. Effect — browse.",
-      "IP Team: Action — Open draft placement advert. Interaction — link. Effect — browse.",
+      "IP Team: Action — Open page “Draft placement advert”. Interaction — page. Effect — browse.",
       "IP Team: Action — Click Publish advert. Interaction — button. Effect — commit.",
       "App: Action — Add advert to placement catalogue. Interaction — system. Effect — automation.",
       "App: End."
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "text-input",
         "selection",
         "button",
@@ -296,33 +261,26 @@
     }
   },
   {
-    "id": "industrial-placement--placement-discovery-and-employer-application",
+    "id": "industrial-placement--placement-discovery",
     "group": "Industrial Placement",
-    "title": "Placement Discovery and Employer Application",
-    "src": "diagrams/industrial-placement/placement-discovery-and-employer-application.svg",
+    "title": "Placement Discovery",
+    "src": "diagrams/industrial-placement/placement-discovery.svg",
     "outline": [
       "Student: Start.",
-      "Student: Action — Open placement catalogue. Interaction — link. Effect — browse.",
+      "Student: Action — Open page “Placement catalogue”. Interaction — page. Effect — browse.",
       "Student: Action — Search placement adverts. Interaction — text input. Effect — browse.",
       "Student: Action — Filter placement adverts. Interaction — selection. Effect — browse.",
-      "Student: Action — Open placement advert. Interaction — link. Effect — browse.",
-      "Student: Action — Open external employer application link. Interaction — link. Effect — browse.",
-      "Student: Action — Submit application on employer website. Interaction — button. Effect — commit.",
-      "Student: Action — Open placement offer email. Interaction — link. Effect — browse.",
-      "Student: Action — Download completed Placement Provider Information Form. Interaction — file download. Effect — browse.",
+      "Student: Action — Open page “Placement advert”. Interaction — page. Effect — browse.",
       "Student: End."
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "text-input",
-        "selection",
-        "button",
-        "file-download"
+        "selection"
       ],
       "effects": [
-        "browse",
-        "commit"
+        "browse"
       ]
     }
   },
@@ -339,7 +297,7 @@
       "App: Action — Show existing placement record. Interaction — system. Effect — automation.",
       "App: Alternative branch — No.",
       "App: Action — Create draft placement record. Interaction — system. Effect — automation.",
-      "Student: Action — Open placement record. Interaction — link. Effect — browse.",
+      "Student: Action — Open page “Placement record”. Interaction — page. Effect — browse.",
       "Student: Action — Enter placement offer details. Interaction — text input. Effect — edit.",
       "Student: Action — Enter emergency contact. Interaction — text input. Effect — edit.",
       "Student: Action — Enter company supervisor contact. Interaction — text input. Effect — edit.",
@@ -356,7 +314,7 @@
       "primitives": [
         "button",
         "system",
-        "link",
+        "page",
         "text-input",
         "file-upload",
         "notification"
@@ -380,11 +338,11 @@
       "App: Action — Select current approval step. Interaction — system. Effect — automation.",
       "App: Action — Set placement status to Awaiting approval. Interaction — system. Effect — automation.",
       "App: Action — Email review notice to current IP Team reviewer. Interaction — notification. Effect — notification.",
-      "IP Team: Action — Open placement approval queue. Interaction — link. Effect — browse.",
+      "IP Team: Action — Open page “Placement approval queue”. Interaction — page. Effect — browse.",
       "IP Team: Action — Filter placements by academic year. Interaction — selection. Effect — browse.",
-      "IP Team: Action — Open placement record. Interaction — link. Effect — browse.",
-      "IP Team: Action — Open placement offer details. Interaction — link. Effect — browse.",
-      "IP Team: Action — Open contact details. Interaction — link. Effect — browse.",
+      "IP Team: Action — Open page “Placement record”. Interaction — page. Effect — browse.",
+      "IP Team: Action — Open page “Placement offer details”. Interaction — page. Effect — browse.",
+      "IP Team: Action — Open page “Contact details”. Interaction — page. Effect — browse.",
       "IP Team: Action — Download Job Specification Form. Interaction — file download. Effect — browse.",
       "IP Team: Action — Download Placement Provider Information Form. Interaction — file download. Effect — browse.",
       "IP Team: Action — Select placement review outcome. Interaction — selection. Effect — edit.",
@@ -394,7 +352,7 @@
       "primitives": [
         "system",
         "notification",
-        "link",
+        "page",
         "selection",
         "file-download"
       ],
@@ -441,8 +399,8 @@
     "src": "diagrams/industrial-placement/correction-resubmission.svg",
     "outline": [
       "Student: Start.",
-      "Student: Action — Open returned placement record. Interaction — link. Effect — browse.",
-      "Student: Action — Open correction request. Interaction — link. Effect — browse.",
+      "Student: Action — Open page “Returned placement record”. Interaction — page. Effect — browse.",
+      "Student: Action — Open page “Correction request”. Interaction — page. Effect — browse.",
       "Student: Action — Select correction action. Interaction — selection. Effect — edit.",
       "Student: Decision — Is the action Edit field. Branch — Yes.",
       "Student: Action — Edit requested placement field. Interaction — text input. Effect — edit.",
@@ -453,7 +411,7 @@
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "selection",
         "text-input",
         "file-upload",
@@ -476,19 +434,19 @@
       "App: Action — Validate corrected placement. Interaction — system. Effect — automation.",
       "App: Decision — Are requested corrections complete. Branch — No.",
       "App: Action — Show unresolved correction errors. Interaction — system. Effect — automation.",
-      "Student: Action — Open correction validation errors. Interaction — link. Effect — browse.",
+      "Student: Action — Open page “Correction validation errors”. Interaction — page. Effect — browse.",
       "Student: End.",
       "Student: Alternative branch — Yes.",
       "App: Action — Set placement status to Awaiting approval. Interaction — system. Effect — automation.",
       "App: Action — Email resubmission notice to current IP Team reviewer. Interaction — notification. Effect — notification.",
-      "IP Team: Action — Open resubmitted placement record. Interaction — link. Effect — browse.",
-      "IP Team: Action — Open corrected placement details. Interaction — link. Effect — browse.",
+      "IP Team: Action — Open page “Resubmitted placement record”. Interaction — page. Effect — browse.",
+      "IP Team: Action — Open page “Corrected placement details”. Interaction — page. Effect — browse.",
       "IP Team: End."
     ],
     "semantics": {
       "primitives": [
         "system",
-        "link",
+        "page",
         "notification"
       ],
       "effects": [
@@ -546,13 +504,13 @@
     "src": "diagrams/industrial-placement/supervisor-allocation.svg",
     "outline": [
       "IP Team: Start.",
-      "IP Team: Action — Open Approved placements. Interaction — link. Effect — browse.",
+      "IP Team: Action — Open page “Approved placements”. Interaction — page. Effect — browse.",
       "IP Team: Action — Filter placements without a supervisor. Interaction — selection. Effect — browse.",
       "IP Team: Loop condition — Are unassigned placements remaining. Continue branch — Yes.",
-      "IP Team: Action — Open placement record. Interaction — link. Effect — browse.",
-      "IP Team: Action — Open supervisor assignment panel. Interaction — link. Effect — browse.",
+      "IP Team: Action — Open page “Placement record”. Interaction — page. Effect — browse.",
+      "IP Team: Action — Open page “Supervisor assignment panel”. Interaction — page. Effect — browse.",
       "IP Team: Action — Search supervisors by expertise. Interaction — text input. Effect — browse.",
-      "IP Team: Action — Open supervisor workload details. Interaction — link. Effect — browse.",
+      "IP Team: Action — Open page “Supervisor workload details”. Interaction — page. Effect — browse.",
       "IP Team: Action — Select placement supervisor. Interaction — selection. Effect — edit.",
       "IP Team: Action — Click Save supervisor assignment. Interaction — button. Effect — commit.",
       "App: Action — Update placement supervisor assignment. Interaction — system. Effect — automation.",
@@ -560,13 +518,12 @@
       "App: Action — Email supervisor assignment to student. Interaction — notification. Effect — notification.",
       "IP Team: Action — Filter placements without a supervisor. Interaction — selection. Effect — browse.",
       "IP Team: Loop exit — No.",
-      "Placement Supervisor: Action — Open placement assignment email. Interaction — link. Effect — browse.",
-      "Placement Supervisor: Action — Open assigned placement record. Interaction — link. Effect — browse.",
+      "Placement Supervisor: Action — Open page “Assigned placement record”. Interaction — page. Effect — browse.",
       "Placement Supervisor: End."
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "selection",
         "text-input",
         "button",
@@ -591,8 +548,8 @@
       "App: Start.",
       "App: Action — Show placement report deadline. Interaction — system. Effect — automation.",
       "App: Action — Email report deadline reminder to student. Interaction — notification. Effect — notification.",
-      "Student: Action — Open placement deliverables. Interaction — link. Effect — browse.",
-      "Student: Action — Open placement report task. Interaction — link. Effect — browse.",
+      "Student: Action — Open page “Placement deliverables”. Interaction — page. Effect — browse.",
+      "Student: Action — Open page “Placement report task”. Interaction — page. Effect — browse.",
       "Student: Action — Upload placement report. Interaction — file upload. Effect — edit.",
       "Student: Action — Click Submit report. Interaction — button. Effect — commit.",
       "App: Action — Create report submission. Interaction — system. Effect — automation.",
@@ -604,7 +561,7 @@
       "primitives": [
         "system",
         "notification",
-        "link",
+        "page",
         "file-upload",
         "button"
       ],
@@ -624,9 +581,9 @@
     "src": "diagrams/industrial-placement/report-assessment.svg",
     "outline": [
       "Placement Supervisor: Start.",
-      "Placement Supervisor: Action — Open placement marking queue. Interaction — link. Effect — browse.",
+      "Placement Supervisor: Action — Open page “Placement marking queue”. Interaction — page. Effect — browse.",
       "Placement Supervisor: Action — Filter reports by Submitted status. Interaction — selection. Effect — browse.",
-      "Placement Supervisor: Action — Open student report submission. Interaction — link. Effect — browse.",
+      "Placement Supervisor: Action — Open page “Student report submission”. Interaction — page. Effect — browse.",
       "Placement Supervisor: Action — Download placement report. Interaction — file download. Effect — browse.",
       "Placement Supervisor: Action — Enter report opinion. Interaction — text input. Effect — edit.",
       "Placement Supervisor: Action — Enter report mark. Interaction — text input. Effect — edit.",
@@ -640,7 +597,7 @@
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "selection",
         "file-download",
         "text-input",
@@ -664,7 +621,7 @@
     "src": "diagrams/industrial-placement/placement-marks-export.svg",
     "outline": [
       "IP Team: Start.",
-      "IP Team: Action — Open placement marks report. Interaction — link. Effect — browse.",
+      "IP Team: Action — Open page “Placement marks report”. Interaction — page. Effect — browse.",
       "IP Team: Action — Filter marks by cohort. Interaction — selection. Effect — browse.",
       "IP Team: Action — Click Export to Excel. Interaction — button. Effect — browse.",
       "App: Action — Generate placement marks workbook. Interaction — system. Effect — automation.",
@@ -673,7 +630,7 @@
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "selection",
         "button",
         "system"
@@ -691,8 +648,8 @@
     "src": "diagrams/group-project/student-import.svg",
     "outline": [
       "Administrator: Start.",
-      "Administrator: Action — Open Group Project setup. Interaction — link. Effect — browse.",
-      "Administrator: Action — Open cohort data imports. Interaction — link. Effect — browse.",
+      "Administrator: Action — Open page “Group Project setup”. Interaction — page. Effect — browse.",
+      "Administrator: Action — Open page “Cohort data imports”. Interaction — page. Effect — browse.",
       "Administrator: Action — Upload student spreadsheet. Interaction — file upload. Effect — edit.",
       "App: Action — Validate student rows. Interaction — system. Effect — automation.",
       "App: Loop condition — Are student rows valid. Continue branch — No.",
@@ -706,7 +663,7 @@
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "file-upload",
         "system",
         "button"
@@ -726,8 +683,8 @@
     "src": "diagrams/group-project/supervisor-import.svg",
     "outline": [
       "Administrator: Start.",
-      "Administrator: Action — Open Group Project setup. Interaction — link. Effect — browse.",
-      "Administrator: Action — Open cohort data imports. Interaction — link. Effect — browse.",
+      "Administrator: Action — Open page “Group Project setup”. Interaction — page. Effect — browse.",
+      "Administrator: Action — Open page “Cohort data imports”. Interaction — page. Effect — browse.",
       "Administrator: Action — Upload supervisor spreadsheet. Interaction — file upload. Effect — edit.",
       "App: Action — Validate supervisor rows. Interaction — system. Effect — automation.",
       "App: Loop condition — Are supervisor rows valid. Continue branch — No.",
@@ -741,7 +698,7 @@
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "file-upload",
         "system",
         "button"
@@ -792,7 +749,7 @@
     "src": "diagrams/group-project/project-creation.svg",
     "outline": [
       "Administrator: Start.",
-      "Administrator: Action — Open project catalogue. Interaction — link. Effect — browse.",
+      "Administrator: Action — Open page “Project catalogue”. Interaction — page. Effect — browse.",
       "Administrator: Action — Select project record action. Interaction — selection. Effect — edit.",
       "Administrator: Action — Click New project. Interaction — button. Effect — edit.",
       "Administrator: Action — Enter company details. Interaction — text input. Effect — edit.",
@@ -803,7 +760,7 @@
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "selection",
         "button",
         "text-input",
@@ -824,20 +781,20 @@
     "src": "diagrams/group-project/project-maintenance.svg",
     "outline": [
       "Administrator: Start.",
-      "Administrator: Action — Open project catalogue. Interaction — link. Effect — browse.",
+      "Administrator: Action — Open page “Project catalogue”. Interaction — page. Effect — browse.",
       "Administrator: Repeated operations begin.",
       "Administrator: Action — Search project records. Interaction — text input. Effect — browse.",
       "Administrator: Action — Filter project records. Interaction — selection. Effect — browse.",
       "Administrator: Action — Select project record action. Interaction — selection. Effect — edit.",
       "Administrator: Decision — Selected project action.",
       "Administrator: Option — Edit project.",
-      "Administrator: Action — Open project record. Interaction — link. Effect — browse.",
+      "Administrator: Action — Open page “Project record”. Interaction — page. Effect — browse.",
       "Administrator: Action — Click Edit project. Interaction — button. Effect — edit.",
       "Administrator: Action — Edit company details. Interaction — text input. Effect — edit.",
       "Administrator: Action — Edit project details. Interaction — text input. Effect — edit.",
       "Administrator: Action — Click Save project changes. Interaction — button. Effect — commit.",
       "Administrator: Option — Delete project.",
-      "Administrator: Action — Open draft project record. Interaction — link. Effect — browse.",
+      "Administrator: Action — Open page “Draft project record”. Interaction — page. Effect — browse.",
       "Administrator: Action — Click Delete draft project. Interaction — button. Effect — destructive.",
       "Administrator: Action — Click Confirm project deletion. Interaction — button. Effect — destructive.",
       "Administrator: Option — Finish.",
@@ -847,13 +804,13 @@
       "App: Option — Delete project.",
       "App: Action — Delete draft project record. Interaction — system. Effect — destructive.",
       "App: Option — Finish.",
-      "Administrator: Repeat condition — Is the selected project action Finish. Continue branch — No) not (Yes.",
+      "Administrator: Repeat condition — Is the selected project action Finish. Continue branch — No. Exit branch — Yes.",
       "Administrator: Action — Click Finish managing projects. Interaction — button. Effect — commit.",
       "Administrator: End."
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "text-input",
         "selection",
         "button",
@@ -875,14 +832,14 @@
     "src": "diagrams/group-project/project-publication.svg",
     "outline": [
       "Administrator: Start.",
-      "Administrator: Action — Open project catalogue. Interaction — link. Effect — browse.",
+      "Administrator: Action — Open page “Project catalogue”. Interaction — page. Effect — browse.",
       "Administrator: Action — Click Publish project catalogue. Interaction — button. Effect — commit.",
       "App: Action — Publish project catalogue. Interaction — system. Effect — automation.",
       "App: End."
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "button",
         "system"
       ],
@@ -900,7 +857,7 @@
     "src": "diagrams/group-project/matching-configuration.svg",
     "outline": [
       "Administrator: Start.",
-      "Administrator: Action — Open matching settings. Interaction — link. Effect — browse.",
+      "Administrator: Action — Open page “Matching settings”. Interaction — page. Effect — browse.",
       "Administrator: Action — Select matching algorithm. Interaction — selection. Effect — edit.",
       "Administrator: Action — Enter matching constraints. Interaction — text input. Effect — edit.",
       "Administrator: Action — Click Save matching settings. Interaction — button. Effect — commit.",
@@ -910,7 +867,7 @@
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "selection",
         "text-input",
         "button",
@@ -931,18 +888,18 @@
     "src": "diagrams/group-project/project-discovery-and-draft-preference.svg",
     "outline": [
       "Student: Start.",
-      "Student: Action — Open project catalogue. Interaction — link. Effect — browse.",
+      "Student: Action — Open page “Project catalogue”. Interaction — page. Effect — browse.",
       "Student: Action — Search projects. Interaction — text input. Effect — browse.",
       "Student: Action — Filter projects. Interaction — selection. Effect — browse.",
-      "Student: Action — Open project details. Interaction — link. Effect — browse.",
+      "Student: Action — Open page “Project details”. Interaction — page. Effect — browse.",
       "Student: Action — Click Add to preferences. Interaction — button. Effect — edit.",
       "App: Action — Create draft project preference. Interaction — system. Effect — automation.",
-      "Student: Action — Open preference list. Interaction — link. Effect — browse.",
+      "Student: Action — Open page “Preference list”. Interaction — page. Effect — browse.",
       "Student: End."
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "text-input",
         "selection",
         "button",
@@ -967,7 +924,7 @@
       "Student: Decision — Selected preference action.",
       "Student: Option — Add project.",
       "Student: Action — Search projects. Interaction — text input. Effect — browse.",
-      "Student: Action — Open project details. Interaction — link. Effect — browse.",
+      "Student: Action — Open page “Project details”. Interaction — page. Effect — browse.",
       "Student: Action — Click Add to preferences. Interaction — button. Effect — edit.",
       "Student: Option — Reorder.",
       "Student: Action — Drag project to ranked position. Interaction — drag. Effect — edit.",
@@ -983,14 +940,14 @@
       "App: Option — Remove.",
       "App: Action — Delete draft project preference. Interaction — system. Effect — destructive.",
       "App: Option — Submit.",
-      "Student: Repeat condition — Is preference submission pending. Continue branch — Yes) not (No.",
+      "Student: Repeat condition — Is preference submission pending. Continue branch — Yes. Exit branch — No.",
       "Student: End."
     ],
     "semantics": {
       "primitives": [
         "selection",
         "text-input",
-        "link",
+        "page",
         "button",
         "drag",
         "system"
@@ -1014,8 +971,8 @@
       "App: Action — Validate ranked preferences. Interaction — system. Effect — automation.",
       "App: Decision — Are ranked preferences valid. Branch — No.",
       "App: Action — Show preference validation errors. Interaction — system. Effect — automation.",
-      "Student: Action — Open preference validation errors. Interaction — link. Effect — browse.",
-      "Student: Action — Open preference list. Interaction — link. Effect — browse.",
+      "Student: Action — Open page “Preference validation errors”. Interaction — page. Effect — browse.",
+      "Student: Action — Open page “Preference list”. Interaction — page. Effect — browse.",
       "Student: Alternative branch — Yes.",
       "App: Action — Save submitted preference order. Interaction — system. Effect — automation.",
       "App: Action — Email preference receipt to student. Interaction — notification. Effect — notification.",
@@ -1028,7 +985,7 @@
     "semantics": {
       "primitives": [
         "system",
-        "link",
+        "page",
         "notification"
       ],
       "effects": [
@@ -1045,8 +1002,8 @@
     "src": "diagrams/group-project/automatic-matching.svg",
     "outline": [
       "Administrator: Start.",
-      "Administrator: Action — Open matching run. Interaction — link. Effect — browse.",
-      "Administrator: Action — Open saved matching settings. Interaction — link. Effect — browse.",
+      "Administrator: Action — Open page “Matching run”. Interaction — page. Effect — browse.",
+      "Administrator: Action — Open page “Saved matching settings”. Interaction — page. Effect — browse.",
       "Administrator: Action — Click Generate draft matching. Interaction — button. Effect — commit.",
       "App: Action — Read submitted preference orders. Interaction — system. Effect — automation.",
       "App: Action — Read project capacity constraints. Interaction — system. Effect — automation.",
@@ -1057,7 +1014,7 @@
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "button",
         "system"
       ],
@@ -1076,17 +1033,17 @@
     "outline": [
       "App: Start.",
       "App: Decision — Is draft matching ready. Branch — No.",
-      "Administrator: Action — Open draft matching results. Interaction — link. Effect — browse.",
+      "Administrator: Action — Open page “Draft matching results”. Interaction — page. Effect — browse.",
       "Administrator: Action — Filter draft groups. Interaction — selection. Effect — browse.",
       "Administrator: Action — Filter unmatched students. Interaction — selection. Effect — browse.",
       "Administrator: Action — Select draft matching action. Interaction — selection. Effect — edit.",
-      "Administrator: Action — Return to draft matching results. Interaction — link. Effect — browse.",
+      "Administrator: Action — Return to page “Draft matching results”. Interaction — page. Effect — browse.",
       "Administrator: Alternative branch — Yes.",
       "Administrator: End."
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "selection"
       ],
       "effects": [
@@ -1111,9 +1068,9 @@
       "Administrator: Action — Select project for draft group. Interaction — selection. Effect — edit.",
       "Administrator: Action — Click Save draft group. Interaction — button. Effect — commit.",
       "Administrator: Option — Open group.",
-      "Administrator: Action — Open draft group. Interaction — link. Effect — browse.",
-      "Administrator: Action — Open group member list. Interaction — link. Effect — browse.",
-      "Administrator: Action — Open draft project assignment. Interaction — link. Effect — browse.",
+      "Administrator: Action — Open page “Draft group”. Interaction — page. Effect — browse.",
+      "Administrator: Action — Open page “Group member list”. Interaction — page. Effect — browse.",
+      "Administrator: Action — Open page “Draft project assignment”. Interaction — page. Effect — browse.",
       "Administrator: Option — Delete group.",
       "Administrator: Action — Click Delete draft group. Interaction — button. Effect — destructive.",
       "Administrator: Action — Click Confirm group deletion. Interaction — button. Effect — destructive.",
@@ -1134,7 +1091,7 @@
         "button",
         "text-input",
         "selection",
-        "link",
+        "page",
         "system"
       ],
       "effects": [
@@ -1199,7 +1156,7 @@
       "App: Action — Validate matching constraints. Interaction — system. Effect — automation.",
       "App: Decision — Are matching constraints satisfied. Branch — No.",
       "App: Action — Show matching constraint errors. Interaction — system. Effect — automation.",
-      "Administrator: Action — Open affected draft group. Interaction — link. Effect — browse.",
+      "Administrator: Action — Open page “Affected draft group”. Interaction — page. Effect — browse.",
       "App: Action — Keep draft matching status as Draft. Interaction — system. Effect — automation.",
       "App: Alternative branch — Yes.",
       "Administrator: Action — Click Mark draft matching as reviewed. Interaction — button. Effect — commit.",
@@ -1212,7 +1169,7 @@
     "semantics": {
       "primitives": [
         "system",
-        "link",
+        "page",
         "button"
       ],
       "effects": [
@@ -1229,13 +1186,13 @@
     "src": "diagrams/group-project/supervisor-allocation.svg",
     "outline": [
       "Administrator: Start.",
-      "Administrator: Action — Open supervisor assignments. Interaction — link. Effect — browse.",
+      "Administrator: Action — Open page “Supervisor assignments”. Interaction — page. Effect — browse.",
       "Administrator: Action — Filter groups without a supervisor. Interaction — selection. Effect — browse.",
       "Administrator: Loop condition — Are unassigned groups remaining. Continue branch — Yes.",
-      "Administrator: Action — Open group record. Interaction — link. Effect — browse.",
-      "Administrator: Action — Open group member list. Interaction — link. Effect — browse.",
+      "Administrator: Action — Open page “Group record”. Interaction — page. Effect — browse.",
+      "Administrator: Action — Open page “Group member list”. Interaction — page. Effect — browse.",
       "Administrator: Action — Search supervisors by expertise. Interaction — text input. Effect — browse.",
-      "Administrator: Action — Open supervisor workload details. Interaction — link. Effect — browse.",
+      "Administrator: Action — Open page “Supervisor workload details”. Interaction — page. Effect — browse.",
       "Administrator: Action — Select group supervisor. Interaction — selection. Effect — edit.",
       "Administrator: Action — Click Save supervisor assignment. Interaction — button. Effect — commit.",
       "App: Action — Update group supervisor assignment. Interaction — system. Effect — automation.",
@@ -1246,7 +1203,7 @@
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "selection",
         "text-input",
         "button",
@@ -1272,12 +1229,11 @@
       "Administrator: Action — Click Publish allocations. Interaction — button. Effect — commit.",
       "App: Action — Publish group allocations. Interaction — system. Effect — automation.",
       "App: Action — Email group and project allocation to students. Interaction — notification. Effect — notification.",
-      "Student: Action — Open allocated group page. Interaction — link. Effect — browse.",
-      "Student: Action — Open group member list. Interaction — link. Effect — browse.",
-      "Student: Action — Open project details. Interaction — link. Effect — browse.",
-      "Student: Action — Open supervisor details. Interaction — link. Effect — browse.",
-      "Group Project Supervisor: Action — Open group assignment email. Interaction — link. Effect — browse.",
-      "Group Project Supervisor: Action — Open assigned group record. Interaction — link. Effect — browse.",
+      "Student: Action — Open page “Allocated group”. Interaction — page. Effect — browse.",
+      "Student: Action — Open page “Group member list”. Interaction — page. Effect — browse.",
+      "Student: Action — Open page “Project details”. Interaction — page. Effect — browse.",
+      "Student: Action — Open page “Supervisor details”. Interaction — page. Effect — browse.",
+      "Group Project Supervisor: Action — Open page “Assigned group record”. Interaction — page. Effect — browse.",
       "Group Project Supervisor: End."
     ],
     "semantics": {
@@ -1285,7 +1241,7 @@
         "button",
         "system",
         "notification",
-        "link"
+        "page"
       ],
       "effects": [
         "commit",
@@ -1302,7 +1258,7 @@
     "src": "diagrams/group-project/poster-submission.svg",
     "outline": [
       "Student: Start.",
-      "Student: Action — Open conference poster task. Interaction — link. Effect — browse.",
+      "Student: Action — Open page “Conference poster task”. Interaction — page. Effect — browse.",
       "Student: Action — Upload conference poster. Interaction — file upload. Effect — edit.",
       "Student: Action — Click Submit conference poster. Interaction — button. Effect — commit.",
       "App: Action — Create poster submission. Interaction — system. Effect — automation.",
@@ -1312,7 +1268,7 @@
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "file-upload",
         "button",
         "system",
@@ -1334,9 +1290,9 @@
     "src": "diagrams/group-project/poster-assessment.svg",
     "outline": [
       "Group Project Supervisor: Start.",
-      "Group Project Supervisor: Action — Open Group Project marking queue. Interaction — link. Effect — browse.",
+      "Group Project Supervisor: Action — Open page “Group Project marking queue”. Interaction — page. Effect — browse.",
       "Group Project Supervisor: Action — Filter posters by Submitted status. Interaction — selection. Effect — browse.",
-      "Group Project Supervisor: Action — Open group poster submission. Interaction — link. Effect — browse.",
+      "Group Project Supervisor: Action — Open page “Group poster submission”. Interaction — page. Effect — browse.",
       "Group Project Supervisor: Action — Download conference poster. Interaction — file download. Effect — browse.",
       "Group Project Supervisor: Action — Enter poster opinion. Interaction — text input. Effect — edit.",
       "Group Project Supervisor: Action — Enter group marks. Interaction — text input. Effect — edit.",
@@ -1350,7 +1306,7 @@
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "selection",
         "file-download",
         "text-input",
@@ -1374,7 +1330,7 @@
     "src": "diagrams/group-project/group-project-marks-export.svg",
     "outline": [
       "Administrator: Start.",
-      "Administrator: Action — Open Group Project marks report. Interaction — link. Effect — browse.",
+      "Administrator: Action — Open page “Group Project marks report”. Interaction — page. Effect — browse.",
       "Administrator: Action — Filter marks by cohort. Interaction — selection. Effect — browse.",
       "Administrator: Action — Click Export to Excel. Interaction — button. Effect — browse.",
       "App: Action — Generate Group Project marks workbook. Interaction — system. Effect — automation.",
@@ -1383,7 +1339,7 @@
     ],
     "semantics": {
       "primitives": [
-        "link",
+        "page",
         "selection",
         "button",
         "system"

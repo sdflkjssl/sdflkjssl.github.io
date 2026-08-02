@@ -1,10 +1,10 @@
 {
   "primitives": [
     {
-      "id": "link",
-      "label": "Open or navigate",
-      "symbol": "↗",
-      "plantumlIcon": "link-intact"
+      "id": "page",
+      "label": "App page — quoted text is the page name",
+      "symbol": "▣",
+      "plantumlIcon": "browser"
     },
     {
       "id": "button",
