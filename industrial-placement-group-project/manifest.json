@@ -6,12 +6,12 @@
     "src": "diagrams/overview.svg",
     "outline": [
       "Start.",
+      "Shared Setup: Parallel paths begin.",
+      "Shared Setup: Action — Student Import.",
+      "Shared Setup: Next parallel path.",
+      "Shared Setup: Action — Supervisor Import.",
+      "Shared Setup: Parallel paths join.",
       "Decision — Selected process area. Branch — Industrial Placement.",
-      "Industrial Placement: Parallel paths begin.",
-      "Industrial Placement: Action — Student Import.",
-      "Industrial Placement: Next parallel path.",
-      "Industrial Placement: Action — Supervisor Import.",
-      "Industrial Placement: Parallel paths join.",
       "Industrial Placement: Action — Advert Creation.",
       "Industrial Placement: Action — Advert Maintenance.",
       "Industrial Placement: Action — Advert Publication.",
@@ -29,18 +29,13 @@
       "Industrial Placement: Action — Approval Decision and Chain Progression.",
       "Industrial Placement: Loop exit — Yes.",
       "Industrial Placement: Decision — Is placement approved. Branch — Yes.",
-      "Industrial Placement: Action — Supervisor Allocation.",
+      "Industrial Placement: Action — Placement Supervisor Allocation.",
       "Industrial Placement: Action — Report Submission.",
       "Industrial Placement: Action — Report Assessment.",
       "Industrial Placement: Action — Placement Marks Export.",
       "Industrial Placement: Alternative branch — Rejected.",
       "Industrial Placement: End.",
       "Alternative branch — Group Project.",
-      "Group Project: Parallel paths begin.",
-      "Group Project: Action — Student Import.",
-      "Group Project: Next parallel path.",
-      "Group Project: Action — Supervisor Import.",
-      "Group Project: Parallel paths join.",
       "Group Project: Decision — Selected project entry method. Branch — Bulk import.",
       "Group Project: Action — Project Import.",
       "Group Project: Alternative branch — Manual entry.",
@@ -63,7 +58,7 @@
       "Group Project: Alternative branch — Validate.",
       "Group Project: Action — Matching Validation and Confirmation.",
       "Group Project: Loop exit — Yes.",
-      "Group Project: Action — Supervisor Allocation.",
+      "Group Project: Action — Group Supervisor Allocation.",
       "Group Project: Action — Allocation Publication and Access.",
       "Group Project: Action — Poster Submission.",
       "Group Project: Action — Poster Assessment.",
@@ -76,28 +71,30 @@
     }
   },
   {
-    "id": "industrial-placement--student-import",
-    "group": "Industrial Placement",
+    "id": "shared-setup--student-import",
+    "group": "Shared Setup",
     "title": "Student Import",
-    "src": "diagrams/industrial-placement/student-import.svg",
+    "src": "diagrams/shared-setup/student-import.svg",
     "outline": [
-      "IP Team: Start.",
-      "IP Team: Action — Open page “Placement year setup”. Interaction — page. Effect — browse.",
-      "IP Team: Action — Open page “Cohort data imports”. Interaction — page. Effect — browse.",
-      "IP Team: Action — Upload student spreadsheet. Interaction — file upload. Effect — edit.",
+      "Administrator: Start.",
+      "Administrator: Action — Open page “Cohort data imports”. Interaction — page. Effect — browse.",
+      "Administrator: Action — Filter data imports by process area. Interaction — selection. Effect — browse.",
+      "Administrator: Action — Filter data imports by cohort. Interaction — selection. Effect — browse.",
+      "Administrator: Action — Upload student spreadsheet. Interaction — file upload. Effect — edit.",
       "App: Action — Validate student rows. Interaction — system. Effect — automation.",
       "App: Loop condition — Are student rows valid. Continue branch — No.",
       "App: Action — Show student import errors. Interaction — system. Effect — automation.",
-      "IP Team: Action — Replace student spreadsheet. Interaction — file upload. Effect — edit.",
+      "Administrator: Action — Replace student spreadsheet. Interaction — file upload. Effect — edit.",
       "App: Action — Validate student rows. Interaction — system. Effect — automation.",
       "App: Loop exit — Yes.",
-      "IP Team: Action — Click Confirm student import. Interaction — button. Effect — commit.",
-      "App: Action — Create student records. Interaction — system. Effect — automation.",
+      "Administrator: Action — Click Confirm student import. Interaction — button. Effect — commit.",
+      "App: Action — Create student records for selected process area and cohort. Interaction — system. Effect — automation.",
       "App: End."
     ],
     "semantics": {
       "primitives": [
         "page",
+        "selection",
         "file-upload",
         "system",
         "button"
@@ -111,28 +108,30 @@
     }
   },
   {
-    "id": "industrial-placement--supervisor-import",
-    "group": "Industrial Placement",
+    "id": "shared-setup--supervisor-import",
+    "group": "Shared Setup",
     "title": "Supervisor Import",
-    "src": "diagrams/industrial-placement/supervisor-import.svg",
+    "src": "diagrams/shared-setup/supervisor-import.svg",
     "outline": [
-      "IP Team: Start.",
-      "IP Team: Action — Open page “Placement year setup”. Interaction — page. Effect — browse.",
-      "IP Team: Action — Open page “Cohort data imports”. Interaction — page. Effect — browse.",
-      "IP Team: Action — Upload supervisor spreadsheet. Interaction — file upload. Effect — edit.",
+      "Administrator: Start.",
+      "Administrator: Action — Open page “Cohort data imports”. Interaction — page. Effect — browse.",
+      "Administrator: Action — Filter data imports by process area. Interaction — selection. Effect — browse.",
+      "Administrator: Action — Filter data imports by cohort. Interaction — selection. Effect — browse.",
+      "Administrator: Action — Upload supervisor spreadsheet. Interaction — file upload. Effect — edit.",
       "App: Action — Validate supervisor rows. Interaction — system. Effect — automation.",
       "App: Loop condition — Are supervisor rows valid. Continue branch — No.",
       "App: Action — Show supervisor import errors. Interaction — system. Effect — automation.",
-      "IP Team: Action — Replace supervisor spreadsheet. Interaction — file upload. Effect — edit.",
+      "Administrator: Action — Replace supervisor spreadsheet. Interaction — file upload. Effect — edit.",
       "App: Action — Validate supervisor rows. Interaction — system. Effect — automation.",
       "App: Loop exit — Yes.",
-      "IP Team: Action — Click Confirm supervisor import. Interaction — button. Effect — commit.",
-      "App: Action — Create supervisor records. Interaction — system. Effect — automation.",
+      "Administrator: Action — Click Confirm supervisor import. Interaction — button. Effect — commit.",
+      "App: Action — Create supervisor records for selected process area and cohort. Interaction — system. Effect — automation.",
       "App: End."
     ],
     "semantics": {
       "primitives": [
         "page",
+        "selection",
         "file-upload",
         "system",
         "button"
@@ -500,7 +499,7 @@
   {
     "id": "industrial-placement--supervisor-allocation",
     "group": "Industrial Placement",
-    "title": "Supervisor Allocation",
+    "title": "Placement Supervisor Allocation",
     "src": "diagrams/industrial-placement/supervisor-allocation.svg",
     "outline": [
       "IP Team: Start.",
@@ -638,76 +637,6 @@
       "effects": [
         "browse",
         "automation"
-      ]
-    }
-  },
-  {
-    "id": "group-project--student-import",
-    "group": "Group Project",
-    "title": "Student Import",
-    "src": "diagrams/group-project/student-import.svg",
-    "outline": [
-      "Administrator: Start.",
-      "Administrator: Action — Open page “Group Project setup”. Interaction — page. Effect — browse.",
-      "Administrator: Action — Open page “Cohort data imports”. Interaction — page. Effect — browse.",
-      "Administrator: Action — Upload student spreadsheet. Interaction — file upload. Effect — edit.",
-      "App: Action — Validate student rows. Interaction — system. Effect — automation.",
-      "App: Loop condition — Are student rows valid. Continue branch — No.",
-      "App: Action — Show student import errors. Interaction — system. Effect — automation.",
-      "Administrator: Action — Replace student spreadsheet. Interaction — file upload. Effect — edit.",
-      "App: Action — Validate student rows. Interaction — system. Effect — automation.",
-      "App: Loop exit — Yes.",
-      "Administrator: Action — Click Confirm student import. Interaction — button. Effect — commit.",
-      "App: Action — Create student records. Interaction — system. Effect — automation.",
-      "App: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "page",
-        "file-upload",
-        "system",
-        "button"
-      ],
-      "effects": [
-        "browse",
-        "edit",
-        "automation",
-        "commit"
-      ]
-    }
-  },
-  {
-    "id": "group-project--supervisor-import",
-    "group": "Group Project",
-    "title": "Supervisor Import",
-    "src": "diagrams/group-project/supervisor-import.svg",
-    "outline": [
-      "Administrator: Start.",
-      "Administrator: Action — Open page “Group Project setup”. Interaction — page. Effect — browse.",
-      "Administrator: Action — Open page “Cohort data imports”. Interaction — page. Effect — browse.",
-      "Administrator: Action — Upload supervisor spreadsheet. Interaction — file upload. Effect — edit.",
-      "App: Action — Validate supervisor rows. Interaction — system. Effect — automation.",
-      "App: Loop condition — Are supervisor rows valid. Continue branch — No.",
-      "App: Action — Show supervisor import errors. Interaction — system. Effect — automation.",
-      "Administrator: Action — Replace supervisor spreadsheet. Interaction — file upload. Effect — edit.",
-      "App: Action — Validate supervisor rows. Interaction — system. Effect — automation.",
-      "App: Loop exit — Yes.",
-      "Administrator: Action — Click Confirm supervisor import. Interaction — button. Effect — commit.",
-      "App: Action — Create supervisor records. Interaction — system. Effect — automation.",
-      "App: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "page",
-        "file-upload",
-        "system",
-        "button"
-      ],
-      "effects": [
-        "browse",
-        "edit",
-        "automation",
-        "commit"
       ]
     }
   },
@@ -1182,7 +1111,7 @@
   {
     "id": "group-project--supervisor-allocation",
     "group": "Group Project",
-    "title": "Supervisor Allocation",
+    "title": "Group Supervisor Allocation",
     "src": "diagrams/group-project/supervisor-allocation.svg",
     "outline": [
       "Administrator: Start.",
