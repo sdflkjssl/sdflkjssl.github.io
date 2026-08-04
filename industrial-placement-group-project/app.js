@@ -16,6 +16,8 @@ const diagramOutline = document.querySelector("#diagram-outline");
 const diagramLegend = document.querySelector("#diagram-legend");
 const primitiveLegend = document.querySelector("#primitive-legend");
 const effectLegend = document.querySelector("#effect-legend");
+const terminologyGroup = document.querySelector("#terminology-group");
+const termList = document.querySelector("#term-list");
 const mobileNavigation = window.matchMedia("(max-width: 900px)");
 const coarsePointer = window.matchMedia("(any-pointer: coarse)");
 
@@ -27,7 +29,94 @@ let focusHeadingAfterRender = false;
 let preferredViewMode = null;
 let actionSemantics = null;
 
-function renderLegend(semantics, usage) {
+const termDefinitions = [
+  {
+    term: "People Imports",
+    meaning: "The page used to upload student and supervisor spreadsheets.",
+  },
+  {
+    term: "Import For",
+    meaning: "Selects whether uploaded records will be used for Industrial Placement or Group Project.",
+  },
+  {
+    term: "Academic Year",
+    meaning: "The academic session that the records or marks belong to, such as 2026–27.",
+  },
+  {
+    term: "Placement Administrator",
+    meaning: "A department staff member who manages placements and completes assigned approval steps.",
+  },
+  {
+    term: "Placement Provider",
+    meaning: "The company or other organisation offering the placement.",
+  },
+  {
+    term: "Placement Supervisor",
+    meaning: "The academic staff member assigned to supervise a student's placement and assess the placement report.",
+  },
+  {
+    term: "Group Project Supervisor",
+    meaning: "The academic staff member assigned to supervise and assess a project group.",
+  },
+  {
+    term: "Placement Advert",
+    meaning: "A placement opportunity published for students to view.",
+  },
+  {
+    term: "Approval Sequence",
+    meaning: "The ordered list of placement administrators who must review a placement.",
+  },
+  {
+    term: "Draft Group",
+    meaning: "A proposed student group that can still be edited before matching is confirmed.",
+  },
+  {
+    term: "Draft Matching",
+    meaning: "Proposed student groups and project assignments that administrators can review and edit before confirmation.",
+  },
+  {
+    term: "Matching Algorithm",
+    meaning: "The method the app uses to propose student groups and project assignments.",
+  },
+  {
+    term: "Matching Constraints",
+    meaning: "Rules that a proposed matching must satisfy, such as group sizes and project capacities.",
+  },
+  {
+    term: "Preference Ranking",
+    meaning: "A student's ordered list of preferred projects.",
+  },
+  {
+    term: "Preference Window",
+    meaning: "The period during which students can submit project preferences.",
+  },
+  {
+    term: "Allocation",
+    meaning: "A confirmed assignment of students to a group and project.",
+  },
+];
+
+function renderTerms(item) {
+  const diagramText = [item.title, item.group, ...item.outline].join(" ").toLocaleLowerCase("en");
+  const applicableTerms = termDefinitions.filter(({ term }) => diagramText.includes(term.toLocaleLowerCase("en")));
+  termList.replaceChildren();
+
+  for (const { term, meaning } of applicableTerms) {
+    const item = document.createElement("div");
+    item.className = "term-item";
+    const name = document.createElement("dt");
+    name.textContent = term;
+    const definition = document.createElement("dd");
+    definition.textContent = meaning;
+    item.append(name, definition);
+    termList.append(item);
+  }
+
+  terminologyGroup.hidden = !applicableTerms.length;
+  return applicableTerms.length;
+}
+
+function renderLegend(semantics, usage, item) {
   if (!Array.isArray(semantics.primitives) || !Array.isArray(semantics.effects)) {
     throw new Error("Action semantics must define primitives and effects");
   }
@@ -37,7 +126,8 @@ function renderLegend(semantics, usage) {
 
   const usedPrimitives = new Set(usage.primitives);
   const usedEffects = new Set(usage.effects);
-  diagramLegend.hidden = !usedPrimitives.size && !usedEffects.size;
+  const termCount = renderTerms(item);
+  diagramLegend.hidden = !usedPrimitives.size && !usedEffects.size && !termCount;
 
   primitiveLegend.replaceChildren();
   for (const primitive of semantics.primitives) {
@@ -312,7 +402,7 @@ function selectDiagram(item) {
 
   currentDiagram = item;
   applyViewMode(item);
-  renderLegend(actionSemantics, item.semantics);
+  renderLegend(actionSemantics, item.semantics, item);
   void renderDiagram(item);
   diagramTitle.textContent = item.title;
   diagramGroup.textContent = item.group;

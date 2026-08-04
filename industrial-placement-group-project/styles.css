@@ -344,6 +344,10 @@ a {
   gap: 0.65rem;
 }
 
+.legend-group[hidden] {
+  display: none;
+}
+
 .legend-group strong {
   padding-top: 0.25rem;
 }
@@ -355,6 +359,30 @@ a {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.term-list {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.term-item {
+  display: grid;
+  grid-template-columns: minmax(8rem, 12rem) minmax(0, 1fr);
+  gap: 0.6rem;
+  color: #475569;
+  font-size: 0.68rem;
+  line-height: 1.4;
+}
+
+.term-item dt {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.term-item dd {
+  margin: 0;
 }
 
 .legend-item {
@@ -524,6 +552,11 @@ a {
   .legend-group {
     grid-template-columns: 1fr;
     gap: 0.3rem;
+  }
+
+  .term-item {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
   }
 }
 
