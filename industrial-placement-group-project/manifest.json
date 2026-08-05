@@ -12,10 +12,23 @@
       "Student and Supervisor Setup: Action — Supervisor Import.",
       "Student and Supervisor Setup: Parallel paths join.",
       "Decision — Selected workflow. Branch — Industrial Placement.",
-      "Industrial Placement: Decision — Does the student use a department opportunity. Branch — Yes.",
-      "Industrial Placement: Action — Placement Opportunities.",
+      "Industrial Placement: Decision — Does the department add placement opportunities. Branch — Yes.",
+      "Industrial Placement: Action — Add Placement Opportunity.",
+      "Industrial Placement: Decision — Does a draft opportunity need changes. Branch — Yes.",
+      "Industrial Placement: Decision — Select opportunity change. Branch — Edit.",
+      "Industrial Placement: Action — Edit Placement Opportunity.",
+      "Industrial Placement: Alternative branch — Delete.",
+      "Industrial Placement: Action — Delete Placement Opportunity.",
       "Industrial Placement: Alternative branch — No.",
-      "Industrial Placement: Action — Submit Placement Details.",
+      "Industrial Placement: Action — Publish Placement Opportunity.",
+      "Industrial Placement: Alternative branch — No.",
+      "Industrial Placement: Decision — Does the student use a department opportunity. Branch — Yes.",
+      "Industrial Placement: Action — Browse Placement Opportunities.",
+      "Industrial Placement: Alternative branch — No.",
+      "Industrial Placement: Action — Start Placement Application.",
+      "Industrial Placement: Action — Enter Placement Details.",
+      "Industrial Placement: Action — Enter Placement Contacts.",
+      "Industrial Placement: Action — Submit Placement Forms.",
       "Industrial Placement: Loop condition — Is placement approval complete. Continue branch — No.",
       "Industrial Placement: Action — Approval Review.",
       "Industrial Placement: Decision — Is placement information incomplete. Branch — Yes.",
@@ -77,15 +90,16 @@
     "outline": [
       "Administrator: Start.",
       "Administrator: Action — Open page “People Imports”. Interaction — page. Effect — browse.",
-      "Administrator: Action — Select “Import For”. Interaction — selection. Effect — edit.",
+      "Administrator: Action — Select “Import For”: “Industrial Placement” or “Group Project”. Interaction — selection. Effect — edit.",
       "Administrator: Action — Select “Academic Year”. Interaction — selection. Effect — edit.",
       "Administrator: Action — Upload “Student Spreadsheet”. Interaction — file upload. Effect — edit.",
+      "App: Action — Validate “CID”, “First Name”, “Surname” and “Imperial Email”. Interaction — system. Effect — automation.",
       "App: Loop condition — Validate student rows. Continue branch — Invalid.",
       "App: Action — Show “Student Import Errors”. Interaction — system. Effect — automation.",
       "Administrator: Action — Replace “Student Spreadsheet”. Interaction — selection. Effect — edit.",
       "App: Loop exit — Valid.",
       "Administrator: Action — Click “Confirm Student Import”. Interaction — button. Effect — commit.",
-      "App: Action — Create student records for selected “Import For” and “Academic Year”. Interaction — system. Effect — automation.",
+      "App: Action — Create students for selected “Import For” and “Academic Year”. Interaction — system. Effect — automation.",
       "App: End."
     ],
     "semantics": {
@@ -112,15 +126,16 @@
     "outline": [
       "Administrator: Start.",
       "Administrator: Action — Open page “People Imports”. Interaction — page. Effect — browse.",
-      "Administrator: Action — Select “Import For”. Interaction — selection. Effect — edit.",
+      "Administrator: Action — Select “Import For”: “Industrial Placement” or “Group Project”. Interaction — selection. Effect — edit.",
       "Administrator: Action — Select “Academic Year”. Interaction — selection. Effect — edit.",
       "Administrator: Action — Upload “Supervisor Spreadsheet”. Interaction — file upload. Effect — edit.",
+      "App: Action — Validate “Imperial Email”, “First Name”, “Surname”, “Supervisor Type”, “Maximum Assignments” and “Area of Expertise”. Interaction — system. Effect — automation.",
       "App: Loop condition — Validate supervisor rows. Continue branch — Invalid.",
       "App: Action — Show “Supervisor Import Errors”. Interaction — system. Effect — automation.",
       "Administrator: Action — Replace “Supervisor Spreadsheet”. Interaction — selection. Effect — edit.",
       "App: Loop exit — Valid.",
       "Administrator: Action — Click “Confirm Supervisor Import”. Interaction — button. Effect — commit.",
-      "App: Action — Create supervisor records for selected “Import For” and “Academic Year”. Interaction — system. Effect — automation.",
+      "App: Action — Create supervisors for selected “Import For” and “Academic Year”. Interaction — system. Effect — automation.",
       "App: End."
     ],
     "semantics": {
@@ -140,53 +155,35 @@
     }
   },
   {
-    "id": "industrial-placement--placement-opportunities",
+    "id": "industrial-placement--opportunity-creation",
     "group": "Industrial Placement",
-    "title": "Placement Opportunities",
-    "src": "diagrams/industrial-placement/placement-opportunities.svg",
+    "title": "Add Placement Opportunity",
+    "src": "diagrams/industrial-placement/opportunity-creation.svg",
     "outline": [
-      "App: Start.",
-      "App: Decision — Is the current user a placement administrator. Branch — Yes.",
+      "Placement Administrator: Start.",
       "Placement Administrator: Action — Open page “Placement Opportunities”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Search “Placement Opportunity Records”. Interaction — text input. Effect — browse.",
-      "Placement Administrator: Action — Filter “Placement Opportunity Records”. Interaction — selection. Effect — browse.",
-      "Placement Administrator: Decision — Select “Placement Opportunity Action”.",
-      "Placement Administrator: Option — “Add Opportunity”.",
       "Placement Administrator: Action — Click “New Placement Opportunity”. Interaction — button. Effect — commit.",
-      "Placement Administrator: Action — Enter “Company Details”. Interaction — text input. Effect — edit.",
-      "Placement Administrator: Action — Enter “Placement Role Details”. Interaction — text input. Effect — edit.",
+      "Placement Administrator: Action — Enter “Company Name”. Interaction — text input. Effect — edit.",
+      "Placement Administrator: Action — Enter “Company Website”. Interaction — text input. Effect — edit.",
+      "Placement Administrator: Action — Enter “Job Title”. Interaction — text input. Effect — edit.",
+      "Placement Administrator: Action — Enter “Placement Location”. Interaction — text input. Effect — edit.",
+      "Placement Administrator: Action — Select “Start Date”. Interaction — date selection. Effect — edit.",
+      "Placement Administrator: Action — Select “Finish Date”. Interaction — date selection. Effect — edit.",
+      "Placement Administrator: Action — Select “Closing Date”. Interaction — date selection. Effect — edit.",
+      "Placement Administrator: Action — Enter “Application Method”. Interaction — text input. Effect — edit.",
+      "Placement Administrator: Action — Select “Academic Year”. Interaction — selection. Effect — edit.",
       "Placement Administrator: Action — Upload “Job Specification Form”. Interaction — file upload. Effect — edit.",
       "Placement Administrator: Action — Click “Save Draft Opportunity”. Interaction — button. Effect — commit.",
       "App: Action — Create draft placement opportunity. Interaction — system. Effect — automation.",
-      "App: Option — “Edit Opportunity”.",
-      "Placement Administrator: Action — Open page “Placement Opportunity”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Click “Edit Placement Opportunity”. Interaction — button. Effect — commit.",
-      "Placement Administrator: Action — Edit “Company Details”. Interaction — text input. Effect — edit.",
-      "Placement Administrator: Action — Edit “Placement Role Details”. Interaction — text input. Effect — edit.",
-      "Placement Administrator: Action — Replace “Job Specification Form”. Interaction — selection. Effect — edit.",
-      "Placement Administrator: Action — Click “Save Opportunity Changes”. Interaction — button. Effect — commit.",
-      "App: Action — Update placement opportunity. Interaction — system. Effect — automation.",
-      "App: Option — “Delete Opportunity”.",
-      "Placement Administrator: Action — Open page “Draft Placement Opportunity”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Click “Delete Draft Opportunity”. Interaction — button. Effect — commit.",
-      "Placement Administrator: Action — Click “Confirm Opportunity Deletion”. Interaction — button. Effect — commit.",
-      "App: Action — Delete draft placement opportunity. Interaction — system. Effect — destructive.",
-      "App: Option — “Publish Opportunity”.",
-      "Placement Administrator: Action — Click “Publish Opportunity”. Interaction — button. Effect — commit.",
-      "App: Action — Set “Placement Opportunity Status” to “Published”. Interaction — system. Effect — automation.",
-      "App: Alternative branch — Student.",
-      "Student: Action — Open page “Available Placement Opportunities”. Interaction — page. Effect — browse.",
-      "Student: Action — Search “Placement Opportunities”. Interaction — text input. Effect — browse.",
-      "Student: Action — Filter “Placement Opportunities”. Interaction — selection. Effect — browse.",
-      "Student: Action — Open page “Opportunity Details”. Interaction — page. Effect — browse.",
-      "Student: End."
+      "App: End."
     ],
     "semantics": {
       "primitives": [
         "page",
-        "text-input",
-        "selection",
         "button",
+        "text-input",
+        "date-selection",
+        "selection",
         "file-upload",
         "system"
       ],
@@ -194,50 +191,263 @@
         "browse",
         "commit",
         "edit",
-        "automation",
+        "automation"
+      ]
+    }
+  },
+  {
+    "id": "industrial-placement--opportunity-editing",
+    "group": "Industrial Placement",
+    "title": "Edit Placement Opportunity",
+    "src": "diagrams/industrial-placement/opportunity-editing.svg",
+    "outline": [
+      "Placement Administrator: Start.",
+      "Placement Administrator: Action — Open page “Placement Opportunities”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Search “Placement Opportunities” by “Company Name” or “Job Title”. Interaction — text input. Effect — browse.",
+      "Placement Administrator: Action — Filter “Placement Opportunities” by “Academic Year” and “Opportunity Status”: “Draft”, “Published” or “Archived”. Interaction — selection. Effect — browse.",
+      "Placement Administrator: Action — Open page “Placement Opportunity”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Click “Edit Placement Opportunity”. Interaction — button. Effect — commit.",
+      "Placement Administrator: Action — Edit “Company Name”. Interaction — text input. Effect — edit.",
+      "Placement Administrator: Action — Edit “Company Website”. Interaction — text input. Effect — edit.",
+      "Placement Administrator: Action — Edit “Job Title”. Interaction — text input. Effect — edit.",
+      "Placement Administrator: Action — Edit “Placement Location”. Interaction — text input. Effect — edit.",
+      "Placement Administrator: Action — Select “Start Date”. Interaction — date selection. Effect — edit.",
+      "Placement Administrator: Action — Select “Finish Date”. Interaction — date selection. Effect — edit.",
+      "Placement Administrator: Action — Select “Closing Date”. Interaction — date selection. Effect — edit.",
+      "Placement Administrator: Action — Edit “Application Method”. Interaction — text input. Effect — edit.",
+      "Placement Administrator: Action — Select “Academic Year”. Interaction — selection. Effect — edit.",
+      "Placement Administrator: Action — Replace “Job Specification Form”. Interaction — file upload. Effect — edit.",
+      "Placement Administrator: Action — Click “Save Opportunity Changes”. Interaction — button. Effect — commit.",
+      "App: Action — Update placement opportunity. Interaction — system. Effect — automation.",
+      "App: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "text-input",
+        "selection",
+        "button",
+        "date-selection",
+        "file-upload",
+        "system"
+      ],
+      "effects": [
+        "browse",
+        "commit",
+        "edit",
+        "automation"
+      ]
+    }
+  },
+  {
+    "id": "industrial-placement--opportunity-deletion",
+    "group": "Industrial Placement",
+    "title": "Delete Placement Opportunity",
+    "src": "diagrams/industrial-placement/opportunity-deletion.svg",
+    "outline": [
+      "Placement Administrator: Start.",
+      "Placement Administrator: Action — Open page “Draft Placement Opportunities”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Open page “Placement Opportunity”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Click “Delete Draft Opportunity”. Interaction — button. Effect — commit.",
+      "Placement Administrator: Action — Click “Confirm Opportunity Deletion”. Interaction — button. Effect — commit.",
+      "App: Action — Delete draft placement opportunity. Interaction — system. Effect — destructive.",
+      "App: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "button",
+        "system"
+      ],
+      "effects": [
+        "browse",
+        "commit",
         "destructive"
       ]
     }
   },
   {
-    "id": "industrial-placement--placement-record-submission",
+    "id": "industrial-placement--opportunity-publication",
     "group": "Industrial Placement",
-    "title": "Submit Placement Details",
-    "src": "diagrams/industrial-placement/placement-record-submission.svg",
+    "title": "Publish Placement Opportunity",
+    "src": "diagrams/industrial-placement/opportunity-publication.svg",
+    "outline": [
+      "Placement Administrator: Start.",
+      "Placement Administrator: Action — Open page “Draft Placement Opportunities”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Open page “Placement Opportunity”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Download “Job Specification Form”. Interaction — file download. Effect — browse.",
+      "Placement Administrator: Action — Click “Publish Opportunity”. Interaction — button. Effect — commit.",
+      "App: Action — Set “Opportunity Status” to “Published”. Interaction — system. Effect — automation.",
+      "App: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "file-download",
+        "button",
+        "system"
+      ],
+      "effects": [
+        "browse",
+        "commit",
+        "automation"
+      ]
+    }
+  },
+  {
+    "id": "industrial-placement--opportunity-discovery",
+    "group": "Industrial Placement",
+    "title": "Browse Placement Opportunities",
+    "src": "diagrams/industrial-placement/opportunity-discovery.svg",
+    "outline": [
+      "Student: Start.",
+      "Student: Action — Open page “Placement Opportunities”. Interaction — page. Effect — browse.",
+      "Student: Action — Search “Placement Opportunities” by “Company Name” or “Job Title”. Interaction — text input. Effect — browse.",
+      "Student: Action — Filter “Placement Opportunities” by “Placement Location” and “Closing Date”. Interaction — selection. Effect — browse.",
+      "Student: Action — Open page “Placement Opportunity”. Interaction — page. Effect — browse.",
+      "Student: Action — Read “Company Name”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Company Website”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Job Title”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Placement Location”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Start Date”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Finish Date”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Closing Date”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Application Method”. Interaction — read. Effect — browse.",
+      "Student: Action — Download “Job Specification Form”. Interaction — file download. Effect — browse.",
+      "Student: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "text-input",
+        "selection",
+        "read",
+        "file-download"
+      ],
+      "effects": [
+        "browse"
+      ]
+    }
+  },
+  {
+    "id": "industrial-placement--placement-application-start",
+    "group": "Industrial Placement",
+    "title": "Start Placement Application",
+    "src": "diagrams/industrial-placement/placement-application-start.svg",
     "outline": [
       "Student: Start.",
       "Student: Action — Click “New Placement Application”. Interaction — button. Effect — commit.",
       "App: Decision — Check for an open placement application. Branch — Present.",
-      "App: Action — Show “Existing Placement Record”. Interaction — system. Effect — automation.",
+      "App: Action — Show “Existing Placement”. Interaction — system. Effect — automation.",
       "App: Alternative branch — None.",
-      "App: Action — Create draft placement record. Interaction — system. Effect — automation.",
-      "Student: Action — Open page “Placement Record”. Interaction — page. Effect — browse.",
-      "Student: Action — Enter “Placement Offer Details”. Interaction — text input. Effect — edit.",
-      "Student: Action — Enter “Emergency Contact”. Interaction — text input. Effect — edit.",
-      "Student: Action — Enter “Company Supervisor Contact”. Interaction — text input. Effect — edit.",
-      "Student: Action — Upload “Job Specification Form”. Interaction — file upload. Effect — edit.",
-      "Student: Action — Upload “Placement Provider Information Form”. Interaction — file upload. Effect — edit.",
-      "Student: Action — Click “Submit for Review”. Interaction — button. Effect — commit.",
-      "App: Action — Set “Placement Status” to “Submitted”. Interaction — system. Effect — automation.",
-      "App: Action — Email submission receipt to student. Interaction — notification. Effect — notification.",
-      "App: Action — Start placement approval workflow. Interaction — system. Effect — automation.",
-      "App: Action — Load configured placement administrator approval sequence. Interaction — system. Effect — automation.",
+      "App: Action — Create draft placement. Interaction — system. Effect — automation.",
       "App: End."
     ],
     "semantics": {
       "primitives": [
         "button",
-        "system",
-        "page",
-        "text-input",
-        "file-upload",
-        "notification"
+        "system"
       ],
       "effects": [
         "commit",
-        "automation",
+        "automation"
+      ]
+    }
+  },
+  {
+    "id": "industrial-placement--placement-details-entry",
+    "group": "Industrial Placement",
+    "title": "Enter Placement Details",
+    "src": "diagrams/industrial-placement/placement-details-entry.svg",
+    "outline": [
+      "Student: Start.",
+      "Student: Action — Open page “Placement Details”. Interaction — page. Effect — browse.",
+      "Student: Action — Enter “Company Name”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Placement Address”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Country”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Job Title”. Interaction — text input. Effect — edit.",
+      "Student: Action — Select “Start Date”. Interaction — date selection. Effect — edit.",
+      "Student: Action — Select “Finish Date”. Interaction — date selection. Effect — edit.",
+      "Student: Action — Click “Save Placement Details”. Interaction — button. Effect — commit.",
+      "Student: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "text-input",
+        "date-selection",
+        "button"
+      ],
+      "effects": [
         "browse",
         "edit",
+        "commit"
+      ]
+    }
+  },
+  {
+    "id": "industrial-placement--placement-contacts-entry",
+    "group": "Industrial Placement",
+    "title": "Enter Placement Contacts",
+    "src": "diagrams/industrial-placement/placement-contacts-entry.svg",
+    "outline": [
+      "Student: Start.",
+      "Student: Action — Open page “Placement Contacts”. Interaction — page. Effect — browse.",
+      "Student: Action — Enter “Company Supervisor Title”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Company Supervisor First Name”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Company Supervisor Surname”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Company Supervisor Email”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Company Supervisor Telephone”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Emergency Contact Name”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Emergency Contact Relationship”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Emergency Contact Email”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Emergency Contact Telephone”. Interaction — text input. Effect — edit.",
+      "Student: Action — Click “Save Placement Contacts”. Interaction — button. Effect — commit.",
+      "Student: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "text-input",
+        "button"
+      ],
+      "effects": [
+        "browse",
+        "edit",
+        "commit"
+      ]
+    }
+  },
+  {
+    "id": "industrial-placement--placement-forms-submission",
+    "group": "Industrial Placement",
+    "title": "Submit Placement Forms",
+    "src": "diagrams/industrial-placement/placement-forms-submission.svg",
+    "outline": [
+      "Student: Start.",
+      "Student: Action — Open page “Supporting Forms”. Interaction — page. Effect — browse.",
+      "Student: Action — Upload “Job Specification Form”. Interaction — file upload. Effect — edit.",
+      "Student: Action — Upload “Placement Provider Information Form”. Interaction — file upload. Effect — edit.",
+      "Student: Action — Click “Submit for Review”. Interaction — button. Effect — commit.",
+      "App: Action — Set “Placement Status” to “Submitted”. Interaction — system. Effect — automation.",
+      "App: Action — Email submission receipt to student. Interaction — notification. Effect — notification.",
+      "App: Action — Start placement approval. Interaction — system. Effect — automation.",
+      "App: Action — Load “Approval Sequence”. Interaction — system. Effect — automation.",
+      "App: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "file-upload",
+        "button",
+        "system",
+        "notification"
+      ],
+      "effects": [
+        "browse",
+        "edit",
+        "commit",
+        "automation",
         "notification"
       ]
     }
@@ -253,13 +463,14 @@
       "App: Action — Set “Placement Status” to “Awaiting Approval”. Interaction — system. Effect — automation.",
       "App: Action — Email review notice to current placement administrator. Interaction — notification. Effect — notification.",
       "Placement Administrator: Action — Open page “Placements Awaiting Approval”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Filter “Academic Year”. Interaction — selection. Effect — browse.",
-      "Placement Administrator: Action — Open page “Placement Record”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Open page “Placement Offer Details”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Search “Placements” by “Student First Name”, “Student Surname” or “CID”. Interaction — text input. Effect — browse.",
+      "Placement Administrator: Action — Filter “Placements” by “Academic Year”. Interaction — selection. Effect — browse.",
+      "Placement Administrator: Action — Open page “Placement”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Open page “Placement Details”. Interaction — page. Effect — browse.",
       "Placement Administrator: Action — Open page “Contact Details”. Interaction — page. Effect — browse.",
       "Placement Administrator: Action — Download “Job Specification Form”. Interaction — file download. Effect — browse.",
       "Placement Administrator: Action — Download “Placement Provider Information Form”. Interaction — file download. Effect — browse.",
-      "Placement Administrator: Action — Select “Placement Review Outcome”. Interaction — selection. Effect — edit.",
+      "Placement Administrator: Action — Select “Placement Review Outcome”: “Approve”, “Incomplete” or “Reject”. Interaction — selection. Effect — edit.",
       "Placement Administrator: End."
     ],
     "semantics": {
@@ -267,6 +478,7 @@
         "system",
         "notification",
         "page",
+        "text-input",
         "selection",
         "file-download"
       ],
@@ -313,12 +525,12 @@
     "src": "diagrams/industrial-placement/correction-resubmission.svg",
     "outline": [
       "Student: Start.",
-      "Student: Action — Open page “Returned Placement Record”. Interaction — page. Effect — browse.",
+      "Student: Action — Open page “Returned Placement”. Interaction — page. Effect — browse.",
       "Student: Action — Open page “Correction Request”. Interaction — page. Effect — browse.",
       "Student: Decision — Select “Correction Action”. Branch — “Edit Field”.",
-      "Student: Action — Edit “Requested Placement Field”. Interaction — text input. Effect — edit.",
+      "Student: Action — Edit highlighted field in “Placement Details”. Interaction — text input. Effect — edit.",
       "Student: Alternative branch — “Replace Form”.",
-      "Student: Action — Replace “Requested Supporting Form”. Interaction — file upload. Effect — edit.",
+      "Student: Action — Replace highlighted file in “Supporting Forms”. Interaction — file upload. Effect — edit.",
       "Student: Action — Click “Resubmit for Review”. Interaction — button. Effect — commit.",
       "Student: End."
     ],
@@ -350,7 +562,7 @@
       "Student: Alternative branch — Complete.",
       "App: Action — Set “Placement Status” to “Awaiting Approval”. Interaction — system. Effect — automation.",
       "App: Action — Email resubmission notice to current placement administrator. Interaction — notification. Effect — notification.",
-      "Placement Administrator: Action — Open page “Resubmitted Placement Record”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Open page “Resubmitted Placement”. Interaction — page. Effect — browse.",
       "Placement Administrator: Action — Open page “Corrected Placement Details”. Interaction — page. Effect — browse.",
       "Placement Administrator: End."
     ],
@@ -415,11 +627,12 @@
     "outline": [
       "Placement Administrator: Start.",
       "Placement Administrator: Action — Open page “Approved Placements”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Filter “Supervisor Status” by “Unassigned”. Interaction — selection. Effect — browse.",
+      "Placement Administrator: Action — Search “Approved Placements” by “Student First Name”, “Student Surname” or “CID”. Interaction — text input. Effect — browse.",
+      "Placement Administrator: Action — Filter “Approved Placements” by “Supervisor Status”: “Unassigned”. Interaction — selection. Effect — browse.",
       "Placement Administrator: Loop condition — Are unassigned placements remaining. Continue branch — Yes.",
-      "Placement Administrator: Action — Open page “Placement Record”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Open page “Placement”. Interaction — page. Effect — browse.",
       "Placement Administrator: Action — Open page “Supervisor Assignment Panel”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Search “Supervisor Expertise”. Interaction — text input. Effect — browse.",
+      "Placement Administrator: Action — Search “Supervisors” by “Supervisor First Name”, “Supervisor Surname” or “Area of Expertise”. Interaction — text input. Effect — browse.",
       "Placement Administrator: Action — Open page “Supervisor Workload Details”. Interaction — page. Effect — browse.",
       "Placement Administrator: Action — Select “Placement Supervisor”. Interaction — selection. Effect — edit.",
       "Placement Administrator: Action — Click “Save Supervisor Assignment”. Interaction — button. Effect — commit.",
@@ -427,14 +640,14 @@
       "App: Action — Email placement assignment to supervisor. Interaction — notification. Effect — notification.",
       "App: Action — Email supervisor assignment to student. Interaction — notification. Effect — notification.",
       "Placement Administrator: Loop exit — No.",
-      "Placement Supervisor: Action — Open page “Assigned Placement Record”. Interaction — page. Effect — browse.",
+      "Placement Supervisor: Action — Open page “Assigned Placement”. Interaction — page. Effect — browse.",
       "Placement Supervisor: End."
     ],
     "semantics": {
       "primitives": [
         "page",
-        "selection",
         "text-input",
+        "selection",
         "button",
         "system",
         "notification"
@@ -491,7 +704,6 @@
     "outline": [
       "Placement Supervisor: Start.",
       "Placement Supervisor: Action — Open page “Placement Reports Awaiting Marking”. Interaction — page. Effect — browse.",
-      "Placement Supervisor: Action — Filter “Submission Status” by “Submitted”. Interaction — selection. Effect — browse.",
       "Placement Supervisor: Action — Open page “Student Report Submission”. Interaction — page. Effect — browse.",
       "Placement Supervisor: Action — Download “Placement Report”. Interaction — file download. Effect — browse.",
       "Placement Supervisor: Action — Enter “Report Opinion”. Interaction — text input. Effect — edit.",
@@ -507,7 +719,6 @@
     "semantics": {
       "primitives": [
         "page",
-        "selection",
         "file-download",
         "text-input",
         "button",
@@ -531,7 +742,7 @@
     "outline": [
       "Placement Administrator: Start.",
       "Placement Administrator: Action — Open page “Placement Marks Report”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Filter “Academic Year”. Interaction — selection. Effect — browse.",
+      "Placement Administrator: Action — Filter “Placement Marks” by “Academic Year” and “Deliverable”. Interaction — selection. Effect — browse.",
       "Placement Administrator: Action — Click “Export to Excel”. Interaction — button. Effect — browse.",
       "App: Action — Generate placement marks workbook. Interaction — system. Effect — automation.",
       "Placement Administrator: Action — Click “Download Marks Workbook”. Interaction — button. Effect — browse.",
@@ -558,12 +769,13 @@
     "outline": [
       "Administrator: Start.",
       "Administrator: Action — Upload “Project Spreadsheet”. Interaction — file upload. Effect — edit.",
+      "App: Action — Validate “Project Provider Name”, “Company Website”, “Project Title”, “Project Description”, “Student Capacity” and “Academic Year”. Interaction — system. Effect — automation.",
       "App: Loop condition — Validate project rows. Continue branch — Invalid.",
       "App: Action — Show “Project Import Errors”. Interaction — system. Effect — automation.",
       "Administrator: Action — Replace “Project Spreadsheet”. Interaction — selection. Effect — edit.",
       "App: Loop exit — Valid.",
       "Administrator: Action — Click “Confirm Project Import”. Interaction — button. Effect — commit.",
-      "App: Action — Create project records. Interaction — system. Effect — automation.",
+      "App: Action — Create projects. Interaction — system. Effect — automation.",
       "App: End."
     ],
     "semantics": {
@@ -589,10 +801,14 @@
       "Administrator: Start.",
       "Administrator: Action — Open page “Project Catalogue”. Interaction — page. Effect — browse.",
       "Administrator: Action — Click “New Project”. Interaction — button. Effect — commit.",
-      "Administrator: Action — Enter “Company Details”. Interaction — text input. Effect — edit.",
-      "Administrator: Action — Enter “Project Details”. Interaction — text input. Effect — edit.",
+      "Administrator: Action — Enter “Project Provider Name”. Interaction — text input. Effect — edit.",
+      "Administrator: Action — Enter “Company Website”. Interaction — text input. Effect — edit.",
+      "Administrator: Action — Enter “Project Title”. Interaction — text input. Effect — edit.",
+      "Administrator: Action — Enter “Project Description”. Interaction — text input. Effect — edit.",
+      "Administrator: Action — Enter “Student Capacity”. Interaction — text input. Effect — edit.",
+      "Administrator: Action — Select “Academic Year”. Interaction — selection. Effect — edit.",
       "Administrator: Action — Click “Save Draft Project”. Interaction — button. Effect — commit.",
-      "App: Action — Create draft project record. Interaction — system. Effect — automation.",
+      "App: Action — Create draft project. Interaction — system. Effect — automation.",
       "App: End."
     ],
     "semantics": {
@@ -600,6 +816,7 @@
         "page",
         "button",
         "text-input",
+        "selection",
         "system"
       ],
       "effects": [
@@ -618,21 +835,25 @@
     "outline": [
       "Administrator: Start.",
       "Administrator: Action — Open page “Project Catalogue”. Interaction — page. Effect — browse.",
-      "Administrator: Action — Search “Project Records”. Interaction — text input. Effect — browse.",
-      "Administrator: Action — Filter “Project Records”. Interaction — selection. Effect — browse.",
-      "Administrator: Decision — Select “Project Record Action”.",
+      "Administrator: Action — Search “Projects” by “Project Title” or “Project Provider Name”. Interaction — text input. Effect — browse.",
+      "Administrator: Action — Filter “Projects” by “Academic Year” and “Project Status”: “Draft”, “Published” or “Archived”. Interaction — selection. Effect — browse.",
+      "Administrator: Decision — Select “Project Action”.",
       "Administrator: Option — “Edit Project”.",
-      "Administrator: Action — Open page “Project Record”. Interaction — page. Effect — browse.",
+      "Administrator: Action — Open page “Project”. Interaction — page. Effect — browse.",
       "Administrator: Action — Click “Edit Project”. Interaction — button. Effect — commit.",
-      "Administrator: Action — Edit “Company Details”. Interaction — text input. Effect — edit.",
-      "Administrator: Action — Edit “Project Details”. Interaction — text input. Effect — edit.",
+      "Administrator: Action — Edit “Project Provider Name”. Interaction — text input. Effect — edit.",
+      "Administrator: Action — Edit “Company Website”. Interaction — text input. Effect — edit.",
+      "Administrator: Action — Edit “Project Title”. Interaction — text input. Effect — edit.",
+      "Administrator: Action — Edit “Project Description”. Interaction — text input. Effect — edit.",
+      "Administrator: Action — Edit “Student Capacity”. Interaction — text input. Effect — edit.",
+      "Administrator: Action — Select “Academic Year”. Interaction — selection. Effect — edit.",
       "Administrator: Action — Click “Save Project Changes”. Interaction — button. Effect — commit.",
-      "App: Action — Update project record. Interaction — system. Effect — automation.",
+      "App: Action — Update project. Interaction — system. Effect — automation.",
       "App: Option — “Delete Project”.",
-      "Administrator: Action — Open page “Draft Project Record”. Interaction — page. Effect — browse.",
+      "Administrator: Action — Open page “Draft Project”. Interaction — page. Effect — browse.",
       "Administrator: Action — Click “Delete Draft Project”. Interaction — button. Effect — commit.",
       "Administrator: Action — Click “Confirm Project Deletion”. Interaction — button. Effect — commit.",
-      "App: Action — Delete draft project record. Interaction — system. Effect — destructive.",
+      "App: Action — Delete draft project. Interaction — system. Effect — destructive.",
       "App: End."
     ],
     "semantics": {
@@ -685,8 +906,8 @@
     "outline": [
       "Administrator: Start.",
       "Administrator: Action — Open page “Matching Rules”. Interaction — page. Effect — browse.",
-      "Administrator: Action — Enter “Group Size Limits”. Interaction — text input. Effect — edit.",
-      "Administrator: Action — Enter “Project Capacity Rules”. Interaction — text input. Effect — edit.",
+      "Administrator: Action — Enter “Minimum Group Size”. Interaction — text input. Effect — edit.",
+      "Administrator: Action — Enter “Maximum Group Size”. Interaction — text input. Effect — edit.",
       "Administrator: Action — Click “Save Matching Rules”. Interaction — button. Effect — commit.",
       "App: Action — Update matching rules. Interaction — system. Effect — automation.",
       "App: Action — Set “Preference Window Status” to “Open”. Interaction — system. Effect — automation.",
@@ -715,16 +936,22 @@
     "outline": [
       "Student: Start.",
       "Student: Action — Open page “Project Catalogue”. Interaction — page. Effect — browse.",
-      "Student: Action — Search “Project Catalogue”. Interaction — text input. Effect — browse.",
-      "Student: Action — Filter “Projects”. Interaction — selection. Effect — browse.",
+      "Student: Action — Search “Projects” by “Project Title” or “Project Provider Name”. Interaction — text input. Effect — browse.",
+      "Student: Action — Filter “Projects” by “Project Provider Name”. Interaction — selection. Effect — browse.",
       "Student: Action — Open page “Project Details”. Interaction — page. Effect — browse.",
+      "Student: Action — Read “Project Provider Name”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Company Website”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Project Title”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Project Description”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Student Capacity”. Interaction — read. Effect — browse.",
       "Student: End."
     ],
     "semantics": {
       "primitives": [
         "page",
         "text-input",
-        "selection"
+        "selection",
+        "read"
       ],
       "effects": [
         "browse"
@@ -741,7 +968,6 @@
       "Student: Repeated operations begin.",
       "Student: Decision — Select “Preference Action”.",
       "Student: Option — “Add Project”.",
-      "Student: Action — Search “Projects”. Interaction — text input. Effect — browse.",
       "Student: Action — Open page “Project Details”. Interaction — page. Effect — browse.",
       "Student: Action — Click “Add to Preferences”. Interaction — button. Effect — commit.",
       "App: Action — Create draft project preference. Interaction — system. Effect — automation.",
@@ -759,7 +985,6 @@
     ],
     "semantics": {
       "primitives": [
-        "text-input",
         "page",
         "button",
         "system",
@@ -844,9 +1069,9 @@
       "App: Start.",
       "App: Decision — Is draft matching ready. Branch — No.",
       "Administrator: Action — Open page “Draft Matching Results”. Interaction — page. Effect — browse.",
-      "Administrator: Action — Filter “Draft Groups”. Interaction — selection. Effect — browse.",
-      "Administrator: Action — Filter “Unmatched Students”. Interaction — selection. Effect — browse.",
-      "Administrator: Action — Select “Draft Matching Action”. Interaction — selection. Effect — edit.",
+      "Administrator: Action — Search “Draft Matching” by “Student First Name”, “Student Surname”, “CID” or “Project Title”. Interaction — selection. Effect — browse.",
+      "Administrator: Action — Filter “Draft Matching” by “Matching Status”: “Matched”, “Unmatched” or “Rule Error”. Interaction — selection. Effect — browse.",
+      "Administrator: Action — Select “Draft Matching Action”: “Manage Groups”, “Edit Matching” or “Validate”. Interaction — selection. Effect — edit.",
       "Administrator: Action — Return to page “Draft Matching Results”. Interaction — page. Effect — browse.",
       "Administrator: Alternative branch — Yes.",
       "Administrator: End."
@@ -872,24 +1097,24 @@
       "Administrator: Decision — Select “Draft Group Action”.",
       "Administrator: Option — “New Group”.",
       "Administrator: Action — Click “New Draft Group”. Interaction — button. Effect — commit.",
-      "Administrator: Action — Search “Unassigned Students”. Interaction — text input. Effect — browse.",
+      "Administrator: Action — Search “Unassigned Students” by “Student First Name”, “Student Surname” or “CID”. Interaction — text input. Effect — browse.",
       "Administrator: Action — Click “Add Student”. Interaction — button. Effect — commit.",
-      "Administrator: Action — Search “Available Projects”. Interaction — text input. Effect — browse.",
+      "Administrator: Action — Search “Available Projects” by “Project Title” or “Project Provider Name”. Interaction — text input. Effect — browse.",
       "Administrator: Action — Select “Project”. Interaction — selection. Effect — edit.",
       "Administrator: Action — Click “Save Draft Group”. Interaction — button. Effect — commit.",
-      "App: Action — Create draft group record. Interaction — system. Effect — automation.",
+      "App: Action — Create draft group. Interaction — system. Effect — automation.",
       "App: Action — Create draft project assignment. Interaction — system. Effect — automation.",
       "App: Option — “Open Group”.",
       "Administrator: Action — Open page “Draft Group”. Interaction — page. Effect — browse.",
       "Administrator: Action — Open page “Group Member List”. Interaction — page. Effect — browse.",
       "Administrator: Action — Open page “Draft Project Assignment”. Interaction — page. Effect — browse.",
-      "App: Action — Read draft group record. Interaction — system. Effect — automation.",
+      "App: Action — Read draft group. Interaction — system. Effect — automation.",
       "App: Action — Read draft project assignment. Interaction — system. Effect — automation.",
       "App: Option — “Delete Group”.",
       "Administrator: Action — Click “Delete Draft Group”. Interaction — button. Effect — commit.",
       "Administrator: Action — Click “Confirm Group Deletion”. Interaction — button. Effect — commit.",
       "App: Action — Delete draft project assignment. Interaction — system. Effect — destructive.",
-      "App: Action — Delete draft group record. Interaction — system. Effect — destructive.",
+      "App: Action — Delete draft group. Interaction — system. Effect — destructive.",
       "App: End."
     ],
     "semantics": {
@@ -918,12 +1143,12 @@
       "Administrator: Start.",
       "Administrator: Decision — Select “Matching Edit”.",
       "Administrator: Option — “Add Student”.",
-      "Administrator: Action — Search “Unassigned Students”. Interaction — text input. Effect — browse.",
+      "Administrator: Action — Search “Unassigned Students” by “Student First Name”, “Student Surname” or “CID”. Interaction — text input. Effect — browse.",
       "Administrator: Action — Click “Add Student”. Interaction — button. Effect — commit.",
       "Administrator: Option — “Remove Student”.",
       "Administrator: Action — Click “Remove Student”. Interaction — button. Effect — commit.",
       "Administrator: Option — “Change Project”.",
-      "Administrator: Action — Search “Available Projects”. Interaction — text input. Effect — browse.",
+      "Administrator: Action — Search “Available Projects” by “Project Title” or “Project Provider Name”. Interaction — text input. Effect — browse.",
       "Administrator: Action — Replace “Draft Project Assignment”. Interaction — selection. Effect — edit.",
       "Administrator: Action — Click “Save Draft Group”. Interaction — button. Effect — commit.",
       "App: Action — Update draft group from selected matching edit. Interaction — system. Effect — automation.",
@@ -984,11 +1209,11 @@
     "outline": [
       "Administrator: Start.",
       "Administrator: Action — Open page “Supervisor Assignments”. Interaction — page. Effect — browse.",
-      "Administrator: Action — Filter “Supervisor Status” by “Unassigned”. Interaction — selection. Effect — browse.",
+      "Administrator: Action — Filter “Groups” by “Supervisor Status”: “Unassigned”. Interaction — selection. Effect — browse.",
       "Administrator: Loop condition — Are unassigned groups remaining. Continue branch — Yes.",
-      "Administrator: Action — Open page “Group Record”. Interaction — page. Effect — browse.",
+      "Administrator: Action — Open page “Group”. Interaction — page. Effect — browse.",
       "Administrator: Action — Open page “Group Member List”. Interaction — page. Effect — browse.",
-      "Administrator: Action — Search “Supervisor Expertise”. Interaction — text input. Effect — browse.",
+      "Administrator: Action — Search “Supervisors” by “Supervisor First Name”, “Supervisor Surname” or “Area of Expertise”. Interaction — text input. Effect — browse.",
       "Administrator: Action — Open page “Supervisor Workload Details”. Interaction — page. Effect — browse.",
       "Administrator: Action — Select “Group Supervisor”. Interaction — selection. Effect — edit.",
       "Administrator: Action — Click “Save Supervisor Assignment”. Interaction — button. Effect — commit.",
@@ -1029,7 +1254,7 @@
       "Student: Action — Open page “Group Member List”. Interaction — page. Effect — browse.",
       "Student: Action — Open page “Project Details”. Interaction — page. Effect — browse.",
       "Student: Action — Open page “Supervisor Details”. Interaction — page. Effect — browse.",
-      "Group Project Supervisor: Action — Open page “Assigned Group Record”. Interaction — page. Effect — browse.",
+      "Group Project Supervisor: Action — Open page “Assigned Group”. Interaction — page. Effect — browse.",
       "Group Project Supervisor: End."
     ],
     "semantics": {
@@ -1087,7 +1312,6 @@
     "outline": [
       "Group Project Supervisor: Start.",
       "Group Project Supervisor: Action — Open page “Group Posters Awaiting Marking”. Interaction — page. Effect — browse.",
-      "Group Project Supervisor: Action — Filter “Submission Status” by “Submitted”. Interaction — selection. Effect — browse.",
       "Group Project Supervisor: Action — Open page “Group Poster Submission”. Interaction — page. Effect — browse.",
       "Group Project Supervisor: Action — Download “Conference Poster”. Interaction — file download. Effect — browse.",
       "Group Project Supervisor: Action — Enter “Poster Opinion”. Interaction — text input. Effect — edit.",
@@ -1103,7 +1327,6 @@
     "semantics": {
       "primitives": [
         "page",
-        "selection",
         "file-download",
         "text-input",
         "button",
@@ -1127,7 +1350,7 @@
     "outline": [
       "Administrator: Start.",
       "Administrator: Action — Open page “Group Project Marks Report”. Interaction — page. Effect — browse.",
-      "Administrator: Action — Filter “Academic Year”. Interaction — selection. Effect — browse.",
+      "Administrator: Action — Filter “Group Project Marks” by “Academic Year” and “Deliverable”. Interaction — selection. Effect — browse.",
       "Administrator: Action — Click “Export to Excel”. Interaction — button. Effect — browse.",
       "App: Action — Generate Group Project marks workbook. Interaction — system. Effect — automation.",
       "Administrator: Action — Click “Download Marks Workbook”. Interaction — button. Effect — browse.",

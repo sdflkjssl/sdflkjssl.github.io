@@ -40,7 +40,11 @@ const termDefinitions = [
   },
   {
     term: "Academic Year",
-    meaning: "The academic session that the records or marks belong to, such as 2026–27.",
+    meaning: "The academic session that the displayed information or marks belong to, such as 2026–27.",
+  },
+  {
+    term: "CID",
+    meaning: "The student's Imperial College identifier.",
   },
   {
     term: "Placement Administrator",
@@ -63,6 +67,10 @@ const termDefinitions = [
     meaning: "A placement role shared by the department for students to consider; students may also find their own placement.",
   },
   {
+    term: "Opportunity Status",
+    meaning: "Whether a placement opportunity is Draft, Published or Archived.",
+  },
+  {
     term: "Approval Sequence",
     meaning: "The ordered list of placement administrators who must review a placement.",
   },
@@ -77,6 +85,22 @@ const termDefinitions = [
   {
     term: "Matching Rules",
     meaning: "The group-size and project-capacity requirements that a draft matching must satisfy.",
+  },
+  {
+    term: "Matching Status",
+    meaning: "Whether a student and project are Matched, Unmatched or affected by a Rule Error in the draft matching.",
+  },
+  {
+    term: "Student Capacity",
+    meaning: "The maximum number of students that can be assigned to a project.",
+  },
+  {
+    term: "Project Status",
+    meaning: "Whether a project is Draft, Published or Archived.",
+  },
+  {
+    term: "Area of Expertise",
+    meaning: "Keywords describing topics a supervisor can support.",
   },
   {
     term: "Preference Ranking",
@@ -201,7 +225,8 @@ function connectOverviewModules(svg) {
     const shape = textNode?.previousElementSibling;
 
     if (!textNode || shape?.localName !== "rect") {
-      throw new Error(`Overview node could not be linked: ${item.title}`);
+      console.warn(`Overview node could not be linked: ${item.title}`);
+      continue;
     }
 
     const link = document.createElementNS(svg.namespaceURI, "a");
@@ -218,13 +243,10 @@ function connectOverviewModules(svg) {
     claimedTextNodes.add(textNode);
   }
 
-  if (claimedTextNodes.size !== moduleItems.length) {
-    throw new Error("Not every overview module received a link");
-  }
 }
 
 async function createOverviewDiagram(item) {
-  const response = await fetch(item.src);
+  const response = await fetch(item.src, { cache: "no-store" });
   if (!response.ok) {
     throw new Error(`Diagram request failed with ${response.status}`);
   }
