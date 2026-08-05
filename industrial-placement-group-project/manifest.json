@@ -12,10 +12,9 @@
       "Student and Supervisor Setup: Action — Supervisor Import.",
       "Student and Supervisor Setup: Parallel paths join.",
       "Decision — Selected workflow. Branch — Industrial Placement.",
-      "Industrial Placement: Action — Advert Creation.",
-      "Industrial Placement: Action — Edit or Delete Advert.",
-      "Industrial Placement: Action — Advert Publication.",
-      "Industrial Placement: Action — Browse Placement Adverts.",
+      "Industrial Placement: Decision — Does the student use a department opportunity. Branch — Yes.",
+      "Industrial Placement: Action — Placement Opportunities.",
+      "Industrial Placement: Alternative branch — No.",
       "Industrial Placement: Action — Submit Placement Details.",
       "Industrial Placement: Loop condition — Is placement approval complete. Continue branch — No.",
       "Industrial Placement: Action — Approval Review.",
@@ -42,13 +41,13 @@
       "Group Project: Action — Project Creation.",
       "Group Project: Action — Edit or Delete Project.",
       "Group Project: Action — Project Publication.",
-      "Group Project: Action — Matching Setup.",
+      "Group Project: Action — Matching Rules.",
       "Group Project: Action — Browse Projects.",
       "Group Project: Repeated operations begin.",
       "Group Project: Action — Rank Project Preferences.",
       "Group Project: Action — Submit Project Preferences.",
       "Group Project: Repeat condition — Are preferences valid. Continue branch — No. Exit branch — Yes.",
-      "Group Project: Action — Automatic Matching.",
+      "Group Project: Action — Generate Draft Matching.",
       "Group Project: Loop condition — Is draft matching confirmed. Continue branch — No.",
       "Group Project: Action — Draft Matching Review.",
       "Group Project: Decision — Is the selected operation Group management. Branch — Yes.",
@@ -141,61 +140,46 @@
     }
   },
   {
-    "id": "industrial-placement--advert-creation",
+    "id": "industrial-placement--placement-opportunities",
     "group": "Industrial Placement",
-    "title": "Advert Creation",
-    "src": "diagrams/industrial-placement/advert-creation.svg",
+    "title": "Placement Opportunities",
+    "src": "diagrams/industrial-placement/placement-opportunities.svg",
     "outline": [
-      "Placement Administrator: Start.",
-      "Placement Administrator: Action — Open page “Placement Adverts”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Click “New Placement Advert”. Interaction — button. Effect — commit.",
+      "App: Start.",
+      "App: Decision — Is the current user a placement administrator. Branch — Yes.",
+      "Placement Administrator: Action — Open page “Placement Opportunities”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Search “Placement Opportunity Records”. Interaction — text input. Effect — browse.",
+      "Placement Administrator: Action — Filter “Placement Opportunity Records”. Interaction — selection. Effect — browse.",
+      "Placement Administrator: Decision — Select “Placement Opportunity Action”.",
+      "Placement Administrator: Option — “Add Opportunity”.",
+      "Placement Administrator: Action — Click “New Placement Opportunity”. Interaction — button. Effect — commit.",
       "Placement Administrator: Action — Enter “Company Details”. Interaction — text input. Effect — edit.",
       "Placement Administrator: Action — Enter “Placement Role Details”. Interaction — text input. Effect — edit.",
       "Placement Administrator: Action — Upload “Job Specification Form”. Interaction — file upload. Effect — edit.",
-      "Placement Administrator: Action — Click “Save Draft Advert”. Interaction — button. Effect — commit.",
-      "App: Action — Create draft placement advert. Interaction — system. Effect — automation.",
-      "App: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "page",
-        "button",
-        "text-input",
-        "file-upload",
-        "system"
-      ],
-      "effects": [
-        "browse",
-        "commit",
-        "edit",
-        "automation"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--advert-maintenance",
-    "group": "Industrial Placement",
-    "title": "Edit or Delete Advert",
-    "src": "diagrams/industrial-placement/advert-maintenance.svg",
-    "outline": [
-      "Placement Administrator: Start.",
-      "Placement Administrator: Action — Open page “Placement Adverts”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Search “Placement Adverts”. Interaction — text input. Effect — browse.",
-      "Placement Administrator: Action — Filter “Placement Adverts”. Interaction — selection. Effect — browse.",
-      "Placement Administrator: Decision — Select “Placement Advert Action”.",
-      "Placement Administrator: Option — “Edit Advert”.",
-      "Placement Administrator: Action — Open page “Placement Advert”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Click “Edit Placement Advert”. Interaction — button. Effect — commit.",
+      "Placement Administrator: Action — Click “Save Draft Opportunity”. Interaction — button. Effect — commit.",
+      "App: Action — Create draft placement opportunity. Interaction — system. Effect — automation.",
+      "App: Option — “Edit Opportunity”.",
+      "Placement Administrator: Action — Open page “Placement Opportunity”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Click “Edit Placement Opportunity”. Interaction — button. Effect — commit.",
       "Placement Administrator: Action — Edit “Company Details”. Interaction — text input. Effect — edit.",
       "Placement Administrator: Action — Edit “Placement Role Details”. Interaction — text input. Effect — edit.",
-      "Placement Administrator: Action — Click “Save Advert Changes”. Interaction — button. Effect — commit.",
-      "App: Action — Update placement advert. Interaction — system. Effect — automation.",
-      "App: Option — “Delete Advert”.",
-      "Placement Administrator: Action — Open page “Draft Placement Advert”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Click “Delete Draft Advert”. Interaction — button. Effect — commit.",
-      "Placement Administrator: Action — Click “Confirm Advert Deletion”. Interaction — button. Effect — commit.",
-      "App: Action — Delete draft placement advert. Interaction — system. Effect — destructive.",
-      "App: End."
+      "Placement Administrator: Action — Replace “Job Specification Form”. Interaction — selection. Effect — edit.",
+      "Placement Administrator: Action — Click “Save Opportunity Changes”. Interaction — button. Effect — commit.",
+      "App: Action — Update placement opportunity. Interaction — system. Effect — automation.",
+      "App: Option — “Delete Opportunity”.",
+      "Placement Administrator: Action — Open page “Draft Placement Opportunity”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Click “Delete Draft Opportunity”. Interaction — button. Effect — commit.",
+      "Placement Administrator: Action — Click “Confirm Opportunity Deletion”. Interaction — button. Effect — commit.",
+      "App: Action — Delete draft placement opportunity. Interaction — system. Effect — destructive.",
+      "App: Option — “Publish Opportunity”.",
+      "Placement Administrator: Action — Click “Publish Opportunity”. Interaction — button. Effect — commit.",
+      "App: Action — Set “Placement Opportunity Status” to “Published”. Interaction — system. Effect — automation.",
+      "App: Alternative branch — Student.",
+      "Student: Action — Open page “Available Placement Opportunities”. Interaction — page. Effect — browse.",
+      "Student: Action — Search “Placement Opportunities”. Interaction — text input. Effect — browse.",
+      "Student: Action — Filter “Placement Opportunities”. Interaction — selection. Effect — browse.",
+      "Student: Action — Open page “Opportunity Details”. Interaction — page. Effect — browse.",
+      "Student: End."
     ],
     "semantics": {
       "primitives": [
@@ -203,6 +187,7 @@
         "text-input",
         "selection",
         "button",
+        "file-upload",
         "system"
       ],
       "effects": [
@@ -211,60 +196,6 @@
         "edit",
         "automation",
         "destructive"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--advert-publication",
-    "group": "Industrial Placement",
-    "title": "Advert Publication",
-    "src": "diagrams/industrial-placement/advert-publication.svg",
-    "outline": [
-      "Placement Administrator: Start.",
-      "Placement Administrator: Action — Open page “Placement Adverts”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Search “Placement Adverts”. Interaction — text input. Effect — browse.",
-      "Placement Administrator: Action — Filter “Placement Adverts”. Interaction — selection. Effect — browse.",
-      "Placement Administrator: Action — Open page “Draft Placement Advert”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Click “Publish Advert”. Interaction — button. Effect — commit.",
-      "App: Action — Add advert to placement catalogue. Interaction — system. Effect — automation.",
-      "App: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "page",
-        "text-input",
-        "selection",
-        "button",
-        "system"
-      ],
-      "effects": [
-        "browse",
-        "commit",
-        "automation"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--placement-discovery",
-    "group": "Industrial Placement",
-    "title": "Browse Placement Adverts",
-    "src": "diagrams/industrial-placement/placement-discovery.svg",
-    "outline": [
-      "Student: Start.",
-      "Student: Action — Open page “Placement Catalogue”. Interaction — page. Effect — browse.",
-      "Student: Action — Search “Placement Adverts”. Interaction — text input. Effect — browse.",
-      "Student: Action — Filter “Placement Adverts”. Interaction — selection. Effect — browse.",
-      "Student: Action — Open page “Placement Advert”. Interaction — page. Effect — browse.",
-      "Student: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "page",
-        "text-input",
-        "selection"
-      ],
-      "effects": [
-        "browse"
       ]
     }
   },
@@ -749,22 +680,21 @@
   {
     "id": "group-project--matching-configuration",
     "group": "Group Project",
-    "title": "Matching Setup",
+    "title": "Matching Rules",
     "src": "diagrams/group-project/matching-configuration.svg",
     "outline": [
       "Administrator: Start.",
-      "Administrator: Action — Open page “Matching Settings”. Interaction — page. Effect — browse.",
-      "Administrator: Action — Select “Matching Algorithm”. Interaction — selection. Effect — edit.",
-      "Administrator: Action — Enter “Matching Constraints”. Interaction — text input. Effect — edit.",
-      "Administrator: Action — Click “Save Matching Settings”. Interaction — button. Effect — commit.",
-      "App: Action — Update matching settings. Interaction — system. Effect — automation.",
+      "Administrator: Action — Open page “Matching Rules”. Interaction — page. Effect — browse.",
+      "Administrator: Action — Enter “Group Size Limits”. Interaction — text input. Effect — edit.",
+      "Administrator: Action — Enter “Project Capacity Rules”. Interaction — text input. Effect — edit.",
+      "Administrator: Action — Click “Save Matching Rules”. Interaction — button. Effect — commit.",
+      "App: Action — Update matching rules. Interaction — system. Effect — automation.",
       "App: Action — Set “Preference Window Status” to “Open”. Interaction — system. Effect — automation.",
       "App: End."
     ],
     "semantics": {
       "primitives": [
         "page",
-        "selection",
         "text-input",
         "button",
         "system"
@@ -879,16 +809,15 @@
   {
     "id": "group-project--automatic-matching",
     "group": "Group Project",
-    "title": "Automatic Matching",
+    "title": "Generate Draft Matching",
     "src": "diagrams/group-project/automatic-matching.svg",
     "outline": [
       "Administrator: Start.",
       "Administrator: Action — Open page “Project Matching”. Interaction — page. Effect — browse.",
-      "Administrator: Action — Open page “Saved Matching Settings”. Interaction — page. Effect — browse.",
+      "Administrator: Action — Open page “Saved Matching Rules”. Interaction — page. Effect — browse.",
       "Administrator: Action — Click “Generate Draft Matching”. Interaction — button. Effect — commit.",
       "App: Action — Read submitted preference orders. Interaction — system. Effect — automation.",
-      "App: Action — Read project capacity constraints. Interaction — system. Effect — automation.",
-      "App: Action — Run selected matching algorithm. Interaction — system. Effect — automation.",
+      "App: Action — Read saved matching rules. Interaction — system. Effect — automation.",
       "App: Action — Create draft student groups. Interaction — system. Effect — automation.",
       "App: Action — Create draft project assignments. Interaction — system. Effect — automation.",
       "App: End."
@@ -1022,8 +951,8 @@
     "src": "diagrams/group-project/matching-validation-and-confirmation.svg",
     "outline": [
       "App: Start.",
-      "App: Decision — Validate matching constraints. Branch — Invalid.",
-      "App: Action — Show “Matching Constraint Errors”. Interaction — system. Effect — automation.",
+      "App: Decision — Validate matching rules. Branch — Invalid.",
+      "App: Action — Show “Matching Rule Errors”. Interaction — system. Effect — automation.",
       "Administrator: Action — Open page “Affected Draft Group”. Interaction — page. Effect — browse.",
       "App: Action — Keep “Draft Matching Status” as “Draft”. Interaction — system. Effect — automation.",
       "App: Alternative branch — Valid.",

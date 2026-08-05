@@ -59,8 +59,8 @@ const termDefinitions = [
     meaning: "The academic staff member assigned to supervise and assess a project group.",
   },
   {
-    term: "Placement Advert",
-    meaning: "A placement opportunity published for students to view.",
+    term: "Placement Opportunity",
+    meaning: "A placement role shared by the department for students to consider; students may also find their own placement.",
   },
   {
     term: "Approval Sequence",
@@ -72,15 +72,11 @@ const termDefinitions = [
   },
   {
     term: "Draft Matching",
-    meaning: "Proposed student groups and project assignments that administrators can review and edit before confirmation.",
+    meaning: "Proposed student groups and project assignments that administrators can review and edit before confirmation. The calculation method remains to be agreed.",
   },
   {
-    term: "Matching Algorithm",
-    meaning: "The method the app uses to propose student groups and project assignments.",
-  },
-  {
-    term: "Matching Constraints",
-    meaning: "Rules that a proposed matching must satisfy, such as group sizes and project capacities.",
+    term: "Matching Rules",
+    meaning: "The group-size and project-capacity requirements that a draft matching must satisfy.",
   },
   {
     term: "Preference Ranking",
