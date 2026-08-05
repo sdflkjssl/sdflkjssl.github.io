@@ -213,7 +213,7 @@ function normaliseDiagramLabel(value) {
 }
 
 function connectOverviewModules(svg) {
-  const moduleItems = diagrams.filter((item) => item.group !== "Overview");
+  const moduleItems = diagrams.filter((item) => item.group !== "Overview" && item.inOverview);
   const textNodes = [...svg.querySelectorAll("text")];
   const claimedTextNodes = new Set();
 
@@ -262,7 +262,7 @@ async function createOverviewDiagram(item) {
   svg.removeAttribute("style");
   svg.classList.add("diagram");
   svg.setAttribute("role", "group");
-  svg.setAttribute("aria-label", "Complete process map. Select any module to open its detailed process diagram.");
+  svg.setAttribute("aria-label", "Default process map. Select any module to open its detailed process diagram.");
   svg.setAttribute("aria-details", "diagram-description");
   connectOverviewModules(svg);
   return svg;

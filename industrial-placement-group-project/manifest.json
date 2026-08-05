@@ -2,7 +2,7 @@
   {
     "id": "overview",
     "group": "Overview",
-    "title": "Complete Process Map",
+    "title": "Default Process Map",
     "src": "diagrams/overview.svg",
     "outline": [
       "Start.",
@@ -12,19 +12,9 @@
       "Student and Supervisor Setup: Action — Supervisor Import.",
       "Student and Supervisor Setup: Parallel paths join.",
       "Decision — Selected workflow. Branch — Industrial Placement.",
-      "Industrial Placement: Decision — Does the department add placement opportunities. Branch — Yes.",
       "Industrial Placement: Action — Add Placement Opportunity.",
-      "Industrial Placement: Decision — Does a draft opportunity need changes. Branch — Yes.",
-      "Industrial Placement: Decision — Select opportunity change. Branch — Edit.",
-      "Industrial Placement: Action — Edit Placement Opportunity.",
-      "Industrial Placement: Alternative branch — Delete.",
-      "Industrial Placement: Action — Delete Placement Opportunity.",
-      "Industrial Placement: Alternative branch — No.",
       "Industrial Placement: Action — Publish Placement Opportunity.",
-      "Industrial Placement: Alternative branch — No.",
-      "Industrial Placement: Decision — Does the student use a department opportunity. Branch — Yes.",
       "Industrial Placement: Action — Browse Placement Opportunities.",
-      "Industrial Placement: Alternative branch — No.",
       "Industrial Placement: Action — Start Placement Application.",
       "Industrial Placement: Action — Enter Placement Details.",
       "Industrial Placement: Action — Enter Placement Contacts.",
@@ -57,7 +47,7 @@
       "Group Project: Action — Matching Rules.",
       "Group Project: Action — Browse Projects.",
       "Group Project: Repeated operations begin.",
-      "Group Project: Action — Rank Project Preferences.",
+      "Group Project: Action — Set Project Preferences.",
       "Group Project: Action — Submit Project Preferences.",
       "Group Project: Repeat condition — Are preferences valid. Continue branch — No. Exit branch — Yes.",
       "Group Project: Action — Generate Draft Matching.",
@@ -80,7 +70,8 @@
     "semantics": {
       "primitives": [],
       "effects": []
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "shared-setup--student-import",
@@ -116,7 +107,8 @@
         "automation",
         "commit"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "shared-setup--supervisor-import",
@@ -152,7 +144,8 @@
         "automation",
         "commit"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "industrial-placement--opportunity-creation",
@@ -193,7 +186,546 @@
         "edit",
         "automation"
       ]
-    }
+    },
+    "inOverview": true
+  },
+  {
+    "id": "industrial-placement--opportunity-publication",
+    "group": "Industrial Placement",
+    "title": "Publish Placement Opportunity",
+    "src": "diagrams/industrial-placement/opportunity-publication.svg",
+    "outline": [
+      "Placement Administrator: Start.",
+      "Placement Administrator: Action — Open page “Draft Placement Opportunities”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Open page “Placement Opportunity”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Download “Job Specification Form”. Interaction — file download. Effect — browse.",
+      "Placement Administrator: Action — Click “Publish Opportunity”. Interaction — button. Effect — commit.",
+      "App: Action — Set “Opportunity Status” to “Published”. Interaction — system. Effect — automation.",
+      "App: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "file-download",
+        "button",
+        "system"
+      ],
+      "effects": [
+        "browse",
+        "commit",
+        "automation"
+      ]
+    },
+    "inOverview": true
+  },
+  {
+    "id": "industrial-placement--opportunity-discovery",
+    "group": "Industrial Placement",
+    "title": "Browse Placement Opportunities",
+    "src": "diagrams/industrial-placement/opportunity-discovery.svg",
+    "outline": [
+      "Student: Start.",
+      "Student: Action — Open page “Placement Opportunities”. Interaction — page. Effect — browse.",
+      "Student: Action — Search “Placement Opportunities” by “Company Name” or “Job Title”. Interaction — text input. Effect — browse.",
+      "Student: Action — Filter “Placement Opportunities” by “Placement Location” and “Closing Date”. Interaction — selection. Effect — browse.",
+      "Student: Action — Open page “Placement Opportunity”. Interaction — page. Effect — browse.",
+      "Student: Action — Read “Company Name”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Company Website”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Job Title”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Placement Location”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Start Date”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Finish Date”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Closing Date”. Interaction — read. Effect — browse.",
+      "Student: Action — Read “Application Method”. Interaction — read. Effect — browse.",
+      "Student: Action — Download “Job Specification Form”. Interaction — file download. Effect — browse.",
+      "Student: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "text-input",
+        "selection",
+        "read",
+        "file-download"
+      ],
+      "effects": [
+        "browse"
+      ]
+    },
+    "inOverview": true
+  },
+  {
+    "id": "industrial-placement--placement-application-start",
+    "group": "Industrial Placement",
+    "title": "Start Placement Application",
+    "src": "diagrams/industrial-placement/placement-application-start.svg",
+    "outline": [
+      "Student: Start.",
+      "Student: Action — Click “New Placement Application”. Interaction — button. Effect — commit.",
+      "App: Decision — Check for an open placement application. Branch — Present.",
+      "App: Action — Show “Existing Placement”. Interaction — system. Effect — automation.",
+      "App: Alternative branch — None.",
+      "App: Action — Create draft placement. Interaction — system. Effect — automation.",
+      "App: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "button",
+        "system"
+      ],
+      "effects": [
+        "commit",
+        "automation"
+      ]
+    },
+    "inOverview": true
+  },
+  {
+    "id": "industrial-placement--placement-details-entry",
+    "group": "Industrial Placement",
+    "title": "Enter Placement Details",
+    "src": "diagrams/industrial-placement/placement-details-entry.svg",
+    "outline": [
+      "Student: Start.",
+      "Student: Action — Open page “Placement Details”. Interaction — page. Effect — browse.",
+      "Student: Action — Enter “Company Name”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Placement Address”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Country”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Job Title”. Interaction — text input. Effect — edit.",
+      "Student: Action — Select “Start Date”. Interaction — date selection. Effect — edit.",
+      "Student: Action — Select “Finish Date”. Interaction — date selection. Effect — edit.",
+      "Student: Action — Click “Save Placement Details”. Interaction — button. Effect — commit.",
+      "Student: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "text-input",
+        "date-selection",
+        "button"
+      ],
+      "effects": [
+        "browse",
+        "edit",
+        "commit"
+      ]
+    },
+    "inOverview": true
+  },
+  {
+    "id": "industrial-placement--placement-contacts-entry",
+    "group": "Industrial Placement",
+    "title": "Enter Placement Contacts",
+    "src": "diagrams/industrial-placement/placement-contacts-entry.svg",
+    "outline": [
+      "Student: Start.",
+      "Student: Action — Open page “Placement Contacts”. Interaction — page. Effect — browse.",
+      "Student: Action — Enter “Company Supervisor Title”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Company Supervisor First Name”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Company Supervisor Surname”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Company Supervisor Email”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Company Supervisor Telephone”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Emergency Contact Name”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Emergency Contact Relationship”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Emergency Contact Email”. Interaction — text input. Effect — edit.",
+      "Student: Action — Enter “Emergency Contact Telephone”. Interaction — text input. Effect — edit.",
+      "Student: Action — Click “Save Placement Contacts”. Interaction — button. Effect — commit.",
+      "Student: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "text-input",
+        "button"
+      ],
+      "effects": [
+        "browse",
+        "edit",
+        "commit"
+      ]
+    },
+    "inOverview": true
+  },
+  {
+    "id": "industrial-placement--placement-forms-submission",
+    "group": "Industrial Placement",
+    "title": "Submit Placement Forms",
+    "src": "diagrams/industrial-placement/placement-forms-submission.svg",
+    "outline": [
+      "Student: Start.",
+      "Student: Action — Open page “Supporting Forms”. Interaction — page. Effect — browse.",
+      "Student: Action — Upload “Job Specification Form”. Interaction — file upload. Effect — edit.",
+      "Student: Action — Upload “Placement Provider Information Form”. Interaction — file upload. Effect — edit.",
+      "Student: Action — Click “Submit for Review”. Interaction — button. Effect — commit.",
+      "App: Action — Set “Placement Status” to “Submitted”. Interaction — system. Effect — automation.",
+      "App: Action — Email submission receipt to student. Interaction — notification. Effect — notification.",
+      "App: Action — Start placement approval. Interaction — system. Effect — automation.",
+      "App: Action — Load “Approval Sequence”. Interaction — system. Effect — automation.",
+      "App: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "file-upload",
+        "button",
+        "system",
+        "notification"
+      ],
+      "effects": [
+        "browse",
+        "edit",
+        "commit",
+        "automation",
+        "notification"
+      ]
+    },
+    "inOverview": true
+  },
+  {
+    "id": "industrial-placement--approval-review",
+    "group": "Industrial Placement",
+    "title": "Approval Review",
+    "src": "diagrams/industrial-placement/approval-review.svg",
+    "outline": [
+      "App: Start.",
+      "App: Action — Select current approval step. Interaction — system. Effect — automation.",
+      "App: Action — Set “Placement Status” to “Awaiting Approval”. Interaction — system. Effect — automation.",
+      "App: Action — Email review notice to current placement administrator. Interaction — notification. Effect — notification.",
+      "Placement Administrator: Action — Open page “Placements Awaiting Approval”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Search “Placements” by “Student First Name”, “Student Surname” or “CID”. Interaction — text input. Effect — browse.",
+      "Placement Administrator: Action — Filter “Placements” by “Academic Year”. Interaction — selection. Effect — browse.",
+      "Placement Administrator: Action — Open page “Placement”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Open page “Placement Details”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Open page “Contact Details”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Download “Job Specification Form”. Interaction — file download. Effect — browse.",
+      "Placement Administrator: Action — Download “Placement Provider Information Form”. Interaction — file download. Effect — browse.",
+      "Placement Administrator: Action — Select “Placement Review Outcome”: “Approve”, “Incomplete” or “Reject”. Interaction — selection. Effect — edit.",
+      "Placement Administrator: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "system",
+        "notification",
+        "page",
+        "text-input",
+        "selection",
+        "file-download"
+      ],
+      "effects": [
+        "automation",
+        "notification",
+        "browse",
+        "edit"
+      ]
+    },
+    "inOverview": true
+  },
+  {
+    "id": "industrial-placement--correction-request",
+    "group": "Industrial Placement",
+    "title": "Correction Request",
+    "src": "diagrams/industrial-placement/correction-request.svg",
+    "outline": [
+      "Placement Administrator: Start.",
+      "Placement Administrator: Action — Enter “Missing Information Request”. Interaction — text input. Effect — edit.",
+      "Placement Administrator: Action — Click “Return as Incomplete”. Interaction — button. Effect — commit.",
+      "App: Action — Set “Placement Status” to “Incomplete”. Interaction — system. Effect — automation.",
+      "App: Action — Email correction request to student. Interaction — notification. Effect — notification.",
+      "App: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "text-input",
+        "button",
+        "system",
+        "notification"
+      ],
+      "effects": [
+        "edit",
+        "commit",
+        "automation",
+        "notification"
+      ]
+    },
+    "inOverview": true
+  },
+  {
+    "id": "industrial-placement--correction-resubmission",
+    "group": "Industrial Placement",
+    "title": "Correction Resubmission",
+    "src": "diagrams/industrial-placement/correction-resubmission.svg",
+    "outline": [
+      "Student: Start.",
+      "Student: Action — Open page “Returned Placement”. Interaction — page. Effect — browse.",
+      "Student: Action — Open page “Correction Request”. Interaction — page. Effect — browse.",
+      "Student: Decision — Select “Correction Action”. Branch — “Edit Field”.",
+      "Student: Action — Edit highlighted field in “Placement Details”. Interaction — text input. Effect — edit.",
+      "Student: Alternative branch — “Replace Form”.",
+      "Student: Action — Replace highlighted file in “Supporting Forms”. Interaction — file upload. Effect — edit.",
+      "Student: Action — Click “Resubmit for Review”. Interaction — button. Effect — commit.",
+      "Student: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "text-input",
+        "file-upload",
+        "button"
+      ],
+      "effects": [
+        "browse",
+        "edit",
+        "commit"
+      ]
+    },
+    "inOverview": true
+  },
+  {
+    "id": "industrial-placement--correction-validation",
+    "group": "Industrial Placement",
+    "title": "Review Corrections",
+    "src": "diagrams/industrial-placement/correction-validation.svg",
+    "outline": [
+      "App: Start.",
+      "App: Decision — Validate corrected placement. Branch — Incomplete.",
+      "App: Action — Show “Correction Validation Errors”. Interaction — system. Effect — automation.",
+      "Student: Action — Open page “Correction Validation Errors”. Interaction — page. Effect — browse.",
+      "Student: End.",
+      "Student: Alternative branch — Complete.",
+      "App: Action — Set “Placement Status” to “Awaiting Approval”. Interaction — system. Effect — automation.",
+      "App: Action — Email resubmission notice to current placement administrator. Interaction — notification. Effect — notification.",
+      "Placement Administrator: Action — Open page “Resubmitted Placement”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Open page “Corrected Placement Details”. Interaction — page. Effect — browse.",
+      "Placement Administrator: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "system",
+        "page",
+        "notification"
+      ],
+      "effects": [
+        "automation",
+        "browse",
+        "notification"
+      ]
+    },
+    "inOverview": true
+  },
+  {
+    "id": "industrial-placement--approval-decision-and-chain-progression",
+    "group": "Industrial Placement",
+    "title": "Record Approval Decision",
+    "src": "diagrams/industrial-placement/approval-decision-and-chain-progression.svg",
+    "outline": [
+      "Placement Administrator: Start.",
+      "Placement Administrator: Decision — Is “Placement Review Outcome” set to “Reject”. Branch — Yes.",
+      "Placement Administrator: Action — Enter “Placement Rejection Reason”. Interaction — text input. Effect — edit.",
+      "Placement Administrator: Action — Click “Reject Placement”. Interaction — button. Effect — commit.",
+      "App: Action — Save rejection decision. Interaction — system. Effect — automation.",
+      "App: Action — Set “Placement Status” to “Rejected”. Interaction — system. Effect — automation.",
+      "App: Action — Email rejection decision to student. Interaction — notification. Effect — notification.",
+      "App: End.",
+      "App: Alternative branch — “Approve”.",
+      "Placement Administrator: Action — Click “Approve Current Placement Step”. Interaction — button. Effect — commit.",
+      "App: Action — Save approval decision. Interaction — system. Effect — automation.",
+      "App: Action — Advance to next approval step. Interaction — system. Effect — automation.",
+      "App: Decision — Is another approval step pending. Branch — Yes.",
+      "App: Action — Keep “Placement Status” as “Awaiting Approval”. Interaction — system. Effect — automation.",
+      "App: Alternative branch — No.",
+      "App: Action — Set “Placement Status” to “Approved”. Interaction — system. Effect — automation.",
+      "App: Action — Email approval decision to student. Interaction — notification. Effect — notification.",
+      "App: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "text-input",
+        "button",
+        "system",
+        "notification"
+      ],
+      "effects": [
+        "edit",
+        "commit",
+        "automation",
+        "notification"
+      ]
+    },
+    "inOverview": true
+  },
+  {
+    "id": "industrial-placement--supervisor-allocation",
+    "group": "Industrial Placement",
+    "title": "Placement Supervisor Allocation",
+    "src": "diagrams/industrial-placement/supervisor-allocation.svg",
+    "outline": [
+      "Placement Administrator: Start.",
+      "Placement Administrator: Action — Open page “Approved Placements”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Search “Approved Placements” by “Student First Name”, “Student Surname” or “CID”. Interaction — text input. Effect — browse.",
+      "Placement Administrator: Action — Filter “Approved Placements” by “Supervisor Status”: “Unassigned”. Interaction — selection. Effect — browse.",
+      "Placement Administrator: Loop condition — Are unassigned placements remaining. Continue branch — Yes.",
+      "Placement Administrator: Action — Open page “Placement”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Open page “Supervisor Assignment Panel”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Search “Supervisors” by “Supervisor First Name”, “Supervisor Surname” or “Area of Expertise”. Interaction — text input. Effect — browse.",
+      "Placement Administrator: Action — Open page “Supervisor Workload Details”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Select “Placement Supervisor”. Interaction — selection. Effect — edit.",
+      "Placement Administrator: Action — Click “Save Supervisor Assignment”. Interaction — button. Effect — commit.",
+      "App: Action — Update placement supervisor assignment. Interaction — system. Effect — automation.",
+      "App: Action — Email placement assignment to supervisor. Interaction — notification. Effect — notification.",
+      "App: Action — Email supervisor assignment to student. Interaction — notification. Effect — notification.",
+      "Placement Administrator: Loop exit — No.",
+      "Placement Supervisor: Action — Open page “Assigned Placement”. Interaction — page. Effect — browse.",
+      "Placement Supervisor: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "text-input",
+        "selection",
+        "button",
+        "system",
+        "notification"
+      ],
+      "effects": [
+        "browse",
+        "edit",
+        "commit",
+        "automation",
+        "notification"
+      ]
+    },
+    "inOverview": true
+  },
+  {
+    "id": "industrial-placement--report-submission",
+    "group": "Industrial Placement",
+    "title": "Report Submission",
+    "src": "diagrams/industrial-placement/report-submission.svg",
+    "outline": [
+      "App: Start.",
+      "App: Action — Show “Placement Report Deadline”. Interaction — system. Effect — automation.",
+      "App: Action — Email report deadline reminder to student. Interaction — notification. Effect — notification.",
+      "Student: Action — Open page “Placement Deliverables”. Interaction — page. Effect — browse.",
+      "Student: Action — Open page “Placement Report Task”. Interaction — page. Effect — browse.",
+      "Student: Action — Upload “Placement Report”. Interaction — file upload. Effect — edit.",
+      "Student: Action — Click “Submit Report”. Interaction — button. Effect — commit.",
+      "App: Action — Create report submission. Interaction — system. Effect — automation.",
+      "App: Action — Email report receipt to student. Interaction — notification. Effect — notification.",
+      "App: Action — Email marking notice to supervisor. Interaction — notification. Effect — notification.",
+      "App: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "system",
+        "notification",
+        "page",
+        "file-upload",
+        "button"
+      ],
+      "effects": [
+        "automation",
+        "notification",
+        "browse",
+        "edit",
+        "commit"
+      ]
+    },
+    "inOverview": true
+  },
+  {
+    "id": "industrial-placement--report-assessment",
+    "group": "Industrial Placement",
+    "title": "Report Assessment",
+    "src": "diagrams/industrial-placement/report-assessment.svg",
+    "outline": [
+      "Placement Supervisor: Start.",
+      "Placement Supervisor: Action — Open page “Placement Reports Awaiting Marking”. Interaction — page. Effect — browse.",
+      "Placement Supervisor: Action — Open page “Student Report Submission”. Interaction — page. Effect — browse.",
+      "Placement Supervisor: Action — Download “Placement Report”. Interaction — file download. Effect — browse.",
+      "Placement Supervisor: Action — Enter “Report Opinion”. Interaction — text input. Effect — edit.",
+      "Placement Supervisor: Action — Enter “Report Mark”. Interaction — text input. Effect — edit.",
+      "Placement Supervisor: Action — Click “Submit Assessment”. Interaction — button. Effect — commit.",
+      "App: Action — Save report opinion. Interaction — system. Effect — automation.",
+      "App: Action — Save report mark. Interaction — system. Effect — automation.",
+      "App: Action — Set “Report Status” to “Marked”. Interaction — system. Effect — automation.",
+      "App: Action — Email report opinion to student. Interaction — notification. Effect — notification.",
+      "App: Action — Email report mark to student. Interaction — notification. Effect — notification.",
+      "App: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "file-download",
+        "text-input",
+        "button",
+        "system",
+        "notification"
+      ],
+      "effects": [
+        "browse",
+        "edit",
+        "commit",
+        "automation",
+        "notification"
+      ]
+    },
+    "inOverview": true
+  },
+  {
+    "id": "industrial-placement--placement-marks-export",
+    "group": "Industrial Placement",
+    "title": "Placement Marks Export",
+    "src": "diagrams/industrial-placement/placement-marks-export.svg",
+    "outline": [
+      "Placement Administrator: Start.",
+      "Placement Administrator: Action — Open page “Placement Marks Report”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Filter “Placement Marks” by “Academic Year” and “Deliverable”. Interaction — selection. Effect — browse.",
+      "Placement Administrator: Action — Click “Export to Excel”. Interaction — button. Effect — browse.",
+      "App: Action — Generate placement marks workbook. Interaction — system. Effect — automation.",
+      "Placement Administrator: Action — Click “Download Marks Workbook”. Interaction — button. Effect — browse.",
+      "Placement Administrator: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "selection",
+        "button",
+        "system"
+      ],
+      "effects": [
+        "browse",
+        "automation"
+      ]
+    },
+    "inOverview": true
+  },
+  {
+    "id": "industrial-placement--opportunity-deletion",
+    "group": "Industrial Placement",
+    "title": "Delete Placement Opportunity",
+    "src": "diagrams/industrial-placement/opportunity-deletion.svg",
+    "outline": [
+      "Placement Administrator: Start.",
+      "Placement Administrator: Action — Open page “Draft Placement Opportunities”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Open page “Placement Opportunity”. Interaction — page. Effect — browse.",
+      "Placement Administrator: Action — Click “Delete Draft Opportunity”. Interaction — button. Effect — commit.",
+      "Placement Administrator: Action — Click “Confirm Opportunity Deletion”. Interaction — button. Effect — commit.",
+      "App: Action — Delete draft placement opportunity. Interaction — system. Effect — destructive.",
+      "App: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "button",
+        "system"
+      ],
+      "effects": [
+        "browse",
+        "commit",
+        "destructive"
+      ]
+    },
+    "inOverview": false
   },
   {
     "id": "industrial-placement--opportunity-editing",
@@ -237,529 +769,8 @@
         "edit",
         "automation"
       ]
-    }
-  },
-  {
-    "id": "industrial-placement--opportunity-deletion",
-    "group": "Industrial Placement",
-    "title": "Delete Placement Opportunity",
-    "src": "diagrams/industrial-placement/opportunity-deletion.svg",
-    "outline": [
-      "Placement Administrator: Start.",
-      "Placement Administrator: Action — Open page “Draft Placement Opportunities”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Open page “Placement Opportunity”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Click “Delete Draft Opportunity”. Interaction — button. Effect — commit.",
-      "Placement Administrator: Action — Click “Confirm Opportunity Deletion”. Interaction — button. Effect — commit.",
-      "App: Action — Delete draft placement opportunity. Interaction — system. Effect — destructive.",
-      "App: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "page",
-        "button",
-        "system"
-      ],
-      "effects": [
-        "browse",
-        "commit",
-        "destructive"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--opportunity-publication",
-    "group": "Industrial Placement",
-    "title": "Publish Placement Opportunity",
-    "src": "diagrams/industrial-placement/opportunity-publication.svg",
-    "outline": [
-      "Placement Administrator: Start.",
-      "Placement Administrator: Action — Open page “Draft Placement Opportunities”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Open page “Placement Opportunity”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Download “Job Specification Form”. Interaction — file download. Effect — browse.",
-      "Placement Administrator: Action — Click “Publish Opportunity”. Interaction — button. Effect — commit.",
-      "App: Action — Set “Opportunity Status” to “Published”. Interaction — system. Effect — automation.",
-      "App: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "page",
-        "file-download",
-        "button",
-        "system"
-      ],
-      "effects": [
-        "browse",
-        "commit",
-        "automation"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--opportunity-discovery",
-    "group": "Industrial Placement",
-    "title": "Browse Placement Opportunities",
-    "src": "diagrams/industrial-placement/opportunity-discovery.svg",
-    "outline": [
-      "Student: Start.",
-      "Student: Action — Open page “Placement Opportunities”. Interaction — page. Effect — browse.",
-      "Student: Action — Search “Placement Opportunities” by “Company Name” or “Job Title”. Interaction — text input. Effect — browse.",
-      "Student: Action — Filter “Placement Opportunities” by “Placement Location” and “Closing Date”. Interaction — selection. Effect — browse.",
-      "Student: Action — Open page “Placement Opportunity”. Interaction — page. Effect — browse.",
-      "Student: Action — Read “Company Name”. Interaction — read. Effect — browse.",
-      "Student: Action — Read “Company Website”. Interaction — read. Effect — browse.",
-      "Student: Action — Read “Job Title”. Interaction — read. Effect — browse.",
-      "Student: Action — Read “Placement Location”. Interaction — read. Effect — browse.",
-      "Student: Action — Read “Start Date”. Interaction — read. Effect — browse.",
-      "Student: Action — Read “Finish Date”. Interaction — read. Effect — browse.",
-      "Student: Action — Read “Closing Date”. Interaction — read. Effect — browse.",
-      "Student: Action — Read “Application Method”. Interaction — read. Effect — browse.",
-      "Student: Action — Download “Job Specification Form”. Interaction — file download. Effect — browse.",
-      "Student: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "page",
-        "text-input",
-        "selection",
-        "read",
-        "file-download"
-      ],
-      "effects": [
-        "browse"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--placement-application-start",
-    "group": "Industrial Placement",
-    "title": "Start Placement Application",
-    "src": "diagrams/industrial-placement/placement-application-start.svg",
-    "outline": [
-      "Student: Start.",
-      "Student: Action — Click “New Placement Application”. Interaction — button. Effect — commit.",
-      "App: Decision — Check for an open placement application. Branch — Present.",
-      "App: Action — Show “Existing Placement”. Interaction — system. Effect — automation.",
-      "App: Alternative branch — None.",
-      "App: Action — Create draft placement. Interaction — system. Effect — automation.",
-      "App: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "button",
-        "system"
-      ],
-      "effects": [
-        "commit",
-        "automation"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--placement-details-entry",
-    "group": "Industrial Placement",
-    "title": "Enter Placement Details",
-    "src": "diagrams/industrial-placement/placement-details-entry.svg",
-    "outline": [
-      "Student: Start.",
-      "Student: Action — Open page “Placement Details”. Interaction — page. Effect — browse.",
-      "Student: Action — Enter “Company Name”. Interaction — text input. Effect — edit.",
-      "Student: Action — Enter “Placement Address”. Interaction — text input. Effect — edit.",
-      "Student: Action — Enter “Country”. Interaction — text input. Effect — edit.",
-      "Student: Action — Enter “Job Title”. Interaction — text input. Effect — edit.",
-      "Student: Action — Select “Start Date”. Interaction — date selection. Effect — edit.",
-      "Student: Action — Select “Finish Date”. Interaction — date selection. Effect — edit.",
-      "Student: Action — Click “Save Placement Details”. Interaction — button. Effect — commit.",
-      "Student: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "page",
-        "text-input",
-        "date-selection",
-        "button"
-      ],
-      "effects": [
-        "browse",
-        "edit",
-        "commit"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--placement-contacts-entry",
-    "group": "Industrial Placement",
-    "title": "Enter Placement Contacts",
-    "src": "diagrams/industrial-placement/placement-contacts-entry.svg",
-    "outline": [
-      "Student: Start.",
-      "Student: Action — Open page “Placement Contacts”. Interaction — page. Effect — browse.",
-      "Student: Action — Enter “Company Supervisor Title”. Interaction — text input. Effect — edit.",
-      "Student: Action — Enter “Company Supervisor First Name”. Interaction — text input. Effect — edit.",
-      "Student: Action — Enter “Company Supervisor Surname”. Interaction — text input. Effect — edit.",
-      "Student: Action — Enter “Company Supervisor Email”. Interaction — text input. Effect — edit.",
-      "Student: Action — Enter “Company Supervisor Telephone”. Interaction — text input. Effect — edit.",
-      "Student: Action — Enter “Emergency Contact Name”. Interaction — text input. Effect — edit.",
-      "Student: Action — Enter “Emergency Contact Relationship”. Interaction — text input. Effect — edit.",
-      "Student: Action — Enter “Emergency Contact Email”. Interaction — text input. Effect — edit.",
-      "Student: Action — Enter “Emergency Contact Telephone”. Interaction — text input. Effect — edit.",
-      "Student: Action — Click “Save Placement Contacts”. Interaction — button. Effect — commit.",
-      "Student: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "page",
-        "text-input",
-        "button"
-      ],
-      "effects": [
-        "browse",
-        "edit",
-        "commit"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--placement-forms-submission",
-    "group": "Industrial Placement",
-    "title": "Submit Placement Forms",
-    "src": "diagrams/industrial-placement/placement-forms-submission.svg",
-    "outline": [
-      "Student: Start.",
-      "Student: Action — Open page “Supporting Forms”. Interaction — page. Effect — browse.",
-      "Student: Action — Upload “Job Specification Form”. Interaction — file upload. Effect — edit.",
-      "Student: Action — Upload “Placement Provider Information Form”. Interaction — file upload. Effect — edit.",
-      "Student: Action — Click “Submit for Review”. Interaction — button. Effect — commit.",
-      "App: Action — Set “Placement Status” to “Submitted”. Interaction — system. Effect — automation.",
-      "App: Action — Email submission receipt to student. Interaction — notification. Effect — notification.",
-      "App: Action — Start placement approval. Interaction — system. Effect — automation.",
-      "App: Action — Load “Approval Sequence”. Interaction — system. Effect — automation.",
-      "App: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "page",
-        "file-upload",
-        "button",
-        "system",
-        "notification"
-      ],
-      "effects": [
-        "browse",
-        "edit",
-        "commit",
-        "automation",
-        "notification"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--approval-review",
-    "group": "Industrial Placement",
-    "title": "Approval Review",
-    "src": "diagrams/industrial-placement/approval-review.svg",
-    "outline": [
-      "App: Start.",
-      "App: Action — Select current approval step. Interaction — system. Effect — automation.",
-      "App: Action — Set “Placement Status” to “Awaiting Approval”. Interaction — system. Effect — automation.",
-      "App: Action — Email review notice to current placement administrator. Interaction — notification. Effect — notification.",
-      "Placement Administrator: Action — Open page “Placements Awaiting Approval”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Search “Placements” by “Student First Name”, “Student Surname” or “CID”. Interaction — text input. Effect — browse.",
-      "Placement Administrator: Action — Filter “Placements” by “Academic Year”. Interaction — selection. Effect — browse.",
-      "Placement Administrator: Action — Open page “Placement”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Open page “Placement Details”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Open page “Contact Details”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Download “Job Specification Form”. Interaction — file download. Effect — browse.",
-      "Placement Administrator: Action — Download “Placement Provider Information Form”. Interaction — file download. Effect — browse.",
-      "Placement Administrator: Action — Select “Placement Review Outcome”: “Approve”, “Incomplete” or “Reject”. Interaction — selection. Effect — edit.",
-      "Placement Administrator: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "system",
-        "notification",
-        "page",
-        "text-input",
-        "selection",
-        "file-download"
-      ],
-      "effects": [
-        "automation",
-        "notification",
-        "browse",
-        "edit"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--correction-request",
-    "group": "Industrial Placement",
-    "title": "Correction Request",
-    "src": "diagrams/industrial-placement/correction-request.svg",
-    "outline": [
-      "Placement Administrator: Start.",
-      "Placement Administrator: Action — Enter “Missing Information Request”. Interaction — text input. Effect — edit.",
-      "Placement Administrator: Action — Click “Return as Incomplete”. Interaction — button. Effect — commit.",
-      "App: Action — Set “Placement Status” to “Incomplete”. Interaction — system. Effect — automation.",
-      "App: Action — Email correction request to student. Interaction — notification. Effect — notification.",
-      "App: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "text-input",
-        "button",
-        "system",
-        "notification"
-      ],
-      "effects": [
-        "edit",
-        "commit",
-        "automation",
-        "notification"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--correction-resubmission",
-    "group": "Industrial Placement",
-    "title": "Correction Resubmission",
-    "src": "diagrams/industrial-placement/correction-resubmission.svg",
-    "outline": [
-      "Student: Start.",
-      "Student: Action — Open page “Returned Placement”. Interaction — page. Effect — browse.",
-      "Student: Action — Open page “Correction Request”. Interaction — page. Effect — browse.",
-      "Student: Decision — Select “Correction Action”. Branch — “Edit Field”.",
-      "Student: Action — Edit highlighted field in “Placement Details”. Interaction — text input. Effect — edit.",
-      "Student: Alternative branch — “Replace Form”.",
-      "Student: Action — Replace highlighted file in “Supporting Forms”. Interaction — file upload. Effect — edit.",
-      "Student: Action — Click “Resubmit for Review”. Interaction — button. Effect — commit.",
-      "Student: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "page",
-        "text-input",
-        "file-upload",
-        "button"
-      ],
-      "effects": [
-        "browse",
-        "edit",
-        "commit"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--correction-validation",
-    "group": "Industrial Placement",
-    "title": "Review Corrections",
-    "src": "diagrams/industrial-placement/correction-validation.svg",
-    "outline": [
-      "App: Start.",
-      "App: Decision — Validate corrected placement. Branch — Incomplete.",
-      "App: Action — Show “Correction Validation Errors”. Interaction — system. Effect — automation.",
-      "Student: Action — Open page “Correction Validation Errors”. Interaction — page. Effect — browse.",
-      "Student: End.",
-      "Student: Alternative branch — Complete.",
-      "App: Action — Set “Placement Status” to “Awaiting Approval”. Interaction — system. Effect — automation.",
-      "App: Action — Email resubmission notice to current placement administrator. Interaction — notification. Effect — notification.",
-      "Placement Administrator: Action — Open page “Resubmitted Placement”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Open page “Corrected Placement Details”. Interaction — page. Effect — browse.",
-      "Placement Administrator: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "system",
-        "page",
-        "notification"
-      ],
-      "effects": [
-        "automation",
-        "browse",
-        "notification"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--approval-decision-and-chain-progression",
-    "group": "Industrial Placement",
-    "title": "Record Approval Decision",
-    "src": "diagrams/industrial-placement/approval-decision-and-chain-progression.svg",
-    "outline": [
-      "Placement Administrator: Start.",
-      "Placement Administrator: Decision — Is “Placement Review Outcome” set to “Reject”. Branch — Yes.",
-      "Placement Administrator: Action — Enter “Placement Rejection Reason”. Interaction — text input. Effect — edit.",
-      "Placement Administrator: Action — Click “Reject Placement”. Interaction — button. Effect — commit.",
-      "App: Action — Save rejection decision. Interaction — system. Effect — automation.",
-      "App: Action — Set “Placement Status” to “Rejected”. Interaction — system. Effect — automation.",
-      "App: Action — Email rejection decision to student. Interaction — notification. Effect — notification.",
-      "App: End.",
-      "App: Alternative branch — “Approve”.",
-      "Placement Administrator: Action — Click “Approve Current Placement Step”. Interaction — button. Effect — commit.",
-      "App: Action — Save approval decision. Interaction — system. Effect — automation.",
-      "App: Action — Advance to next approval step. Interaction — system. Effect — automation.",
-      "App: Decision — Is another approval step pending. Branch — Yes.",
-      "App: Action — Keep “Placement Status” as “Awaiting Approval”. Interaction — system. Effect — automation.",
-      "App: Alternative branch — No.",
-      "App: Action — Set “Placement Status” to “Approved”. Interaction — system. Effect — automation.",
-      "App: Action — Email approval decision to student. Interaction — notification. Effect — notification.",
-      "App: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "text-input",
-        "button",
-        "system",
-        "notification"
-      ],
-      "effects": [
-        "edit",
-        "commit",
-        "automation",
-        "notification"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--supervisor-allocation",
-    "group": "Industrial Placement",
-    "title": "Placement Supervisor Allocation",
-    "src": "diagrams/industrial-placement/supervisor-allocation.svg",
-    "outline": [
-      "Placement Administrator: Start.",
-      "Placement Administrator: Action — Open page “Approved Placements”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Search “Approved Placements” by “Student First Name”, “Student Surname” or “CID”. Interaction — text input. Effect — browse.",
-      "Placement Administrator: Action — Filter “Approved Placements” by “Supervisor Status”: “Unassigned”. Interaction — selection. Effect — browse.",
-      "Placement Administrator: Loop condition — Are unassigned placements remaining. Continue branch — Yes.",
-      "Placement Administrator: Action — Open page “Placement”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Open page “Supervisor Assignment Panel”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Search “Supervisors” by “Supervisor First Name”, “Supervisor Surname” or “Area of Expertise”. Interaction — text input. Effect — browse.",
-      "Placement Administrator: Action — Open page “Supervisor Workload Details”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Select “Placement Supervisor”. Interaction — selection. Effect — edit.",
-      "Placement Administrator: Action — Click “Save Supervisor Assignment”. Interaction — button. Effect — commit.",
-      "App: Action — Update placement supervisor assignment. Interaction — system. Effect — automation.",
-      "App: Action — Email placement assignment to supervisor. Interaction — notification. Effect — notification.",
-      "App: Action — Email supervisor assignment to student. Interaction — notification. Effect — notification.",
-      "Placement Administrator: Loop exit — No.",
-      "Placement Supervisor: Action — Open page “Assigned Placement”. Interaction — page. Effect — browse.",
-      "Placement Supervisor: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "page",
-        "text-input",
-        "selection",
-        "button",
-        "system",
-        "notification"
-      ],
-      "effects": [
-        "browse",
-        "edit",
-        "commit",
-        "automation",
-        "notification"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--report-submission",
-    "group": "Industrial Placement",
-    "title": "Report Submission",
-    "src": "diagrams/industrial-placement/report-submission.svg",
-    "outline": [
-      "App: Start.",
-      "App: Action — Show “Placement Report Deadline”. Interaction — system. Effect — automation.",
-      "App: Action — Email report deadline reminder to student. Interaction — notification. Effect — notification.",
-      "Student: Action — Open page “Placement Deliverables”. Interaction — page. Effect — browse.",
-      "Student: Action — Open page “Placement Report Task”. Interaction — page. Effect — browse.",
-      "Student: Action — Upload “Placement Report”. Interaction — file upload. Effect — edit.",
-      "Student: Action — Click “Submit Report”. Interaction — button. Effect — commit.",
-      "App: Action — Create report submission. Interaction — system. Effect — automation.",
-      "App: Action — Email report receipt to student. Interaction — notification. Effect — notification.",
-      "App: Action — Email marking notice to supervisor. Interaction — notification. Effect — notification.",
-      "App: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "system",
-        "notification",
-        "page",
-        "file-upload",
-        "button"
-      ],
-      "effects": [
-        "automation",
-        "notification",
-        "browse",
-        "edit",
-        "commit"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--report-assessment",
-    "group": "Industrial Placement",
-    "title": "Report Assessment",
-    "src": "diagrams/industrial-placement/report-assessment.svg",
-    "outline": [
-      "Placement Supervisor: Start.",
-      "Placement Supervisor: Action — Open page “Placement Reports Awaiting Marking”. Interaction — page. Effect — browse.",
-      "Placement Supervisor: Action — Open page “Student Report Submission”. Interaction — page. Effect — browse.",
-      "Placement Supervisor: Action — Download “Placement Report”. Interaction — file download. Effect — browse.",
-      "Placement Supervisor: Action — Enter “Report Opinion”. Interaction — text input. Effect — edit.",
-      "Placement Supervisor: Action — Enter “Report Mark”. Interaction — text input. Effect — edit.",
-      "Placement Supervisor: Action — Click “Submit Assessment”. Interaction — button. Effect — commit.",
-      "App: Action — Save report opinion. Interaction — system. Effect — automation.",
-      "App: Action — Save report mark. Interaction — system. Effect — automation.",
-      "App: Action — Set “Report Status” to “Marked”. Interaction — system. Effect — automation.",
-      "App: Action — Email report opinion to student. Interaction — notification. Effect — notification.",
-      "App: Action — Email report mark to student. Interaction — notification. Effect — notification.",
-      "App: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "page",
-        "file-download",
-        "text-input",
-        "button",
-        "system",
-        "notification"
-      ],
-      "effects": [
-        "browse",
-        "edit",
-        "commit",
-        "automation",
-        "notification"
-      ]
-    }
-  },
-  {
-    "id": "industrial-placement--placement-marks-export",
-    "group": "Industrial Placement",
-    "title": "Placement Marks Export",
-    "src": "diagrams/industrial-placement/placement-marks-export.svg",
-    "outline": [
-      "Placement Administrator: Start.",
-      "Placement Administrator: Action — Open page “Placement Marks Report”. Interaction — page. Effect — browse.",
-      "Placement Administrator: Action — Filter “Placement Marks” by “Academic Year” and “Deliverable”. Interaction — selection. Effect — browse.",
-      "Placement Administrator: Action — Click “Export to Excel”. Interaction — button. Effect — browse.",
-      "App: Action — Generate placement marks workbook. Interaction — system. Effect — automation.",
-      "Placement Administrator: Action — Click “Download Marks Workbook”. Interaction — button. Effect — browse.",
-      "Placement Administrator: End."
-    ],
-    "semantics": {
-      "primitives": [
-        "page",
-        "selection",
-        "button",
-        "system"
-      ],
-      "effects": [
-        "browse",
-        "automation"
-      ]
-    }
+    },
+    "inOverview": false
   },
   {
     "id": "group-project--project-import",
@@ -790,7 +801,8 @@
         "automation",
         "commit"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "group-project--project-creation",
@@ -825,7 +837,8 @@
         "edit",
         "automation"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "group-project--project-maintenance",
@@ -871,7 +884,8 @@
         "automation",
         "destructive"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "group-project--project-publication",
@@ -896,7 +910,8 @@
         "commit",
         "automation"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "group-project--matching-configuration",
@@ -926,7 +941,8 @@
         "commit",
         "automation"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "group-project--project-discovery",
@@ -956,36 +972,32 @@
       "effects": [
         "browse"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "group-project--preference-editing",
     "group": "Group Project",
-    "title": "Rank Project Preferences",
+    "title": "Set Project Preferences",
     "src": "diagrams/group-project/preference-editing.svg",
     "outline": [
       "Student: Start.",
-      "Student: Repeated operations begin.",
-      "Student: Decision — Select “Preference Action”.",
-      "Student: Option — “Add Project”.",
-      "Student: Action — Open page “Project Details”. Interaction — page. Effect — browse.",
+      "Student: Action — Open page “Project Preferences”. Interaction — page. Effect — browse.",
+      "Student: Action — Search “Projects” by “Project Title” or “Project Provider Name”. Interaction — text input. Effect — browse.",
+      "Student: Action — Filter “Projects” by “Project Provider Name”. Interaction — selection. Effect — browse.",
+      "Student: Action — View “Project Details”. Interaction — read. Effect — browse.",
       "Student: Action — Click “Add to Preferences”. Interaction — button. Effect — commit.",
-      "App: Action — Create draft project preference. Interaction — system. Effect — automation.",
-      "App: Option — “Reorder”.",
+      "App: Action — Append project to “Preference Ranking”. Interaction — system. Effect — automation.",
       "Student: Action — Drag “Project Preference” within “Preference Ranking”. Interaction — drag. Effect — edit.",
-      "App: Action — Update project preference rank. Interaction — system. Effect — automation.",
-      "App: Option — “Remove”.",
-      "Student: Action — Click “Remove Project Preference”. Interaction — button. Effect — commit.",
-      "App: Action — Delete draft project preference. Interaction — system. Effect — destructive.",
-      "App: Option — “Submit”.",
-      "Student: Action — Click “Submit Preferences”. Interaction — button. Effect — commit.",
-      "App: Action — Set “Preference Status” to “Submitted”. Interaction — system. Effect — automation.",
-      "Student: Repeat condition — Is preference submission pending. Continue branch — Yes. Exit branch — No.",
-      "Student: End."
+      "App: Action — Automatically save “Preference Ranking”. Interaction — system. Effect — automation.",
+      "App: End."
     ],
     "semantics": {
       "primitives": [
         "page",
+        "text-input",
+        "selection",
+        "read",
         "button",
         "system",
         "drag"
@@ -994,10 +1006,10 @@
         "browse",
         "commit",
         "automation",
-        "edit",
-        "destructive"
+        "edit"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "group-project--preference-validation-and-confirmation",
@@ -1029,7 +1041,8 @@
         "browse",
         "notification"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "group-project--automatic-matching",
@@ -1058,7 +1071,8 @@
         "commit",
         "automation"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "group-project--draft-matching-review",
@@ -1085,7 +1099,8 @@
         "browse",
         "edit"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "group-project--draft-group-management",
@@ -1132,7 +1147,8 @@
         "automation",
         "destructive"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "group-project--membership-and-project-editing",
@@ -1167,7 +1183,8 @@
         "edit",
         "automation"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "group-project--matching-validation-and-confirmation",
@@ -1199,7 +1216,8 @@
         "browse",
         "commit"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "group-project--supervisor-allocation",
@@ -1238,7 +1256,8 @@
         "automation",
         "notification"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "group-project--allocation-publication-and-access",
@@ -1270,7 +1289,8 @@
         "notification",
         "browse"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "group-project--poster-submission",
@@ -1302,7 +1322,8 @@
         "automation",
         "notification"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "group-project--poster-assessment",
@@ -1340,7 +1361,8 @@
         "automation",
         "notification"
       ]
-    }
+    },
+    "inOverview": true
   },
   {
     "id": "group-project--group-project-marks-export",
@@ -1367,6 +1389,64 @@
         "browse",
         "automation"
       ]
-    }
+    },
+    "inOverview": true
+  },
+  {
+    "id": "group-project--preference-removal",
+    "group": "Group Project",
+    "title": "Remove Project Preference",
+    "src": "diagrams/group-project/preference-removal.svg",
+    "outline": [
+      "Student: Start.",
+      "Student: Action — Open page “Project Preferences”. Interaction — page. Effect — browse.",
+      "Student: Action — Click “Remove” beside “Project Preference”. Interaction — button. Effect — commit.",
+      "App: Action — Remove project from “Preference Ranking”. Interaction — system. Effect — automation.",
+      "App: Action — Automatically save “Preference Ranking”. Interaction — system. Effect — automation.",
+      "App: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "button",
+        "system"
+      ],
+      "effects": [
+        "browse",
+        "commit",
+        "automation"
+      ]
+    },
+    "inOverview": false
+  },
+  {
+    "id": "group-project--preference-button-reordering",
+    "group": "Group Project",
+    "title": "Reorder Project Preference with Buttons",
+    "src": "diagrams/group-project/preference-button-reordering.svg",
+    "outline": [
+      "Student: Start.",
+      "Student: Action — Open page “Project Preferences”. Interaction — page. Effect — browse.",
+      "Student: Decision — Click “Move Up”. Branch — “Move Up”.",
+      "App: Action — Move project one position up in “Preference Ranking”. Interaction — system. Effect — automation.",
+      "App: Alternative branch — “Move Down”.",
+      "Student: Action — Click “Move Down”. Interaction — button. Effect — commit.",
+      "App: Action — Move project one position down in “Preference Ranking”. Interaction — system. Effect — automation.",
+      "App: Action — Automatically save “Preference Ranking”. Interaction — system. Effect — automation.",
+      "App: End."
+    ],
+    "semantics": {
+      "primitives": [
+        "page",
+        "system",
+        "button"
+      ],
+      "effects": [
+        "browse",
+        "automation",
+        "commit"
+      ]
+    },
+    "inOverview": false
   }
 ]
