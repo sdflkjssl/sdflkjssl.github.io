@@ -75,22 +75,6 @@ const termDefinitions = [
     meaning: "The ordered list of placement administrators who must review a placement.",
   },
   {
-    term: "Draft Group",
-    meaning: "A proposed student group that can still be edited before matching is confirmed.",
-  },
-  {
-    term: "Draft Matching",
-    meaning: "Proposed student groups and project assignments that administrators can review and edit before confirmation. The calculation method remains to be agreed.",
-  },
-  {
-    term: "Matching Rules",
-    meaning: "The group-size and project-capacity requirements that a draft matching must satisfy.",
-  },
-  {
-    term: "Matching Status",
-    meaning: "Whether a student and project are Matched, Unmatched or affected by a Rule Error in the draft matching.",
-  },
-  {
     term: "Student Capacity",
     meaning: "The maximum number of students that can be assigned to a project.",
   },
@@ -107,12 +91,28 @@ const termDefinitions = [
     meaning: "A student's ordered list of preferred projects.",
   },
   {
+    term: "Preference Rankings Spreadsheet",
+    meaning: "The spreadsheet exported from submitted student project preferences for offline allocation processing.",
+  },
+  {
+    term: "Allocation Spreadsheet",
+    meaning: "The spreadsheet produced by the offline allocation process and imported into the app.",
+  },
+  {
+    term: "Group ID",
+    meaning: "The identifier used to keep students assigned to the same project group together.",
+  },
+  {
+    term: "Allocation Status",
+    meaning: "Whether a project allocation is Draft, Confirmed or Published.",
+  },
+  {
     term: "Preference Window",
     meaning: "The period during which students can submit project preferences.",
   },
   {
     term: "Allocation",
-    meaning: "A confirmed assignment of students to a group and project.",
+    meaning: "An assignment connecting students, a project group and a project.",
   },
 ];
 
