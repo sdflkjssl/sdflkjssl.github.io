@@ -1,0 +1,114 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Placement &amp; Group Project App</title>
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/vendor/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/css/app.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <header class="brand">
+      <span class="brand-mark" aria-hidden="true">EE</span>
+      <span class="brand-copy">
+        <strong>Placement &amp; Group Project</strong>
+        <span>2026–27</span>
+      </span>
+    </header>
+
+    <nav class="sidebar-nav" aria-label="Main navigation">
+      <a class="nav-item" href="/industrial-placement-group-project/app/group-project-supervisor/">
+        <i class="bi bi-speedometer2" aria-hidden="true"></i> Dashboard
+      </a>
+
+      
+
+      <p class="nav-heading">Industrial Placement</p>
+      
+      
+      
+
+      <p class="nav-heading">Group Project</p>
+      
+      
+      
+        <a class="nav-item" href="/industrial-placement-group-project/app/group-project-supervisor/gp/assigned-groups/">
+          <i class="bi bi-people" aria-hidden="true"></i> Assigned Group
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/group-project-supervisor/gp/posters-awaiting-marking/">
+          <i class="bi bi-images" aria-hidden="true"></i> Group Posters Awaiting Marking
+        </a>
+      
+    </nav>
+
+    <footer class="sidebar-footer">
+      <span>Imperial College London</span>
+      <span>Electrical &amp; Electronic Engineering</span>
+    </footer>
+  </aside>
+
+  <main class="workspace">
+    <header class="topbar">
+      <div class="topbar-heading">
+        <span class="topbar-group">Industrial Placement</span>
+        <h1 class="topbar-title">Correction Request</h1>
+      </div>
+      <div class="topbar-actions">
+        
+          <span class="role-badge">Group Project Supervisor</span>
+          <span class="topbar-user" title="Signed in as Dr. David Chen">Dr. David Chen</span>
+          
+            <div class="btn-group btn-group-sm" role="group" aria-label="Switch demo role">
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/group-project-supervisor/industrial-placement-group-project/app/admin/index.html">Admin</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/group-project-supervisor/industrial-placement-group-project/app/student/index.html">Student</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/group-project-supervisor/industrial-placement-group-project/app/placement-supervisor/index.html">Placement Supervisor</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/group-project-supervisor/industrial-placement-group-project/app/group-project-supervisor/index.html">Group Project Supervisor</a>
+              
+            </div>
+          
+        
+      </div>
+    </header>
+
+    <section class="page">
+      
+
+<div class="page-card">
+  <div class="card-header">
+    <div>
+      <h2>Correction Request — Emma Wong</h2>
+      <p>Return the placement as incomplete and tell the student what to correct.</p>
+    </div>
+  </div>
+  <div class="card-body">
+    <form action="/industrial-placement-group-project/app/group-project-supervisor/ip/awaiting-approval/" method="get">
+      <label class="form-label" for="missing-info">Missing Information Request</label>
+      <textarea class="form-control" id="missing-info" rows="3" placeholder="Describe the information or forms the student must provide"></textarea>
+      <div class="form-hint mt-1">The student receives this message by email and on the “Returned Placement” page.</div>
+      <div class="d-flex gap-2 mt-4">
+        <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/group-project-supervisor/ip/awaiting-approval/">Back</a>
+        <button type="submit" class="btn btn-warning" data-confirm="Return this placement as incomplete? The student will be notified.">
+          Return as Incomplete
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+    </section>
+  </main>
+</div>
+<script src="/industrial-placement-group-project/app/static/vendor/bootstrap.bundle.min.js"></script>
+<script src="/industrial-placement-group-project/app/static/js/app.js"></script>
+</body>
+</html>

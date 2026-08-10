@@ -1,0 +1,182 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Placement &amp; Group Project App</title>
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/vendor/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/css/app.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <header class="brand">
+      <span class="brand-mark" aria-hidden="true">EE</span>
+      <span class="brand-copy">
+        <strong>Placement &amp; Group Project</strong>
+        <span>2026–27</span>
+      </span>
+    </header>
+
+    <nav class="sidebar-nav" aria-label="Main navigation">
+      <a class="nav-item" href="/industrial-placement-group-project/app/student/">
+        <i class="bi bi-speedometer2" aria-hidden="true"></i> Dashboard
+      </a>
+
+      
+
+      <p class="nav-heading">Industrial Placement</p>
+      
+      
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/ip/opportunities/">
+          <i class="bi bi-briefcase" aria-hidden="true"></i> Placement Opportunities
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/ip/placement-details/">
+          <i class="bi bi-clipboard-plus" aria-hidden="true"></i> My Placement Application
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/ip/returned-placement/">
+          <i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i> Returned Placement
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/ip/deliverables/">
+          <i class="bi bi-list-check" aria-hidden="true"></i> Placement Deliverables
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/ip/report-task/">
+          <i class="bi bi-upload" aria-hidden="true"></i> Placement Report Task
+        </a>
+      
+      
+
+      <p class="nav-heading">Group Project</p>
+      
+      
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/gp/catalogue/">
+          <i class="bi bi-collection" aria-hidden="true"></i> Project Catalogue
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/gp/preferences/">
+          <i class="bi bi-list-ol" aria-hidden="true"></i> Project Preferences
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/gp/conference-poster-task/">
+          <i class="bi bi-file-earmark-image" aria-hidden="true"></i> Conference Poster Task
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/gp/allocated-group/">
+          <i class="bi bi-people-fill" aria-hidden="true"></i> Allocated Group
+        </a>
+      
+      
+    </nav>
+
+    <footer class="sidebar-footer">
+      <span>Imperial College London</span>
+      <span>Electrical &amp; Electronic Engineering</span>
+    </footer>
+  </aside>
+
+  <main class="workspace">
+    <header class="topbar">
+      <div class="topbar-heading">
+        <span class="topbar-group">Industrial Placement</span>
+        <h1 class="topbar-title">Edit Placement Opportunity</h1>
+      </div>
+      <div class="topbar-actions">
+        
+          <span class="role-badge">Student</span>
+          <span class="topbar-user" title="Signed in as Aisha Patel">Aisha Patel</span>
+          
+            <div class="btn-group btn-group-sm" role="group" aria-label="Switch demo role">
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/student/industrial-placement-group-project/app/admin/index.html">Admin</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/student/industrial-placement-group-project/app/student/index.html">Student</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/student/industrial-placement-group-project/app/placement-supervisor/index.html">Placement Supervisor</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/student/industrial-placement-group-project/app/group-project-supervisor/index.html">Group Project Supervisor</a>
+              
+            </div>
+          
+        
+      </div>
+    </header>
+
+    <section class="page">
+      
+
+<div class="page-card">
+  <div class="card-header">
+    <div>
+      <h2>ARM Ltd — Embedded Software Engineer Intern</h2>
+      <p>Details are published to students once the opportunity is published.</p>
+    </div>
+  </div>
+  <div class="card-body">
+    <form>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label" for="company-name">Company Name</label>
+          <input class="form-control" id="company-name" value="ARM Ltd" placeholder="e.g. ARM Ltd">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="company-website">Company Website</label>
+          <input class="form-control" id="company-website" type="url" placeholder="https://…">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="job-title">Job Title</label>
+          <input class="form-control" id="job-title" value="Embedded Software Engineer Intern" placeholder="e.g. Embedded Software Engineer Intern">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="location">Placement Location</label>
+          <input class="form-control" id="location" value="Cambridge" placeholder="e.g. Cambridge">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label" for="start-date">Start Date</label>
+          <input class="form-control" id="start-date" type="date">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label" for="finish-date">Finish Date</label>
+          <input class="form-control" id="finish-date" type="date">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label" for="closing-date">Closing Date</label>
+          <input class="form-control" id="closing-date" type="date" value="2026-02-13">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="application-method">Application Method</label>
+          <input class="form-control" id="application-method" placeholder="e.g. Apply via company careers portal">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="academic-year">Academic Year</label>
+          <select class="form-select" id="academic-year">
+            <option selected>2026–27</option>
+            <option>2025–26</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label class="form-label" for="job-spec">Job Specification Form</label>
+          <input class="form-control" id="job-spec" type="file">
+          <div class="form-hint mt-1">Upload the company's job specification Word document.</div>
+        </div>
+      </div>
+      <div class="d-flex gap-2 mt-4">
+        <button type="submit" class="btn btn-primary">Save Draft Opportunity</button>
+        <button type="submit" class="btn btn-outline-primary">Publish Opportunity</button>
+        
+          <button type="button" class="btn btn-outline-danger ms-auto" data-confirm="Delete this draft opportunity?">
+            <i class="bi bi-trash" aria-hidden="true"></i> Delete Draft Opportunity
+          </button>
+        
+      </div>
+    </form>
+  </div>
+</div>
+
+
+    </section>
+  </main>
+</div>
+<script src="/industrial-placement-group-project/app/static/vendor/bootstrap.bundle.min.js"></script>
+<script src="/industrial-placement-group-project/app/static/js/app.js"></script>
+</body>
+</html>

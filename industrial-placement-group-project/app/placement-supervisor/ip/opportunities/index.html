@@ -1,0 +1,158 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Placement &amp; Group Project App</title>
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/vendor/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/css/app.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <header class="brand">
+      <span class="brand-mark" aria-hidden="true">EE</span>
+      <span class="brand-copy">
+        <strong>Placement &amp; Group Project</strong>
+        <span>2026–27</span>
+      </span>
+    </header>
+
+    <nav class="sidebar-nav" aria-label="Main navigation">
+      <a class="nav-item" href="/industrial-placement-group-project/app/placement-supervisor/">
+        <i class="bi bi-speedometer2" aria-hidden="true"></i> Dashboard
+      </a>
+
+      
+
+      <p class="nav-heading">Industrial Placement</p>
+      
+      
+      
+        <a class="nav-item" href="/industrial-placement-group-project/app/placement-supervisor/ip/assigned-placements/">
+          <i class="bi bi-person-check" aria-hidden="true"></i> Assigned Placement
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/placement-supervisor/ip/reports-awaiting-marking/">
+          <i class="bi bi-pencil-square" aria-hidden="true"></i> Placement Reports Awaiting Marking
+        </a>
+      
+
+      <p class="nav-heading">Group Project</p>
+      
+      
+      
+    </nav>
+
+    <footer class="sidebar-footer">
+      <span>Imperial College London</span>
+      <span>Electrical &amp; Electronic Engineering</span>
+    </footer>
+  </aside>
+
+  <main class="workspace">
+    <header class="topbar">
+      <div class="topbar-heading">
+        <span class="topbar-group">Industrial Placement</span>
+        <h1 class="topbar-title">Placement Opportunities</h1>
+      </div>
+      <div class="topbar-actions">
+        
+          <span class="role-badge">Placement Supervisor</span>
+          <span class="topbar-user" title="Signed in as Dr. Steve Wright">Dr. Steve Wright</span>
+          
+            <div class="btn-group btn-group-sm" role="group" aria-label="Switch demo role">
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/placement-supervisor/industrial-placement-group-project/app/admin/index.html">Admin</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/placement-supervisor/industrial-placement-group-project/app/student/index.html">Student</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/placement-supervisor/industrial-placement-group-project/app/placement-supervisor/index.html">Placement Supervisor</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/placement-supervisor/industrial-placement-group-project/app/group-project-supervisor/index.html">Group Project Supervisor</a>
+              
+            </div>
+          
+        
+      </div>
+    </header>
+
+    <section class="page">
+      
+
+<div class="page-card">
+  <div class="card-header">
+    <div>
+      <h2>Browse Placement Opportunities</h2>
+      <p>Roles shared by the department. Apply directly to the company using the application method shown.</p>
+    </div>
+    <a class="btn btn-primary" href="/industrial-placement-group-project/app/placement-supervisor/ip/opportunities/new/">
+      <i class="bi bi-plus-lg" aria-hidden="true"></i> New Placement Opportunity
+    </a>
+  </div>
+
+  <div class="filter-bar">
+    <input class="form-control form-control-sm" type="search" placeholder="Filter opportunities…" data-filter-table="opportunity-table" aria-label="Filter opportunities">
+    <div class="btn-group btn-group-sm" role="group" aria-label="Opportunity status filter">
+      <button type="button" class="btn btn-outline-secondary active">All</button>
+      <button type="button" class="btn btn-outline-secondary">Published</button>
+      <button type="button" class="btn btn-outline-secondary">Draft</button>
+    </div>
+  </div>
+
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0" id="opportunity-table">
+        <thead>
+          <tr><th>Company</th><th>Job Title</th><th>Location</th><th>Closing Date</th><th>Academic Year</th><th>Applications</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td class="fw-semibold">ARM Ltd</td>
+            <td>Embedded Software Engineer Intern</td>
+            <td>Cambridge</td>
+            <td>2026-02-13</td>
+            <td>2026–27</td>
+            <td>12</td>
+            <td><span class="badge rounded-pill text-bg-success">Published</span></td>
+            <td class="text-end">
+              <a class="btn btn-sm btn-outline-primary" href="/industrial-placement-group-project/app/placement-supervisor/ip/opportunities/101/edit/">
+                <i class="bi bi-pencil" aria-hidden="true"></i> Edit
+              </a>
+              <button type="button" class="btn btn-sm btn-outline-secondary" data-confirm="Publish ARM Ltd opportunity?">Publish</button>
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="fw-semibold">Rolls-Royce</td>
+            <td>Electrical Systems Placement</td>
+            <td>Derby</td>
+            <td>2026-02-20</td>
+            <td>2026–27</td>
+            <td>8</td>
+            <td><span class="badge rounded-pill text-bg-success">Published</span></td>
+            <td class="text-end">
+              <a class="btn btn-sm btn-outline-primary" href="/industrial-placement-group-project/app/placement-supervisor/ip/opportunities/102/edit/">
+                <i class="bi bi-pencil" aria-hidden="true"></i> Edit
+              </a>
+              <button type="button" class="btn btn-sm btn-outline-secondary" data-confirm="Publish Rolls-Royce opportunity?">Publish</button>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+    </section>
+  </main>
+</div>
+<script src="/industrial-placement-group-project/app/static/vendor/bootstrap.bundle.min.js"></script>
+<script src="/industrial-placement-group-project/app/static/js/app.js"></script>
+</body>
+</html>

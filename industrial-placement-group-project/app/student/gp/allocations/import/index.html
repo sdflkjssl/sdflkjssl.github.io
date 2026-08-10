@@ -1,0 +1,166 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Placement &amp; Group Project App</title>
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/vendor/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/css/app.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <header class="brand">
+      <span class="brand-mark" aria-hidden="true">EE</span>
+      <span class="brand-copy">
+        <strong>Placement &amp; Group Project</strong>
+        <span>2026–27</span>
+      </span>
+    </header>
+
+    <nav class="sidebar-nav" aria-label="Main navigation">
+      <a class="nav-item" href="/industrial-placement-group-project/app/student/">
+        <i class="bi bi-speedometer2" aria-hidden="true"></i> Dashboard
+      </a>
+
+      
+
+      <p class="nav-heading">Industrial Placement</p>
+      
+      
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/ip/opportunities/">
+          <i class="bi bi-briefcase" aria-hidden="true"></i> Placement Opportunities
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/ip/placement-details/">
+          <i class="bi bi-clipboard-plus" aria-hidden="true"></i> My Placement Application
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/ip/returned-placement/">
+          <i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i> Returned Placement
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/ip/deliverables/">
+          <i class="bi bi-list-check" aria-hidden="true"></i> Placement Deliverables
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/ip/report-task/">
+          <i class="bi bi-upload" aria-hidden="true"></i> Placement Report Task
+        </a>
+      
+      
+
+      <p class="nav-heading">Group Project</p>
+      
+      
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/gp/catalogue/">
+          <i class="bi bi-collection" aria-hidden="true"></i> Project Catalogue
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/gp/preferences/">
+          <i class="bi bi-list-ol" aria-hidden="true"></i> Project Preferences
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/gp/conference-poster-task/">
+          <i class="bi bi-file-earmark-image" aria-hidden="true"></i> Conference Poster Task
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/student/gp/allocated-group/">
+          <i class="bi bi-people-fill" aria-hidden="true"></i> Allocated Group
+        </a>
+      
+      
+    </nav>
+
+    <footer class="sidebar-footer">
+      <span>Imperial College London</span>
+      <span>Electrical &amp; Electronic Engineering</span>
+    </footer>
+  </aside>
+
+  <main class="workspace">
+    <header class="topbar">
+      <div class="topbar-heading">
+        <span class="topbar-group">Group Project</span>
+        <h1 class="topbar-title">Allocation Import</h1>
+      </div>
+      <div class="topbar-actions">
+        
+          <span class="role-badge">Student</span>
+          <span class="topbar-user" title="Signed in as Aisha Patel">Aisha Patel</span>
+          
+            <div class="btn-group btn-group-sm" role="group" aria-label="Switch demo role">
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/student/industrial-placement-group-project/app/admin/index.html">Admin</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/student/industrial-placement-group-project/app/student/index.html">Student</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/student/industrial-placement-group-project/app/placement-supervisor/index.html">Placement Supervisor</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/student/industrial-placement-group-project/app/group-project-supervisor/index.html">Group Project Supervisor</a>
+              
+            </div>
+          
+        
+      </div>
+    </header>
+
+    <section class="page">
+      
+
+<div class="page-card">
+  <div class="card-header">
+    <div>
+      <h2>Allocation Import</h2>
+      <p>Import the “Allocation Spreadsheet” produced by the offline allocation process.</p>
+    </div>
+  </div>
+  <div class="card-body">
+    <form>
+      <div class="row g-3 mb-4">
+        <div class="col-md-4">
+          <label class="form-label" for="allocation-year">Academic Year</label>
+          <select class="form-select" id="allocation-year">
+            <option selected>2026–27</option>
+            <option>2025–26</option>
+          </select>
+        </div>
+        <div class="col-md-8">
+          <label class="form-label" for="allocation-spreadsheet">Allocation Spreadsheet</label>
+          <input class="form-control" type="file" id="allocation-spreadsheet">
+          <div class="form-hint mt-1">Required columns: “CID”, “Group ID”, “Project ID”.</div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" data-confirm="Validate Import?">Validate Import</button>
+    </form>
+  </div>
+</div>
+
+<div class="page-card">
+  <div class="card-header">
+    <h2>Allocation Import Preview</h2>
+    <span class="badge rounded-pill text-bg-success">Valid</span>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table align-middle mb-0">
+        <thead>
+          <tr><th>CID</th><th>Group ID</th><th>Project ID</th><th>Project Title</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="text-muted">01662345</td><td>GP-01</td><td>501</td><td>Autonomous Drone Swarm</td></tr>
+          <tr><td class="text-muted">01723456</td><td>GP-02</td><td>502</td><td>Grid-Scale Battery Optimisation</td></tr>
+          <tr><td class="text-muted">01145678</td><td>GP-03</td><td>503</td><td>Biomedical Signal Processing</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-body border-top">
+    <button type="button" class="btn btn-primary" data-confirm="Import the validated allocations as drafts?">Confirm Import</button>
+  </div>
+</div>
+
+
+    </section>
+  </main>
+</div>
+<script src="/industrial-placement-group-project/app/static/vendor/bootstrap.bundle.min.js"></script>
+<script src="/industrial-placement-group-project/app/static/js/app.js"></script>
+</body>
+</html>

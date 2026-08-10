@@ -1,0 +1,146 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Placement &amp; Group Project App</title>
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/vendor/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/css/app.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <header class="brand">
+      <span class="brand-mark" aria-hidden="true">EE</span>
+      <span class="brand-copy">
+        <strong>Placement &amp; Group Project</strong>
+        <span>2026–27</span>
+      </span>
+    </header>
+
+    <nav class="sidebar-nav" aria-label="Main navigation">
+      <a class="nav-item" href="/industrial-placement-group-project/app/placement-supervisor/">
+        <i class="bi bi-speedometer2" aria-hidden="true"></i> Dashboard
+      </a>
+
+      
+
+      <p class="nav-heading">Industrial Placement</p>
+      
+      
+      
+        <a class="nav-item" href="/industrial-placement-group-project/app/placement-supervisor/ip/assigned-placements/">
+          <i class="bi bi-person-check" aria-hidden="true"></i> Assigned Placement
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/placement-supervisor/ip/reports-awaiting-marking/">
+          <i class="bi bi-pencil-square" aria-hidden="true"></i> Placement Reports Awaiting Marking
+        </a>
+      
+
+      <p class="nav-heading">Group Project</p>
+      
+      
+      
+    </nav>
+
+    <footer class="sidebar-footer">
+      <span>Imperial College London</span>
+      <span>Electrical &amp; Electronic Engineering</span>
+    </footer>
+  </aside>
+
+  <main class="workspace">
+    <header class="topbar">
+      <div class="topbar-heading">
+        <span class="topbar-group">Industrial Placement</span>
+        <h1 class="topbar-title">Placements Awaiting Approval</h1>
+      </div>
+      <div class="topbar-actions">
+        
+          <span class="role-badge">Placement Supervisor</span>
+          <span class="topbar-user" title="Signed in as Dr. Steve Wright">Dr. Steve Wright</span>
+          
+            <div class="btn-group btn-group-sm" role="group" aria-label="Switch demo role">
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/placement-supervisor/industrial-placement-group-project/app/admin/index.html">Admin</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/placement-supervisor/industrial-placement-group-project/app/student/index.html">Student</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/placement-supervisor/industrial-placement-group-project/app/placement-supervisor/index.html">Placement Supervisor</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/placement-supervisor/industrial-placement-group-project/app/group-project-supervisor/index.html">Group Project Supervisor</a>
+              
+            </div>
+          
+        
+      </div>
+    </header>
+
+    <section class="page">
+      
+
+<div class="page-card">
+  <div class="card-header">
+    <div>
+      <h2>Approval Review</h2>
+      <p>Review each placement record, download the supporting forms, then select the review outcome.</p>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <input class="form-control form-control-sm" type="search" placeholder="Search by “Student First Name”, “Student Surname” or “CID”…" data-filter-table="approval-table" aria-label="Search Placements">
+    <select class="form-select form-select-sm" style="max-width:13rem" aria-label="Filter Placements by Academic Year">
+      <option>All years</option>
+      <option>2026–27</option>
+      <option>2025–26</option>
+    </select>
+  </div>
+
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0" id="approval-table">
+        <thead>
+          <tr><th>Student</th><th>CID</th><th>Placement</th><th>Submitted</th><th>Status</th><th>Placement Review Outcome</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td class="fw-semibold">
+              <a class="text-decoration-none" href="/industrial-placement-group-project/app/placement-supervisor/ip/placements/202/">Ben Okafor</a>
+            </td>
+            <td class="text-muted">01881234</td>
+            <td>
+              Rolls-Royce — Electrical Systems Placement
+              
+            </td>
+            <td>2025-11-08</td>
+            <td><span class="badge rounded-pill text-bg-warning">Awaiting Approval</span></td>
+            <td>
+              <div class="d-flex gap-1">
+                <select class="form-select form-select-sm" style="min-width:10rem" aria-label="Placement Review Outcome for Ben Okafor">
+                  <option>Approve</option>
+                  <option>Incomplete</option>
+                  <option>Reject</option>
+                </select>
+                <a class="btn btn-sm btn-outline-warning" href="/industrial-placement-group-project/app/placement-supervisor/ip/placements/202/correction/" title="Request correction">Correction</a>
+              </div>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+    </section>
+  </main>
+</div>
+<script src="/industrial-placement-group-project/app/static/vendor/bootstrap.bundle.min.js"></script>
+<script src="/industrial-placement-group-project/app/static/js/app.js"></script>
+</body>
+</html>

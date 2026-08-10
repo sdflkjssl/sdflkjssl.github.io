@@ -1,0 +1,246 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Placement &amp; Group Project App</title>
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/vendor/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/css/app.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <header class="brand">
+      <span class="brand-mark" aria-hidden="true">EE</span>
+      <span class="brand-copy">
+        <strong>Placement &amp; Group Project</strong>
+        <span>2026–27</span>
+      </span>
+    </header>
+
+    <nav class="sidebar-nav" aria-label="Main navigation">
+      <a class="nav-item" href="/industrial-placement-group-project/app/admin/">
+        <i class="bi bi-speedometer2" aria-hidden="true"></i> Dashboard
+      </a>
+
+      
+      <p class="nav-heading">Setup</p>
+      <a class="nav-item" href="/industrial-placement-group-project/app/admin/people-imports/">
+        <i class="bi bi-people" aria-hidden="true"></i> People Imports
+      </a>
+      
+
+      <p class="nav-heading">Industrial Placement</p>
+      
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/ip/opportunities/drafts/">
+          <i class="bi bi-briefcase" aria-hidden="true"></i> Draft Placement Opportunities
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/ip/opportunities/">
+          <i class="bi bi-briefcase-fill" aria-hidden="true"></i> Placement Opportunities
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/ip/awaiting-approval/">
+          <i class="bi bi-hourglass-split" aria-hidden="true"></i> Placements Awaiting Approval
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/ip/approved-placements/">
+          <i class="bi bi-check2-circle" aria-hidden="true"></i> Approved Placements
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/ip/supervisor-assignment-panel/">
+          <i class="bi bi-person-lines-fill" aria-hidden="true"></i> Supervisor Assignment Panel
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/ip/supervisor-workload/">
+          <i class="bi bi-bar-chart" aria-hidden="true"></i> Supervisor Workload Details
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/ip/marks-report/">
+          <i class="bi bi-file-earmark-spreadsheet" aria-hidden="true"></i> Placement Marks Report
+        </a>
+      
+      
+      
+
+      <p class="nav-heading">Group Project</p>
+      
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/gp/catalogue/">
+          <i class="bi bi-collection" aria-hidden="true"></i> Project Catalogue
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/gp/preference-submissions/">
+          <i class="bi bi-inbox" aria-hidden="true"></i> Preference Submissions
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/gp/allocations/">
+          <i class="bi bi-diagram-3" aria-hidden="true"></i> Project Allocations
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/gp/marks-report/">
+          <i class="bi bi-file-earmark-spreadsheet" aria-hidden="true"></i> Group Project Marks Report
+        </a>
+      
+      
+      
+    </nav>
+
+    <footer class="sidebar-footer">
+      <span>Imperial College London</span>
+      <span>Electrical &amp; Electronic Engineering</span>
+    </footer>
+  </aside>
+
+  <main class="workspace">
+    <header class="topbar">
+      <div class="topbar-heading">
+        <span class="topbar-group">Group Project</span>
+        <h1 class="topbar-title">Project Catalogue</h1>
+      </div>
+      <div class="topbar-actions">
+        
+          <span class="role-badge">Placement Administrator</span>
+          <span class="topbar-user" title="Signed in as Kate Farrar">Kate Farrar</span>
+          
+            <div class="btn-group btn-group-sm" role="group" aria-label="Switch demo role">
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/admin/industrial-placement-group-project/app/admin/index.html">Admin</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/admin/industrial-placement-group-project/app/student/index.html">Student</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/admin/industrial-placement-group-project/app/placement-supervisor/index.html">Placement Supervisor</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/admin/industrial-placement-group-project/app/group-project-supervisor/index.html">Group Project Supervisor</a>
+              
+            </div>
+          
+        
+      </div>
+    </header>
+
+    <section class="page">
+      
+
+<div class="page-card">
+  <div class="card-header">
+    <div>
+      <h2>Browse Projects</h2>
+      <p>Third-year group projects offered by the department and its providers.</p>
+    </div>
+    <a class="btn btn-primary" href="/industrial-placement-group-project/app/admin/gp/projects/new/">
+      <i class="bi bi-plus-lg" aria-hidden="true"></i> New Project
+    </a>
+  </div>
+
+  <div class="filter-bar">
+    <input class="form-control form-control-sm" type="search" placeholder="Filter projects…" data-filter-table="project-table" aria-label="Filter projects">
+  </div>
+
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0" id="project-table">
+        <thead>
+          <tr><th>Project Title</th><th>Project Provider</th><th>Supervisor</th><th>Capacity</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td class="fw-semibold"><a class="text-decoration-none" href="/industrial-placement-group-project/app/admin/gp/projects/501/">Autonomous Drone Swarm</a></td>
+            <td>
+              Dyson
+              <a class="form-hint d-block" href="https://www.dyson.co.uk" target="_blank" rel="noopener">www.dyson.co.uk</a>
+            </td>
+            <td>David Chen</td>
+            <td>
+              3/5
+              <div class="progress mt-1" style="height:0.4rem;max-width:8rem">
+                <div class="progress-bar bg-success"
+                     style="width:60%"></div>
+              </div>
+            </td>
+            <td><span class="badge rounded-pill text-bg-success">Published</span></td>
+            <td class="text-end">
+              <a class="btn btn-sm btn-outline-primary" href="/industrial-placement-group-project/app/admin/gp/projects/501/edit/">
+                <i class="bi bi-pencil" aria-hidden="true"></i> Edit
+              </a>
+              <button type="button" class="btn btn-sm btn-outline-secondary" data-confirm="Publish Autonomous Drone Swarm?">Publish</button>
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="fw-semibold"><a class="text-decoration-none" href="/industrial-placement-group-project/app/admin/gp/projects/502/">Grid-Scale Battery Optimisation</a></td>
+            <td>
+              National Grid ESO
+              <a class="form-hint d-block" href="https://www.nationalgrideso.com" target="_blank" rel="noopener">www.nationalgrideso.com</a>
+            </td>
+            <td>Maria Ferreira</td>
+            <td>
+              4/5
+              <div class="progress mt-1" style="height:0.4rem;max-width:8rem">
+                <div class="progress-bar bg-success"
+                     style="width:80%"></div>
+              </div>
+            </td>
+            <td><span class="badge rounded-pill text-bg-success">Published</span></td>
+            <td class="text-end">
+              <a class="btn btn-sm btn-outline-primary" href="/industrial-placement-group-project/app/admin/gp/projects/502/edit/">
+                <i class="bi bi-pencil" aria-hidden="true"></i> Edit
+              </a>
+              <button type="button" class="btn btn-sm btn-outline-secondary" data-confirm="Publish Grid-Scale Battery Optimisation?">Publish</button>
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="fw-semibold"><a class="text-decoration-none" href="/industrial-placement-group-project/app/admin/gp/projects/503/">Biomedical Signal Processing</a></td>
+            <td>
+              Imperial BCI Lab
+              <a class="form-hint d-block" href="https://www.imperial.ac.uk" target="_blank" rel="noopener">www.imperial.ac.uk</a>
+            </td>
+            <td>Priya Sharma</td>
+            <td>
+              2/4
+              <div class="progress mt-1" style="height:0.4rem;max-width:8rem">
+                <div class="progress-bar bg-success"
+                     style="width:50%"></div>
+              </div>
+            </td>
+            <td><span class="badge rounded-pill text-bg-success">Published</span></td>
+            <td class="text-end">
+              <a class="btn btn-sm btn-outline-primary" href="/industrial-placement-group-project/app/admin/gp/projects/503/edit/">
+                <i class="bi bi-pencil" aria-hidden="true"></i> Edit
+              </a>
+              <button type="button" class="btn btn-sm btn-outline-secondary" data-confirm="Publish Biomedical Signal Processing?">Publish</button>
+            </td>
+          </tr>
+          
+          <tr>
+            <td class="fw-semibold"><a class="text-decoration-none" href="/industrial-placement-group-project/app/admin/gp/projects/504/">Edge AI Accelerator</a></td>
+            <td>
+              Graphcore
+              <a class="form-hint d-block" href="https://www.graphcore.ai" target="_blank" rel="noopener">www.graphcore.ai</a>
+            </td>
+            <td>David Chen</td>
+            <td>
+              0/4
+              <div class="progress mt-1" style="height:0.4rem;max-width:8rem">
+                <div class="progress-bar bg-success"
+                     style="width:0%"></div>
+              </div>
+            </td>
+            <td><span class="badge rounded-pill text-bg-secondary">Draft</span></td>
+            <td class="text-end">
+              <a class="btn btn-sm btn-outline-primary" href="/industrial-placement-group-project/app/admin/gp/projects/504/edit/">
+                <i class="bi bi-pencil" aria-hidden="true"></i> Edit
+              </a>
+              <button type="button" class="btn btn-sm btn-outline-secondary" data-confirm="Publish Edge AI Accelerator?">Publish</button>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+    </section>
+  </main>
+</div>
+<script src="/industrial-placement-group-project/app/static/vendor/bootstrap.bundle.min.js"></script>
+<script src="/industrial-placement-group-project/app/static/js/app.js"></script>
+</body>
+</html>

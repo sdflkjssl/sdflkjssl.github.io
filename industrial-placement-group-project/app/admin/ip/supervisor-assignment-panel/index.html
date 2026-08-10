@@ -1,0 +1,181 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Placement &amp; Group Project App</title>
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/vendor/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/css/app.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <header class="brand">
+      <span class="brand-mark" aria-hidden="true">EE</span>
+      <span class="brand-copy">
+        <strong>Placement &amp; Group Project</strong>
+        <span>2026–27</span>
+      </span>
+    </header>
+
+    <nav class="sidebar-nav" aria-label="Main navigation">
+      <a class="nav-item" href="/industrial-placement-group-project/app/admin/">
+        <i class="bi bi-speedometer2" aria-hidden="true"></i> Dashboard
+      </a>
+
+      
+      <p class="nav-heading">Setup</p>
+      <a class="nav-item" href="/industrial-placement-group-project/app/admin/people-imports/">
+        <i class="bi bi-people" aria-hidden="true"></i> People Imports
+      </a>
+      
+
+      <p class="nav-heading">Industrial Placement</p>
+      
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/ip/opportunities/drafts/">
+          <i class="bi bi-briefcase" aria-hidden="true"></i> Draft Placement Opportunities
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/ip/opportunities/">
+          <i class="bi bi-briefcase-fill" aria-hidden="true"></i> Placement Opportunities
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/ip/awaiting-approval/">
+          <i class="bi bi-hourglass-split" aria-hidden="true"></i> Placements Awaiting Approval
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/ip/approved-placements/">
+          <i class="bi bi-check2-circle" aria-hidden="true"></i> Approved Placements
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/ip/supervisor-assignment-panel/">
+          <i class="bi bi-person-lines-fill" aria-hidden="true"></i> Supervisor Assignment Panel
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/ip/supervisor-workload/">
+          <i class="bi bi-bar-chart" aria-hidden="true"></i> Supervisor Workload Details
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/ip/marks-report/">
+          <i class="bi bi-file-earmark-spreadsheet" aria-hidden="true"></i> Placement Marks Report
+        </a>
+      
+      
+      
+
+      <p class="nav-heading">Group Project</p>
+      
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/gp/catalogue/">
+          <i class="bi bi-collection" aria-hidden="true"></i> Project Catalogue
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/gp/preference-submissions/">
+          <i class="bi bi-inbox" aria-hidden="true"></i> Preference Submissions
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/gp/allocations/">
+          <i class="bi bi-diagram-3" aria-hidden="true"></i> Project Allocations
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/admin/gp/marks-report/">
+          <i class="bi bi-file-earmark-spreadsheet" aria-hidden="true"></i> Group Project Marks Report
+        </a>
+      
+      
+      
+    </nav>
+
+    <footer class="sidebar-footer">
+      <span>Imperial College London</span>
+      <span>Electrical &amp; Electronic Engineering</span>
+    </footer>
+  </aside>
+
+  <main class="workspace">
+    <header class="topbar">
+      <div class="topbar-heading">
+        <span class="topbar-group">Industrial Placement</span>
+        <h1 class="topbar-title">Supervisor Assignment Panel</h1>
+      </div>
+      <div class="topbar-actions">
+        
+          <span class="role-badge">Placement Administrator</span>
+          <span class="topbar-user" title="Signed in as Kate Farrar">Kate Farrar</span>
+          
+            <div class="btn-group btn-group-sm" role="group" aria-label="Switch demo role">
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/admin/industrial-placement-group-project/app/admin/index.html">Admin</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/admin/industrial-placement-group-project/app/student/index.html">Student</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/admin/industrial-placement-group-project/app/placement-supervisor/index.html">Placement Supervisor</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/admin/industrial-placement-group-project/app/group-project-supervisor/index.html">Group Project Supervisor</a>
+              
+            </div>
+          
+        
+      </div>
+    </header>
+
+    <section class="page">
+      
+
+<div class="page-card">
+  <div class="card-header">
+    <div>
+      <h2>Supervisor Assignment Panel</h2>
+      <p>Assign each approved placement to an academic supervisor. Workload caps come from staff workload information.</p>
+    </div>
+    <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/admin/ip/supervisor-workload/">Supervisor Workload Details</a>
+  </div>
+
+  <div class="filter-bar">
+    <input class="form-control form-control-sm" type="search" placeholder="Search by student name or CID…" data-filter-table="assignment-table" aria-label="Search assignments">
+  </div>
+
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0" id="assignment-table">
+        <thead>
+          <tr><th>Student</th><th>Placement</th><th>Assigned Supervisor</th><th>Assignment Panel</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td class="fw-semibold">Aisha Patel</td>
+            <td>ARM Ltd — Embedded Software Engineer Intern</td>
+            <td>Steve Wright</td>
+            <td>
+              <select class="form-select form-select-sm" style="min-width:16rem" aria-label="Assign supervisor for Aisha Patel">
+                <option value="">— Select supervisor —</option>
+                
+                  <option selected>
+                    Steve Wright (2/4)
+                  </option>
+                
+                  <option >
+                    Maria Ferreira (3/4)
+                  </option>
+                
+                  <option >
+                    David Chen (2/3)
+                  </option>
+                
+                  <option >
+                    Priya Sharma (1/3)
+                  </option>
+                
+              </select>
+              <button type="button" class="btn btn-sm btn-primary mt-1" data-confirm="Save Supervisor Assignment for Aisha Patel?">Save Supervisor Assignment</button>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+    </section>
+  </main>
+</div>
+<script src="/industrial-placement-group-project/app/static/vendor/bootstrap.bundle.min.js"></script>
+<script src="/industrial-placement-group-project/app/static/js/app.js"></script>
+</body>
+</html>
