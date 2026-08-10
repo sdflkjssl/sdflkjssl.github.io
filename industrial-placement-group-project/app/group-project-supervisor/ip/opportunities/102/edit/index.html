@@ -1,0 +1,160 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Placement &amp; Group Project App</title>
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/vendor/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="/industrial-placement-group-project/app/static/css/app.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <header class="brand">
+      <span class="brand-mark" aria-hidden="true">EE</span>
+      <span class="brand-copy">
+        <strong>Placement &amp; Group Project</strong>
+        <span>2026–27</span>
+      </span>
+    </header>
+
+    <nav class="sidebar-nav" aria-label="Main navigation">
+      <a class="nav-item" href="/industrial-placement-group-project/app/group-project-supervisor/">
+        <i class="bi bi-speedometer2" aria-hidden="true"></i> Dashboard
+      </a>
+
+      
+
+      <p class="nav-heading">Industrial Placement</p>
+      
+      
+      
+
+      <p class="nav-heading">Group Project</p>
+      
+      
+      
+        <a class="nav-item" href="/industrial-placement-group-project/app/group-project-supervisor/gp/assigned-groups/">
+          <i class="bi bi-people" aria-hidden="true"></i> Assigned Group
+        </a>
+        <a class="nav-item" href="/industrial-placement-group-project/app/group-project-supervisor/gp/posters-awaiting-marking/">
+          <i class="bi bi-images" aria-hidden="true"></i> Group Posters Awaiting Marking
+        </a>
+      
+    </nav>
+
+    <footer class="sidebar-footer">
+      <span>Imperial College London</span>
+      <span>Electrical &amp; Electronic Engineering</span>
+    </footer>
+  </aside>
+
+  <main class="workspace">
+    <header class="topbar">
+      <div class="topbar-heading">
+        <span class="topbar-group">Industrial Placement</span>
+        <h1 class="topbar-title">Edit Placement Opportunity</h1>
+      </div>
+      <div class="topbar-actions">
+        
+          <span class="role-badge">Group Project Supervisor</span>
+          <span class="topbar-user" title="Signed in as Dr. David Chen">Dr. David Chen</span>
+          
+            <div class="btn-group btn-group-sm" role="group" aria-label="Switch demo role">
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/admin/index.html">Admin</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/student/index.html">Student</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/placement-supervisor/index.html">Placement Supervisor</a>
+              
+                <a class="btn btn-outline-secondary" href="/industrial-placement-group-project/app/group-project-supervisor/index.html">Group Project Supervisor</a>
+              
+            </div>
+          
+        
+      </div>
+    </header>
+
+    <section class="page">
+      
+
+<div class="page-card">
+  <div class="card-header">
+    <div>
+      <h2>Rolls-Royce — Electrical Systems Placement</h2>
+      <p>Details are published to students once the opportunity is published.</p>
+    </div>
+  </div>
+  <div class="card-body">
+    <form>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label" for="company-name">Company Name</label>
+          <input class="form-control" id="company-name" value="Rolls-Royce" placeholder="e.g. ARM Ltd">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="company-website">Company Website</label>
+          <input class="form-control" id="company-website" type="url" placeholder="https://…">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="job-title">Job Title</label>
+          <input class="form-control" id="job-title" value="Electrical Systems Placement" placeholder="e.g. Embedded Software Engineer Intern">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="location">Placement Location</label>
+          <input class="form-control" id="location" value="Derby" placeholder="e.g. Cambridge">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label" for="start-date">Start Date</label>
+          <input class="form-control" id="start-date" type="date">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label" for="finish-date">Finish Date</label>
+          <input class="form-control" id="finish-date" type="date">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label" for="closing-date">Closing Date</label>
+          <input class="form-control" id="closing-date" type="date" value="2026-02-20">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="application-method">Application Method</label>
+          <input class="form-control" id="application-method" placeholder="e.g. Apply via company careers portal">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="academic-year">Academic Year</label>
+          <select class="form-select" id="academic-year">
+            <option selected>2026–27</option>
+            <option>2025–26</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label class="form-label" for="job-spec">Job Specification Form</label>
+          <input class="form-control" id="job-spec" type="file">
+          <div class="form-hint mt-1">Upload the company's job specification Word document.</div>
+        </div>
+      </div>
+      <div class="d-flex gap-2 mt-4">
+        <button type="submit" class="btn btn-primary">Save Draft Opportunity</button>
+        <button type="submit" class="btn btn-outline-primary">Publish Opportunity</button>
+        
+          <button type="button" class="btn btn-outline-danger ms-auto" data-confirm="Delete this draft opportunity?">
+            <i class="bi bi-trash" aria-hidden="true"></i> Delete Draft Opportunity
+          </button>
+        
+      </div>
+    </form>
+  </div>
+</div>
+
+
+    </section>
+  </main>
+</div>
+<script src="/industrial-placement-group-project/app/static/vendor/bootstrap.bundle.min.js"></script>
+<script src="/industrial-placement-group-project/app/static/js/app.js"></script>
+</body>
+</html>
